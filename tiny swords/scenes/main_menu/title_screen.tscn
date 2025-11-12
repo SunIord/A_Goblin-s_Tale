@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7d8sa0dlcf3f"]
 
-[ext_resource type="Script" path="res://scenes/main_menu/title_screen.gd" id="1_lcuhs"]
+[ext_resource type="Script" uid="uid://sperqjmyg5i2" path="res://scenes/main_menu/title_screen.gd" id="1_lcuhs"]
 [ext_resource type="Texture2D" uid="uid://cols0nibrpu71" path="res://scenes/main_menu/title_screen.jpeg" id="2_j40wq"]
 [ext_resource type="FontFile" uid="uid://rxmx4et71ae5" path="res://Assets/font/AlbertTextBold.otf" id="3_5wvk4"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="4_wppif"]
@@ -47,7 +47,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.843137, 0.85098, 0.156863, 1)
 theme_override_fonts/font = ExtResource("3_5wvk4")
 theme_override_font_sizes/font_size = 59
-text = "A Goblet's Tale"
+text = "A Goblin's Tale"
 horizontal_alignment = 1
 vertical_alignment = 1
 

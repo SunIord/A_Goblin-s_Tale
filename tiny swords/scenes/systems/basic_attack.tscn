@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://df4bjixu1r0cb"]
+
+[ext_resource type="Script" path="res://basicAttack.gd" id="1_j284q"]
+[ext_resource type="Texture2D" uid="uid://xyo3bxdympm5" path="res://Assets/Effects/Fire/Fire.png" id="2_v5qgf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvqsy"]
+radius = 10.4189
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydwi5"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3ced"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6dad"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8smgs"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr85r"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72ate"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3k3u"]
+atlas = ExtResource("2_v5qgf")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mhq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydwi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3ced")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6dad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8smgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr85r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72ate")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3k3u")
+}],
+"loop": true,
+"name": &"attack_loop",
+"speed": 11.0
+}]
+
+[node name="basicAttack" type="Area2D"]
+z_index = 4
+z_as_relative = false
+script = ExtResource("1_j284q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.4, 4.08)
+shape = SubResource("CircleShape2D_jvqsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_2mhq0")
+animation = &"attack_loop"
+frame_progress = 0.936779

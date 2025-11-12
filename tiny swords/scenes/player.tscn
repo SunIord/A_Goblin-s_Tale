@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="1_2fmqq"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jmoox"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
-[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Flamethrower.tscn" id="3_4aw38"]
+[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="3_4aw38"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_0wpxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14u5x"]
@@ -280,7 +280,7 @@ super_attack_prefab = ExtResource("3_4aw38")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_0qful")
-animation = &"idle"
+animation = &"Attack_right"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -303,9 +303,10 @@ debug_color = Color(0.92549, 0.254902, 0.262745, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = -39.0
-offset_right = 40.0
-offset_bottom = 14.0
+offset_left = -40.0
+offset_top = 10.0
+offset_right = 39.0
+offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_m8qeb")
 
 [node name="PlayerLife" type="ProgressBar" parent="Panel"]
@@ -327,4 +328,5 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="6_dmrea"]
 [ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/enemys/knight.tscn" id="6_tftkb"]
 [ext_resource type="Texture2D" uid="uid://b7glorc1fg8j1" path="res://Assets/Resources/Resources/M_Spawn.png" id="7_ebs2m"]
-[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Flamethrower.tscn" id="8_wvg88"]
+[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="8_wvg88"]
 
 [node name="TorchBlue" type="Sprite2D"]
 position = Vector2(523, 311)

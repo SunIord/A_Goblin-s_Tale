@@ -1,5 +1,5 @@
 class_name Enemy
-extends Node2D
+extends CharacterBody2D
 
 @export var health: int = 10
 @export var death_prefab: PackedScene

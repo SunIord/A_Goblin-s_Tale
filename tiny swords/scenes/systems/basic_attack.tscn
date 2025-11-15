@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=3 uid="uid://df4bjixu1r0cb"]
+
+[ext_resource type="Script" path="res://basicAttack.gd" id="1_j284q"]
+[ext_resource type="Texture2D" uid="uid://xyo3bxdympm5" path="res://Assets/Effects/Fire/Fire.png" id="2_v5qgf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvqsy"]
+radius = 10.4189
+
+[sub_resource type="Animation" id="Animation_e1w0m"]
+resource_name = "Basic_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0966358, 0.199884, 0.302041, 0.396636, 0.50206, 0.603854, 0.698206, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.599976, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pcp55"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_godci"]
+_data = {
+"Basic_attack": SubResource("Animation_e1w0m"),
+"RESET": SubResource("Animation_pcp55")
+}
+
+[node name="basicAttack" type="Area2D"]
+z_index = 4
+z_as_relative = false
+collision_layer = 5
+collision_mask = 6
+script = ExtResource("1_j284q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.4, 4.08)
+shape = SubResource("CircleShape2D_jvqsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4
+z_as_relative = false
+texture = ExtResource("2_v5qgf")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_godci")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

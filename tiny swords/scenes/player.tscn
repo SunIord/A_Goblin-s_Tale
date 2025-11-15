@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bsrmhxqcm5ucx"]
+[gd_scene load_steps=41 format=3 uid="uid://bsrmhxqcm5ucx"]
 
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="1_2fmqq"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jmoox"]
@@ -254,9 +254,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vq3w"]
 radius = 9.24012
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cqmgf"]
-radius = 10.6629
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8qeb"]
 texture = ExtResource("5_0wpxf")
 region_rect = Rect2(0, 0, 192, 64)
@@ -288,17 +285,6 @@ position = Vector2(-1.19209e-07, -8)
 scale = Vector2(2.05625, 1.66401)
 shape = SubResource("CircleShape2D_8vq3w")
 debug_color = Color(0.181383, 0.528887, 0.958296, 0.42)
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1, -39)
-scale = Vector2(-1.01542, 1.23748)
-collision_mask = 2
-
-[node name="hitting_area" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.972644, 12.012)
-scale = Vector2(8.03404, 6.17115)
-shape = SubResource("CircleShape2D_cqmgf")
-debug_color = Color(0.92549, 0.254902, 0.262745, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

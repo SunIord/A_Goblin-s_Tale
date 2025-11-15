@@ -13,3 +13,6 @@ position = Vector2(572, 288)
 
 [node name="knight" parent="." instance=ExtResource("3_eqsi1")]
 position = Vector2(233, 328)
+
+[node name="knight2" parent="." instance=ExtResource("3_eqsi1")]
+position = Vector2(302, 173)

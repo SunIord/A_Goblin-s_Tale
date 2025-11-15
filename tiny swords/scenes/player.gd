@@ -12,7 +12,6 @@ extends CharacterBody2D
 @export var gameui: Node = null
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sword_area: Area2D = $Area2D
 @onready var health_progress_bar: ProgressBar = %PlayerLife
 @onready var basicAttack = preload("res://scenes/systems/basic_attack.tscn")
 
@@ -89,15 +88,13 @@ func spawn_basic_attack() -> void:
 	attack_instance.position = global_position + attack_direction * 70 + Vector2(0, -35)
 	attack_instance.owner = self
 
-	get_parent().add_child(attack_instance)
+	get_tree().root.add_child(attack_instance)
 	print("Spawned attack at: ", attack_instance.global_position)
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if is_attacking:
 		if animation_player.get_frame() == 2 and not fire_spawned_in_this_attack:
 			spawn_basic_attack()
-		elif animation_player.get_frame() == 3:
-			deal_damage_to_enemies()
 
 # ===============================
 #   ANIMAÇÃO E MOVIMENTO
@@ -118,15 +115,6 @@ func rotate_sprite() -> void:
 # ===============================
 #   DANO, VIDA E MORTE
 # ===============================
-func deal_damage_to_enemies() -> void:
-	for body in sword_area.get_overlapping_bodies():
-		if body.is_in_group("enemies") or body.is_in_group("sheeps"):
-			var enemy = body
-			var direction_to_enemy = (enemy.position - position).normalized()
-			var attack_direction = Vector2.LEFT if animation_player.flip_h else Vector2.RIGHT
-			var dot_product = direction_to_enemy.dot(attack_direction)
-			if dot_product >= 0.5:
-				enemy.damage(sword_damage)
 
 func damage(amount: int) -> void:
 	health -= amount

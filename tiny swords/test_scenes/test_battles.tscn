@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwbklbfpr8a0a"]
+[gd_scene load_steps=4 format=3 uid="uid://cwbklbfpr8a0a"]
 
 [ext_resource type="PackedScene" uid="uid://j184hts6gb1t" path="res://scenes/ui/gameUI.tscn" id="1_2x82o"]
 [ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/player.tscn" id="2_ylomg"]
+[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/enemys/knight.tscn" id="3_eqsi1"]
 
 [node name="TestBattles" type="Node2D"]
 
@@ -9,3 +10,9 @@
 
 [node name="player" parent="." instance=ExtResource("2_ylomg")]
 position = Vector2(572, 288)
+
+[node name="knight" parent="." instance=ExtResource("3_eqsi1")]
+position = Vector2(233, 328)
+
+[node name="knight2" parent="." instance=ExtResource("3_eqsi1")]
+position = Vector2(302, 173)

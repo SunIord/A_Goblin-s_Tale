@@ -1,9 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://bsrmhxqcm5ucx"]
+[gd_scene load_steps=41 format=3 uid="uid://bsrmhxqcm5ucx"]
 
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="1_2fmqq"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_jmoox"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
-[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Flamethrower.tscn" id="3_4aw38"]
+[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="3_4aw38"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_0wpxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14u5x"]
@@ -254,9 +254,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vq3w"]
 radius = 9.24012
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cqmgf"]
-radius = 10.6629
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8qeb"]
 texture = ExtResource("5_0wpxf")
 region_rect = Rect2(0, 0, 192, 64)
@@ -280,7 +277,7 @@ super_attack_prefab = ExtResource("3_4aw38")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_0qful")
-animation = &"idle"
+animation = &"Attack_right"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -289,23 +286,13 @@ scale = Vector2(2.05625, 1.66401)
 shape = SubResource("CircleShape2D_8vq3w")
 debug_color = Color(0.181383, 0.528887, 0.958296, 0.42)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1, -39)
-scale = Vector2(-1.01542, 1.23748)
-collision_mask = 2
-
-[node name="hitting_area" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.972644, 12.012)
-scale = Vector2(8.03404, 6.17115)
-shape = SubResource("CircleShape2D_cqmgf")
-debug_color = Color(0.92549, 0.254902, 0.262745, 0)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = -39.0
-offset_right = 40.0
-offset_bottom = 14.0
+offset_left = -40.0
+offset_top = 10.0
+offset_right = 39.0
+offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_m8qeb")
 
 [node name="PlayerLife" type="ProgressBar" parent="Panel"]
@@ -327,4 +314,5 @@ value = 100.0
 rounded = true
 show_percentage = false
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

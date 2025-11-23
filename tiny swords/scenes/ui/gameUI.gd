@@ -11,10 +11,13 @@ extends CanvasLayer
 func _process(delta: float):
 	timer_label.text = GameManager.time_elapsed_string
 	death_label.text = str(GameManager.death_count)
-	fire_bar.value = super_timer.get_time_left() - 15
+	fire_bar.set_value(15 - super_timer.get_time_left())
 	try_to_time()
 	
 func try_to_time():
+	if fire_bar.get_value() == 15:
+		super_timer.stop()
+		
 	if can_time:
 		super_timer_countdown()
 	
@@ -27,3 +30,12 @@ func time_passing()->void:
 func super_timer_countdown():
 	can_time = false
 	super_timer.start(15)		
+
+func value_back()->bool:
+	if fire_bar.get_value() == 15:
+		return true
+	else:
+		return false
+
+func restart()->void:
+	can_time = true

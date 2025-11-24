@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chu7jr8x2cj0q"
-path="res://.godot/imported/Yellow_Monastery.png-5f321567c088f900015b4c2dd555e5a7.ctex"
+path="res://.godot/imported/Yellow_Monastery.png-3324c660b2d9878f52136e9f735ff36a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Deco/Buildings/Monastery/Yellow_Monastery.png"
-dest_files=["res://.godot/imported/Yellow_Monastery.png-5f321567c088f900015b4c2dd555e5a7.ctex"]
+source_file="res://Assets/Decorations/Buildings/Monastery/Yellow_Monastery.png"
+dest_files=["res://.godot/imported/Yellow_Monastery.png-3324c660b2d9878f52136e9f735ff36a.ctex"]
 
 [params]
 

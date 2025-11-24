@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5rfsrnqn70ix"
-path="res://.godot/imported/Poison Cloud-Sheet.png-eef6b15f5ef1b37757dcba5fd58b2c22.ctex"
+path="res://.godot/imported/Poison Cloud-Sheet.png-a0ccbdedfefc8e4fcd1c66fe8ff4c0db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Effects/Spritesheets/Poison Cloud-Sheet.png"
-dest_files=["res://.godot/imported/Poison Cloud-Sheet.png-eef6b15f5ef1b37757dcba5fd58b2c22.ctex"]
+source_file="res://Assets/Effects/Spells/Poison Cloud-Sheet.png"
+dest_files=["res://.godot/imported/Poison Cloud-Sheet.png-a0ccbdedfefc8e4fcd1c66fe8ff4c0db.ctex"]
 
 [params]
 

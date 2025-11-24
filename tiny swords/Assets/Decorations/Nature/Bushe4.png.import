@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ko2f8aapwxjp"
-path="res://.godot/imported/Bushe4.png-7ab24cbd806a9cda53c243e9cb4e430b.ctex"
+path="res://.godot/imported/Bushe4.png-36a70d925953d2e3e69629dc799d4a6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Deco/Nature/Bushe4.png"
-dest_files=["res://.godot/imported/Bushe4.png-7ab24cbd806a9cda53c243e9cb4e430b.ctex"]
+source_file="res://Assets/Decorations/Nature/Bushe4.png"
+dest_files=["res://.godot/imported/Bushe4.png-36a70d925953d2e3e69629dc799d4a6c.ctex"]
 
 [params]
 

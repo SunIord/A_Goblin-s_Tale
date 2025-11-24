@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bg0g1i8rxqphc"]
 
-[ext_resource type="Texture2D" uid="uid://cs23rhrpr02ik" path="res://Assets/Factions/Goblins/Troops/TNT/Blue/TNT_Blue.png" id="1_3s4nn"]
+[ext_resource type="Texture2D" path="res://Assets/Factions/Goblins/Troops/TNT/Blue/TNT_Blue.png" id="1_3s4nn"]
 [ext_resource type="Script" path="res://scenes/Characters/partner.gd" id="1_kcyg3"]
 [ext_resource type="PackedScene" uid="uid://bb1r3o0nxaxpu" path="res://scenes/misc/dynamite.tscn" id="2_8ilq2"]
 

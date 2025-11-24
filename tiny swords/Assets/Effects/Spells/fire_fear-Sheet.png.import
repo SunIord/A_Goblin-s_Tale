@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6el56lisl41p"
-path="res://.godot/imported/fire_fear-Sheet.png-4644bb1118477b628636a52c7ac2fb6f.ctex"
+path="res://.godot/imported/fire_fear-Sheet.png-20a28ce87b0363ea10df82f491aef8e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Effects/Spritesheets/fire_fear-Sheet.png"
-dest_files=["res://.godot/imported/fire_fear-Sheet.png-4644bb1118477b628636a52c7ac2fb6f.ctex"]
+source_file="res://Assets/Effects/Spells/fire_fear-Sheet.png"
+dest_files=["res://.godot/imported/fire_fear-Sheet.png-20a28ce87b0363ea10df82f491aef8e8.ctex"]
 
 [params]
 

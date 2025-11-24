@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d00b8v2tmkkau"
-path="res://.godot/imported/Smoke-Sheet.png-6e1cd922d98190c1a62d95f92f4e6a45.ctex"
+path="res://.godot/imported/Smoke-Sheet.png-024a5b9dd17ea1a54c771f2868596d0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Effects/Spritesheets/Smoke-Sheet.png"
-dest_files=["res://.godot/imported/Smoke-Sheet.png-6e1cd922d98190c1a62d95f92f4e6a45.ctex"]
+source_file="res://Assets/Effects/Spells/Smoke-Sheet.png"
+dest_files=["res://.godot/imported/Smoke-Sheet.png-024a5b9dd17ea1a54c771f2868596d0b.ctex"]
 
 [params]
 

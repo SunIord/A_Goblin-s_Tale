@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bh86lnktdqd3j"
-path="res://.godot/imported/Wood_Tower_Destroyed.png-d08f0a97fe71abd13eea10abe1ccdad2.ctex"
+path="res://.godot/imported/Wood_Tower_Destroyed.png-79f59294dfc40cca89c1d0ae24c2968e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Deco/Buildings/Wood_Tower/Wood_Tower_Destroyed.png"
-dest_files=["res://.godot/imported/Wood_Tower_Destroyed.png-d08f0a97fe71abd13eea10abe1ccdad2.ctex"]
+source_file="res://Assets/Decorations/Buildings/Wood_Tower/Wood_Tower_Destroyed.png"
+dest_files=["res://.godot/imported/Wood_Tower_Destroyed.png-79f59294dfc40cca89c1d0ae24c2968e.ctex"]
 
 [params]
 

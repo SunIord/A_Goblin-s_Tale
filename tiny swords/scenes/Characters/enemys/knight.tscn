@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyo3e7r1g1fhs"]
+
+[ext_resource type="Script" path="res://scenes/Characters/enemys/enemy.gd" id="1_ooiaq"]
+[ext_resource type="PackedScene" uid="uid://dhouobuyf6k3e" path="res://scenes/misc/skull_knight.tscn" id="2_tdius"]
+[ext_resource type="Texture2D" uid="uid://dhb038dkp1pbn" path="res://Assets/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="3_s4io1"]
+[ext_resource type="Script" path="res://scenes/Characters/enemys/behaviors/follow_player.gd" id="5_81qyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc5ka"]
+atlas = ExtResource("3_s4io1")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc50m"]
+atlas = ExtResource("3_s4io1")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe0m6"]
+atlas = ExtResource("3_s4io1")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7eii"]
+atlas = ExtResource("3_s4io1")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ielr"]
+atlas = ExtResource("3_s4io1")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgjti"]
+atlas = ExtResource("3_s4io1")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdbgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc5ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc50m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe0m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7eii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ielr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgjti")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_si82v"]
+
+[node name="knight" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(-2.00001, 1)
+scale = Vector2(1.51859, 1.60363)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_ooiaq")
+health = 8
+death_prefab = ExtResource("2_tdius")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qdbgy")
+animation = &"walk"
+autoplay = "walk"
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.658511, 4.3651)
+scale = Vector2(3.13073, 2.6545)
+shape = SubResource("CircleShape2D_si82v")
+
+[node name="follow_player" type="Node2D" parent="."]
+script = ExtResource("5_81qyd")
+speed = 0.8
+
+[node name="DamageDigit2d" type="Marker2D" parent="."]
+position = Vector2(-1.31701, -24.9434)

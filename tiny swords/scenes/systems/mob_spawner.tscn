@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://btlis1hyq7t6t"]
 
 [ext_resource type="Script" path="res://test_scenes/MobSpawner.gd" id="1_0sj27"]
-[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/enemys/knight.tscn" id="2_186tt"]
-[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/enemys/pawn.tscn" id="3_h2ukc"]
+[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/Characters/enemys/knight.tscn" id="2_186tt"]
+[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="3_h2ukc"]
 
 [sub_resource type="Curve2D" id="Curve2D_bevq6"]
 _data = {

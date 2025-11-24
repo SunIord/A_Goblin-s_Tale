@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq3jcqy5cy8f2"]
 
-[ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/player.tscn" id="1_41ecb"]
+[ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/Characters/player.tscn" id="1_41ecb"]
 [ext_resource type="PackedScene" uid="uid://btlis1hyq7t6t" path="res://scenes/systems/mob_spawner.tscn" id="2_rpwsx"]
 
 [node name="Testmobspawning" type="Node2D"]

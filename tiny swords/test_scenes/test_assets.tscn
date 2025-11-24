@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="1_w7aln"]
 [ext_resource type="Texture2D" uid="uid://bi5eye3prdfn0" path="res://Assets/Resources/Resources/W_Idle.png" id="2_lhryv"]
-[ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/player.tscn" id="3_0ik3w"]
-[ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/enemys/sheep.tscn" id="4_qnctb"]
+[ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/Characters/player.tscn" id="3_0ik3w"]
+[ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/Characters/enemys/sheep.tscn" id="4_qnctb"]
 [ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="6_dmrea"]
-[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/enemys/knight.tscn" id="6_tftkb"]
+[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/Characters/enemys/knight.tscn" id="6_tftkb"]
 [ext_resource type="Texture2D" uid="uid://b7glorc1fg8j1" path="res://Assets/Resources/Resources/M_Spawn.png" id="7_ebs2m"]
 [ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="8_wvg88"]
 

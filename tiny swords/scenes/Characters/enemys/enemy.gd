@@ -38,8 +38,7 @@ func die()->void:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position	
 		get_parent().add_child(death_object)
-	var world = self.get_parent()
-	var gameui: GameUI = get_tree().root.get_node("Hub/GameUI")
+	var gameui: GameUI = get_tree().root.get_node("level_1/GameUI")
 	if gameui.has_method("increase_death"):
 		gameui.increase_death()
 	queue_free()

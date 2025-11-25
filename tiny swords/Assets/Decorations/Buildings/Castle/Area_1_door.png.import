@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://domvehglldhb8"
-path="res://.godot/imported/Archer_Blue.png-6e00a0bb0073a7498d09a3af7e51cd9e.ctex"
+uid="uid://or7fldw1mrmo"
+path="res://.godot/imported/Area_1_door.png-f54ddcc2d5584dbb1b2a127b303bf6da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Factions/Knights/Archer/Blue/Archer_Blue.png"
-dest_files=["res://.godot/imported/Archer_Blue.png-6e00a0bb0073a7498d09a3af7e51cd9e.ctex"]
+source_file="res://Assets/Decorations/Buildings/Castle/Area_1_door.png"
+dest_files=["res://.godot/imported/Area_1_door.png-f54ddcc2d5584dbb1b2a127b303bf6da.ctex"]
 
 [params]
 

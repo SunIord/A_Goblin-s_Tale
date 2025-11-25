@@ -1,67 +1,67 @@
 [gd_scene load_steps=12 format=3 uid="uid://dxvsylqmfa4ft"]
 
-[ext_resource type="Texture2D" uid="uid://c565b2xy8sclp" path="res://Assets/Terrain/Water/Rocks/Rocks_04.png" id="1_7uyyh"]
+[ext_resource type="Texture2D" uid="uid://04wiccv1xd1c" path="res://Assets/Decorations/Nature/Water Rocks/Rocks_04.png" id="1_va5an"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dqup"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ib0ug"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_abppb"]
+atlas = ExtResource("1_va5an")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_70a31"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ng2h"]
+atlas = ExtResource("1_va5an")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_udq6e"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tt03"]
+atlas = ExtResource("1_va5an")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1t5w"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3qvs"]
+atlas = ExtResource("1_va5an")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ve0pj"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy6mh"]
+atlas = ExtResource("1_va5an")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h7131"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cujgu"]
+atlas = ExtResource("1_va5an")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sv3f"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfbex"]
+atlas = ExtResource("1_va5an")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uv0ln"]
-atlas = ExtResource("1_7uyyh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_npblm"]
+atlas = ExtResource("1_va5an")
 region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0jod"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ib0ug")
+"texture": SubResource("AtlasTexture_abppb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_70a31")
+"texture": SubResource("AtlasTexture_2ng2h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_udq6e")
+"texture": SubResource("AtlasTexture_7tt03")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f1t5w")
+"texture": SubResource("AtlasTexture_r3qvs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ve0pj")
+"texture": SubResource("AtlasTexture_sy6mh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h7131")
+"texture": SubResource("AtlasTexture_cujgu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6sv3f")
+"texture": SubResource("AtlasTexture_kfbex")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uv0ln")
+"texture": SubResource("AtlasTexture_npblm")
 }],
 "loop": true,
 "name": &"huge_rock",
@@ -77,4 +77,4 @@ shape = SubResource("CircleShape2D_0dqup")
 sprite_frames = SubResource("SpriteFrames_w0jod")
 animation = &"huge_rock"
 autoplay = "huge_rock"
-frame_progress = 0.996952
+frame_progress = 0.18889

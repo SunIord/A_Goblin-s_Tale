@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_la3b0"]
 [ext_resource type="Texture2D" uid="uid://chcaocfjphq3p" path="res://Assets/UI/Buttons/Button_Blue_9Slides.png" id="4_f4a4w"]
-[ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="5_dxhck"]
+[ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Dead/Dead.png" id="5_dxhck"]
 [ext_resource type="Texture2D" uid="uid://bv66748gewfs0" path="res://Assets/Effects/fire attack.png" id="6_pq50j"]
 [ext_resource type="Texture2D" uid="uid://cy8dfyyfypa7u" path="res://Assets/UI/GrayRing.png" id="7_6auhn"]
 [ext_resource type="Texture2D" uid="uid://c5e7s8jx3l1g7" path="res://Assets/UI/FireRing.png" id="8_kr4q0"]
-[ext_resource type="Texture2D" uid="uid://bxupg5sl7p8tw" path="res://Assets/Factions/Goblins/Troops/TNT/Dynamite/Dynamite.png" id="9_f6dss"]
+[ext_resource type="Texture2D" uid="uid://bxupg5sl7p8tw" path="res://Assets/Factions/Goblins/TNT/Dynamite/Dynamite.png" id="9_f6dss"]
 [ext_resource type="Texture2D" uid="uid://uet6ci7fj75c" path="res://Assets/UI/DinamyteRing.png" id="10_7e7lx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtacl"]

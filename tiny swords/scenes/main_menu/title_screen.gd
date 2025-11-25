@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_start_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/world/world1.tscn")
+	get_tree().change_scene_to_file("res://scenes/Areas/Hub.tscn")
 
 func _on_button_2_pressed() -> void:
 	pass # Replace with function body.

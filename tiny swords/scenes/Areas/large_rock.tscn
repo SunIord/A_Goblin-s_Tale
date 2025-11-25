@@ -1,67 +1,67 @@
 [gd_scene load_steps=12 format=3 uid="uid://tqyi0ut660fs"]
 
-[ext_resource type="Texture2D" uid="uid://cb6wtl4rpfdee" path="res://Assets/Terrain/Water/Rocks/Rocks_03.png" id="1_pw7lw"]
+[ext_resource type="Texture2D" uid="uid://bo0yv1cy4u802" path="res://Assets/Decorations/Nature/Water Rocks/Rocks_03.png" id="1_4h6lf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dqup"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d0qc8"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_81x8u"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cl4p"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpmp8"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_taxbe"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c077"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_npasb"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dnp6"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtaat"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_foqvj"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2467r"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ots1d"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qwrcv"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iixhy"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1f5pi"]
-atlas = ExtResource("1_pw7lw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_spshb"]
+atlas = ExtResource("1_4h6lf")
 region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0jod"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d0qc8")
+"texture": SubResource("AtlasTexture_81x8u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3cl4p")
+"texture": SubResource("AtlasTexture_lpmp8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_taxbe")
+"texture": SubResource("AtlasTexture_1c077")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_npasb")
+"texture": SubResource("AtlasTexture_6dnp6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jtaat")
+"texture": SubResource("AtlasTexture_foqvj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2467r")
+"texture": SubResource("AtlasTexture_ots1d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qwrcv")
+"texture": SubResource("AtlasTexture_iixhy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1f5pi")
+"texture": SubResource("AtlasTexture_spshb")
 }],
 "loop": true,
 "name": &"large_rock",

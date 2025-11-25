@@ -1,67 +1,67 @@
 [gd_scene load_steps=12 format=3 uid="uid://dseafbfr01jur"]
 
-[ext_resource type="Texture2D" uid="uid://dh20hyq4vpqxn" path="res://Assets/Terrain/Water/Rocks/Rocks_01.png" id="1_lx2fk"]
+[ext_resource type="Texture2D" uid="uid://bmyhveteohttn" path="res://Assets/Decorations/Nature/Water Rocks/Rocks_02.png" id="1_upqom"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0dqup"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1t4bc"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_drvfx"]
+atlas = ExtResource("1_upqom")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4fe2"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu8tx"]
+atlas = ExtResource("1_upqom")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m66yr"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo5un"]
+atlas = ExtResource("1_upqom")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7h04b"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5wne"]
+atlas = ExtResource("1_upqom")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_md27y"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7qkt"]
+atlas = ExtResource("1_upqom")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yvpgr"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_alc7k"]
+atlas = ExtResource("1_upqom")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mmum0"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlu7n"]
+atlas = ExtResource("1_upqom")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_myx1g"]
-atlas = ExtResource("1_lx2fk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw2y1"]
+atlas = ExtResource("1_upqom")
 region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0jod"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1t4bc")
+"texture": SubResource("AtlasTexture_drvfx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c4fe2")
+"texture": SubResource("AtlasTexture_hu8tx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m66yr")
+"texture": SubResource("AtlasTexture_qo5un")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7h04b")
+"texture": SubResource("AtlasTexture_y5wne")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_md27y")
+"texture": SubResource("AtlasTexture_c7qkt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yvpgr")
+"texture": SubResource("AtlasTexture_alc7k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mmum0")
+"texture": SubResource("AtlasTexture_xlu7n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_myx1g")
+"texture": SubResource("AtlasTexture_jw2y1")
 }],
 "loop": true,
 "name": &"little_rock",

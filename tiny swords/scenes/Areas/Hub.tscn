@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://dsjvjlevgyol7"]
+[gd_scene load_steps=74 format=3 uid="uid://dsjvjlevgyol7"]
 
 [ext_resource type="Script" path="res://scenes/Areas/Hub.gd" id="1_fokdv"]
 [ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_4vvjd"]
@@ -33,8 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://04wiccv1xd1c" path="res://Assets/Decorations/Nature/Water Rocks/Rocks_04.png" id="32_yc5ts"]
 [ext_resource type="Texture2D" uid="uid://b3s35orn1kevy" path="res://Assets/Terrain/Bridge/Bridge_All.png" id="33_oqpdr"]
 [ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/Characters/player.tscn" id="34_ewsog"]
-[ext_resource type="PackedScene" uid="uid://btlis1hyq7t6t" path="res://scenes/systems/mob_spawner.tscn" id="35_kwtfp"]
-[ext_resource type="PackedScene" uid="uid://bjbbg1xgbhngr" path="res://scenes/Areas/little_rock.tscn" id="36_ywevq"]
+[ext_resource type="PackedScene" uid="uid://dseafbfr01jur" path="res://scenes/Areas/little_rock.tscn" id="36_ywevq"]
 [ext_resource type="PackedScene" uid="uid://dxvsylqmfa4ft" path="res://scenes/Areas/huge_rock.tscn" id="37_3c8bf"]
 [ext_resource type="PackedScene" uid="uid://tqyi0ut660fs" path="res://scenes/Areas/large_rock.tscn" id="38_ljtv6"]
 [ext_resource type="PackedScene" uid="uid://bs41k1ypkqn6v" path="res://scenes/Areas/medium_rock.tscn" id="39_xrba7"]
@@ -4250,9 +4249,6 @@ y_sort_enabled = true
 
 [node name="player" parent="YSort" instance=ExtResource("34_ewsog")]
 position = Vector2(1183, 1234)
-
-[node name="MobSpawner" parent="YSort" instance=ExtResource("35_kwtfp")]
-y_sort_enabled = true
 
 [node name="decorations" type="Node2D" parent="YSort"]
 y_sort_enabled = true

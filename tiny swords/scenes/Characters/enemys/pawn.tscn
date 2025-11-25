@@ -1,0 +1,165 @@
+[gd_scene load_steps=25 format=3 uid="uid://krf2pyaetvj8"]
+
+[ext_resource type="Script" path="res://scenes/Characters/enemys/enemy.gd" id="1_4vh7s"]
+[ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_abch8"]
+[ext_resource type="Texture2D" uid="uid://dnw5afihj7cih" path="res://Assets/Factions/Knights/Pawn/Red/Pawn_Red.png" id="3_ap7u2"]
+[ext_resource type="Script" path="res://scenes/Characters/enemys/behaviors/follow_player.gd" id="4_htohs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ot8m"]
+region = Rect2(0, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eehvx"]
+region = Rect2(192, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yya0x"]
+region = Rect2(384, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv8wg"]
+region = Rect2(576, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frj58"]
+region = Rect2(768, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xjqb"]
+region = Rect2(960, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlis2"]
+region = Rect2(0, 960, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a022v"]
+region = Rect2(192, 960, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe553"]
+region = Rect2(384, 960, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2hdb"]
+region = Rect2(576, 960, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpbok"]
+region = Rect2(768, 960, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmpq4"]
+region = Rect2(960, 960, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oowc"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmpyc"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q783d"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mwtd"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlsmk"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oluq8"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k84g0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ot8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eehvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yya0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv8wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frj58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xjqb")
+}],
+"loop": false,
+"name": &"pawn_sec_attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlis2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a022v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe553")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2hdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpbok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmpq4")
+}],
+"loop": true,
+"name": &"pawn_surrender",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oowc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmpyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q783d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mwtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlsmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oluq8")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5dg6"]
+
+[node name="pawn" type="CharacterBody2D" groups=["enemies"]]
+z_index = 4
+scale = Vector2(0.72, 0.76)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_4vh7s")
+health = 4
+death_prefab = ExtResource("2_abch8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_k84g0")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(2.3244, 2.20207)
+shape = SubResource("CircleShape2D_t5dg6")
+
+[node name="follow_player" type="Node2D" parent="."]
+script = ExtResource("4_htohs")
+
+[node name="DamageDigit2d" type="Marker2D" parent="."]
+position = Vector2(0, -51.3158)

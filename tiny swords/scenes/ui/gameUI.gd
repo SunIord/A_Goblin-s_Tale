@@ -1,7 +1,6 @@
 class_name GameUI
 extends CanvasLayer
 
-
 @onready var timer_label:Label = %timer_label
 @onready var death_label:Label = %death_label
 @onready var fire_bar: TextureProgressBar = %FireBar

@@ -3,28 +3,25 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://csg3yg6tsxdt8"
-path="res://.godot/imported/AlbertText-Bold.ttf-a3620d31174e3577004c1f3db1839d07.fontdata"
+path="res://.godot/imported/AlbertText-Bold.ttf-ce4442c57da4ffa72b73ea7e6ba163ec.fontdata"
 
 [deps]
 
-source_file="res://Assets/font/AlbertText-Bold.ttf"
-dest_files=["res://.godot/imported/AlbertText-Bold.ttf-a3620d31174e3577004c1f3db1839d07.fontdata"]
+source_file="res://Assets/Font/AlbertText-Bold.ttf"
+dest_files=["res://.godot/imported/AlbertText-Bold.ttf-ce4442c57da4ffa72b73ea7e6ba163ec.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=1
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

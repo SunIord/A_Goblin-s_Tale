@@ -1,0 +1,224 @@
+[gd_scene load_steps=29 format=3 uid="uid://bsrmhxqcm5ucx"]
+
+[ext_resource type="Script" path="res://scenes/Characters/player.gd" id="1_jmoox"]
+[ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
+[ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="3_4aw38"]
+[ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Torch/Blue/Torch_Blue.png" id="4_vf2g2"]
+[ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_0wpxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_re60e"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3evk"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2333g"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cq11"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bogp1"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m47wf"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3uy3"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qns2i"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w487k"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1rpq"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo7r5"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53ki7"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2few"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegjd"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo0t7"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoqob"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yffkr"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv2ej"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otw41"]
+atlas = ExtResource("4_vf2g2")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qful"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re60e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3evk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2333g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cq11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bogp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m47wf")
+}],
+"loop": false,
+"name": &"Attack_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3uy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qns2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w487k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1rpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo7r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53ki7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2few")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cegjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo0t7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoqob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yffkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv2ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otw41")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vq3w"]
+radius = 9.24012
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8qeb"]
+texture = ExtResource("5_0wpxf")
+region_rect = Rect2(0, 0, 192, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opauh"]
+bg_color = Color(0.233162, 0.702951, 0.411018, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing_size = 0.01
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_jmoox")
+health = 90
+death_prefab = ExtResource("2_5uqo3")
+super_attack_prefab = ExtResource("3_4aw38")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_0qful")
+animation = &"Attack_right"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -13)
+scale = Vector2(2.05625, 2.05746)
+shape = SubResource("CircleShape2D_8vq3w")
+debug_color = Color(0.181383, 0.528887, 0.958296, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -40.0
+offset_top = 10.0
+offset_right = 39.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_m8qeb")
+
+[node name="PlayerLife" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -5.0
+offset_right = 33.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_opauh")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

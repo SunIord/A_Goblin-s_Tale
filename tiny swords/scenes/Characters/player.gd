@@ -25,6 +25,11 @@ var time_over: bool = false
 var fire_spawned_in_this_attack: bool = false
 @export var attack_cooldown: float = 0.8
 
+# -------------------------------
+#   PRIORIDADES DE ANIMAÇÃO
+# -------------------------------
+var current_priority := 1  # 1 idle, 2 walk, 3 attack
+
 func _process(delta: float) -> void:
 	GameManager.player_position = position
 	read_input()
@@ -32,11 +37,13 @@ func _process(delta: float) -> void:
 	# ataque
 	if Input.is_action_just_pressed("attack_side"):
 		attack()
+
 	call_super_attack()
 
 	# animações
 	if not is_attacking:
 		rotate_sprite()
+
 	play_run_idle_anim()
 
 	# healthbar
@@ -53,10 +60,10 @@ func _physics_process(delta) -> void:
 func read_input() -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.15)
 	was_running = is_running
-	is_running = not input_vector.is_zero_approx()
+	is_running = not input_vector.is_zero_approx() or velocity.length() > 60
 
 # ===============================
-#   ATAQUE SINCRONIZADO
+#   ATAQUE
 # ===============================
 func attack() -> void:
 	if not can_attack or is_attacking:
@@ -66,20 +73,21 @@ func attack() -> void:
 	can_attack = false
 	fire_spawned_in_this_attack = false
 
+	current_priority = 3
 	animation_player.play("Attack_right")
 
-	# Libera o ataque novamente após o cooldown
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
-	
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animation_player.animation == "Attack_right":
 		is_attacking = false
-		animation_player.play("idle")
+		current_priority = 0
 
 func spawn_basic_attack() -> void:
 	if fire_spawned_in_this_attack:
-		return  # evita múltiplos spawns
+		return
+
 	fire_spawned_in_this_attack = true
 
 	var attack_instance = basicAttack.instantiate()
@@ -97,14 +105,20 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 			spawn_basic_attack()
 
 # ===============================
-#   ANIMAÇÃO E MOVIMENTO
+#   ANIMAÇÕES COM PRIORIDADE
 # ===============================
 func play_run_idle_anim() -> void:
-	if not is_attacking and was_running != is_running:
-		if is_running:
+	if is_attacking:
+		return 
+
+	if is_running:
+		if current_priority < 2:
+			current_priority = 2
 			animation_player.play("walk")
-		else:
-			animation_player.play("idle")
+		return
+
+	current_priority = 1
+	animation_player.play("idle")
 
 func rotate_sprite() -> void:
 	if input_vector.x > 0:
@@ -113,9 +127,8 @@ func rotate_sprite() -> void:
 		animation_player.flip_h = true
 
 # ===============================
-#   DANO, VIDA E MORTE
+#   DANO & MORTE
 # ===============================
-
 func damage(amount: int) -> void:
 	health -= amount
 	modulate = Color.RED

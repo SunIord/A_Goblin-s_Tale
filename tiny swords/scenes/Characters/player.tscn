@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://bsrmhxqcm5ucx"]
 
-[ext_resource type="Script" uid="uid://b8md2imqj5i0g" path="res://scenes/Characters/player.gd" id="1_jmoox"]
+[ext_resource type="Script" uid="uid://r5jnmmys6wpb" path="res://scenes/Characters/player.gd" id="1_jmoox"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
 [ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="3_4aw38"]
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Torch/Blue/Torch_Blue.png" id="4_vf2g2"]

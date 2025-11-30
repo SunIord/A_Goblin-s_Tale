@@ -9,7 +9,6 @@ extends CharacterBody2D
 @export var super_attack_prefab: PackedScene
 @export var ritual_damage:int = 1
 @export var ritual_interval: float = 30
-@export var gameui: Node = null
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_progress_bar: ProgressBar = %PlayerLife
@@ -23,12 +22,20 @@ var can_attack: bool = true
 var ritual_cooldown: float = 0.0
 var time_over: bool = false
 var fire_spawned_in_this_attack: bool = false
+var gameui: Node = null
 @export var attack_cooldown: float = 0.8
 
 # -------------------------------
 #   PRIORIDADES DE ANIMAÇÃO
 # -------------------------------
 var current_priority := 1  # 1 idle, 2 walk, 3 attack
+
+func _ready() -> void:
+	# o level é o parent direto do player
+	var level = get_parent()    
+	# tenta encontrar o GameUI dentro do level
+	gameui = level.get_node_or_null("GameUI")
+
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -152,6 +159,19 @@ func heal(amount: int) -> int:
 # ===============================
 #   SUPER ATAQUE
 # ===============================
+
+func spawn_super_attack() -> void:
+	if super_attack_prefab == null:
+		return
+
+	var atk = super_attack_prefab.instantiate()
+	add_child(atk)
+
+	# conecta o sinal do ataque para o Level
+	var level = get_parent()
+	if level:
+		if not atk.is_connected("request_restart", level._on_restart_requested):
+				atk.connect("request_restart", level._on_restart_requested)
 func call_super_attack():
 	if gameui == null:
 		return
@@ -161,10 +181,4 @@ func call_super_attack():
 		already_loaded = gameui.value_back()
 
 	if Input.is_action_just_pressed("super_attack") and already_loaded:
-		super_attack()
-
-func super_attack() -> void:
-	if super_attack_prefab:
-		var flame_spell = super_attack_prefab.instantiate()
-		flame_spell.position = Vector2.ZERO
-		add_child(flame_spell)
+		spawn_super_attack()

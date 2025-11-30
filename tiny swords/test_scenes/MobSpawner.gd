@@ -8,6 +8,7 @@ var cooldown:float = 0.0
 
 func _process(delta:float):
 	# Temporizador
+	global_position = GameManager.player_position
 	cooldown -= delta
 	if cooldown > 0:
 		return
@@ -25,6 +26,7 @@ func _process(delta:float):
 
 func get_point() -> Vector2:
 	# Usar a posição local do PathFollow2D em vez da global
+	var base = GameManager.player_position
 	path_follow_2d.progress_ratio = randf()
 	var point = path_follow_2d.position  # posição local, sem o offset global
 	
@@ -33,4 +35,4 @@ func get_point() -> Vector2:
 
 	# Log para depuração
 	print("Ponto gerado: ", adjusted_point)  # Log da posição ajustada para verificação
-	return adjusted_point
+	return adjusted_point + base

@@ -21,4 +21,3 @@ func _process(delta):
 func restart_game():
 	GameManager.reset()
 	get_tree().reload_current_scene()
-	print("restart_game pf")

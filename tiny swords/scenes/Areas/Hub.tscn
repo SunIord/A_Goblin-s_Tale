@@ -1822,3 +1822,5 @@ position = Vector2(615, -484)
 position = Vector2(-548, 2250)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="CutsceneLayer" type="CanvasLayer" parent="."]

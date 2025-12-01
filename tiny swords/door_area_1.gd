@@ -5,6 +5,7 @@ var player_in_range = false  # Para verificar se o jogador está dentro da área
 @onready var button = $button  # Referência ao botão
 @onready var proximity_area = $ProximityArea  # Referência à área de proximidade
 
+
 # Função chamada quando o jogador entra na área
 func _on_proximity_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):  # Verifica se o que entrou é o jogador

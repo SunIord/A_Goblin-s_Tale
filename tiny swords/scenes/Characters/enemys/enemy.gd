@@ -9,7 +9,7 @@ var damage_digit_prefab:PackedScene
 @onready var damage_digit_marker = $DamageDigit2d
 @onready var hitSfx = $hit_sfx as AudioStreamPlayer
 
-@onready var health_progress_bar: ProgressBar = get_node_or_null("Life")
+@onready var health_progress_bar: ProgressBar = get_node_or_null("Panel/Life")
 
 func _ready():
 	damage_digit_prefab = preload("res://scenes/misc/damage2D.tscn")

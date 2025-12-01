@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpw1yb12w1ra1"]
+
+[ext_resource type="AudioStream" uid="uid://cguixbciqtb6y" path="res://audios/buttonClick.wav" id="1_fxj33"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_fxj33")
+volume_db = 15.0

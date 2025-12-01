@@ -6,14 +6,21 @@ extends CharacterBody2D
 var damage_digit_prefab:PackedScene
 
 @onready var gameui:GameUI
-
 @onready var damage_digit_marker = $DamageDigit2d
+@onready var hitSfx = $hit_sfx as AudioStreamPlayer
+
+@onready var health_progress_bar: ProgressBar = get_node_or_null("Life")
 
 func _ready():
 	damage_digit_prefab = preload("res://scenes/misc/damage2D.tscn")
 
 func damage(amount:int) -> void:
+	hitSfx.play()
 	health -= amount
+
+	if health_progress_bar:
+		health_progress_bar.value = health
+
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
@@ -23,16 +30,15 @@ func damage(amount:int) -> void:
 	var damage_digit = damage_digit_prefab.instantiate()
 	damage_digit.value = amount
 	if damage_digit_marker:
-		print(1)
 		damage_digit.position = damage_digit_marker.global_position
-		
 	else:
-		print(2, position, global_position)
 		damage_digit.position = self.position
-		print(damage_digit.position)
+	
 	self.add_child(damage_digit)
+
 	if health <= 0:
 		die()
+
 func die()->void:
 	if death_prefab:
 		var death_object = death_prefab.instantiate()

@@ -4,6 +4,7 @@ extends Node2D
 
 func _ready():
 	# conecta o player quando ele já existir
+	MusicPlayer.stop()
 	var player = $player
 	connect_player_restart(player)
 

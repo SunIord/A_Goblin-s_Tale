@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://di13ykmk7jdth"]
+
+[ext_resource type="AudioStream" uid="uid://q88dhv28y7u1" path="res://audios/titleScreen.mp3" id="1_fvyft"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_fvyft")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true

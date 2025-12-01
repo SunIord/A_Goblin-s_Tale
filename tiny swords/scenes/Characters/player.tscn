@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://bsrmhxqcm5ucx"]
+[gd_scene load_steps=31 format=3 uid="uid://bsrmhxqcm5ucx"]
 
 [ext_resource type="Script" uid="uid://r5jnmmys6wpb" path="res://scenes/Characters/player.gd" id="1_jmoox"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
 [ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="3_4aw38"]
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Torch/Blue/Torch_Blue.png" id="4_vf2g2"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_0wpxf"]
+[ext_resource type="AudioStream" uid="uid://ctmjfcq4gay6s" path="res://audios/goblinAttack.wav" id="6_5vcpl"]
+[ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="7_8u6hb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_re60e"]
 atlas = ExtResource("4_vf2g2")
@@ -212,7 +214,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -33.5
 offset_top = -5.0
-offset_right = 33.5
+offset_right = 38.5
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -220,6 +222,12 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_opauh")
 value = 100.0
 rounded = true
 show_percentage = false
+
+[node name="attack_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5vcpl")
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8u6hb")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

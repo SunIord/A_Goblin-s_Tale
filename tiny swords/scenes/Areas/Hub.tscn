@@ -1,6 +1,6 @@
 [gd_scene load_steps=74 format=4 uid="uid://dsjvjlevgyol7"]
 
-[ext_resource type="Script" uid="uid://cd36xa6fo6xnk" path="res://scenes/Areas/Hub.gd" id="1_fokdv"]
+[ext_resource type="Script" uid="uid://bfu13mwna7xyf" path="res://scenes/Areas/Hub.gd" id="1_fokdv"]
 [ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_4vvjd"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="3_umqp4"]
 [ext_resource type="Texture2D" uid="uid://8ivkqpafjndi" path="res://Assets/Terrain/Ground/Tilemap_Elevation.png" id="4_rmnug"]
@@ -1842,3 +1842,5 @@ position = Vector2(-548, 2250)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CutsceneLayer" type="CanvasLayer" parent="."]
+
+[node name="click_button" type="AudioStreamPlayer" parent="."]

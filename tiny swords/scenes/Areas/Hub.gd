@@ -4,6 +4,7 @@ extends Node2D
 const CutsceneIntroScene := preload("res://scenes/cutscene/Cutscene.tscn")
 
 @onready var cutscene_layer: CanvasLayer = $CutsceneLayer
+@onready var buttonSfx = $click_button as AudioStreamPlayer
 
 func _ready():
 	_show_cutscene_intro()

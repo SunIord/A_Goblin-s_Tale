@@ -1,6 +1,7 @@
 extends Control
 
 @onready var text_label: RichTextLabel = $RichTextLabel
+@onready var clickBtn = $"../button_click" as AudioStreamPlayer
 
 var lines := [
 	"Olá, viajante...",
@@ -21,6 +22,7 @@ func _show_line() -> void:
 	tween.tween_property(text_label, "visible_ratio", 1.0, 2.0)
 
 func _on_NextButton_pressed() -> void:
+	clickBtn.play()
 	if current_line < lines.size() - 1:
 		$RichTextLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_FILL
 		current_line += 1

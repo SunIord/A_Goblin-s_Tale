@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://hpsnwnnxovw0"]
+[gd_scene load_steps=5 format=3 uid="uid://hpsnwnnxovw0"]
 
 [ext_resource type="Script" uid="uid://du6cegcebd662" path="res://scenes/cutscene/DialogueBox.gd" id="1_837in"]
 [ext_resource type="Texture2D" uid="uid://c1wls2bctsd0d" path="res://Assets/UI/Banners/Banner_Vertical.png" id="1_tulu6"]
 [ext_resource type="Texture2D" uid="uid://biquxmvoomnfh" path="res://Assets/UI/Buttons/Button_Hover_3Slides.png" id="3_i4xmo"]
+[ext_resource type="AudioStream" uid="uid://cguixbciqtb6y" path="res://audios/buttonClick.wav" id="4_6ri26"]
 
 [node name="Cutscene" type="Node2D"]
 
@@ -57,5 +58,9 @@ text = "Avançar"
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="button_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6ri26")
+volume_db = 15.0
 
 [connection signal="pressed" from="Control/NextButton" to="Control" method="_on_NextButton_pressed"]

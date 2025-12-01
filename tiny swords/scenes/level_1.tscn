@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://dcjeha31itydj"]
+[gd_scene load_steps=53 format=4 uid="uid://dcjeha31itydj"]
 
 [ext_resource type="Script" uid="uid://bh8dmk2n0fn5t" path="res://scenes/level_1.gd" id="1_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="1_3hls8"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cqcmvim14xo78" path="res://Assets/Decorations/Nature/10.png" id="11_so66j"]
 [ext_resource type="Texture2D" uid="uid://y8ql7gvp4uq4" path="res://Assets/Decorations/Nature/11.png" id="12_tr1x6"]
 [ext_resource type="Texture2D" uid="uid://b3s35orn1kevy" path="res://Assets/Terrain/Bridge/Bridge_All.png" id="13_d5akn"]
+[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/Characters/enemys/knight.tscn" id="20_wbtxt"]
+[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="21_x2fux"]
+[ext_resource type="PackedScene" uid="uid://c52ud2j0arqhj" path="res://scenes/Characters/enemys/lancer.tscn" id="22_s7g0b"]
 
 [sub_resource type="TileSet" id="TileSet_j7kpp"]
 tile_size = Vector2i(64, 64)
@@ -847,6 +850,7 @@ tile_set = SubResource("TileSet_1pe0h")
 [node name="MobSpawner" parent="." instance=ExtResource("9_e3sih")]
 position = Vector2(-11, 0)
 scale = Vector2(2.3600001, 2.3600001)
+creatures = Array[PackedScene]([ExtResource("20_wbtxt"), ExtResource("21_x2fux"), ExtResource("22_s7g0b")])
 
 [node name="GameUI" parent="." instance=ExtResource("10_2y5yt")]
 

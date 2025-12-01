@@ -1,0 +1,126 @@
+[gd_scene load_steps=17 format=3 uid="uid://c52ud2j0arqhj"]
+
+[ext_resource type="Script" uid="uid://72rp7sovxak0" path="res://scenes/Characters/enemys/enemy.gd" id="1_38gbg"]
+[ext_resource type="PackedScene" uid="uid://dhouobuyf6k3e" path="res://scenes/misc/skull_knight.tscn" id="2_gn7eb"]
+[ext_resource type="Texture2D" uid="uid://ci8wjol80ow3t" path="res://Assets/Factions/Knights/Lancer/Red/Lancer_Run.png" id="3_8l6uc"]
+[ext_resource type="Script" uid="uid://cmdaxvm80gvqb" path="res://scenes/Characters/enemys/behaviors/follow_player.gd" id="4_bgvfn"]
+[ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_ckmvs"]
+[ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="6_yvv6i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwjjw"]
+atlas = ExtResource("3_8l6uc")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wexta"]
+atlas = ExtResource("3_8l6uc")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4kt"]
+atlas = ExtResource("3_8l6uc")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u717i"]
+atlas = ExtResource("3_8l6uc")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqykg"]
+atlas = ExtResource("3_8l6uc")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnhom"]
+atlas = ExtResource("3_8l6uc")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdbgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwjjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wexta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u717i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqykg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnhom")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_si82v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cv6cn"]
+texture = ExtResource("5_ckmvs")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rvq0"]
+bg_color = Color(0.233162, 0.702951, 0.411018, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing_size = 0.01
+
+[node name="lancer" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(-2.00001, 1)
+scale = Vector2(1.51859, 1.60363)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_38gbg")
+health = 6
+death_prefab = ExtResource("2_gn7eb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qdbgy")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.658511, 4.3651)
+scale = Vector2(3.13073, 2.6545)
+shape = SubResource("CircleShape2D_si82v")
+
+[node name="follow_player" type="Node2D" parent="."]
+script = ExtResource("4_bgvfn")
+speed = 0.8
+
+[node name="DamageDigit2d" type="Marker2D" parent="."]
+position = Vector2(-1.31701, -24.9434)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -40.0
+offset_top = 40.0
+offset_right = 39.0
+offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cv6cn")
+
+[node name="Life" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -5.0
+offset_right = 33.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_0rvq0")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yvv6i")

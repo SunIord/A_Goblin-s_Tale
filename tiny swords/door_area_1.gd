@@ -4,7 +4,7 @@ extends Node2D
 var player_in_range = false  # Para verificar se o jogador está dentro da área de proximidade
 @onready var button = $button  # Referência ao botão
 @onready var proximity_area = $ProximityArea  # Referência à área de proximidade
-
+@onready var button_sfx = $button2 as AudioStreamPlayer
 
 # Função chamada quando o jogador entra na área
 func _on_proximity_area_body_entered(body: Node2D) -> void:
@@ -20,6 +20,7 @@ func _on_proximity_area_body_exited(body: Node2D) -> void:
 
 # Função chamada quando o botão é pressionado
 func _on_button_pressed():
+	button_sfx.play()
 	if player_in_range:  # Verifica se o jogador está dentro da área antes de mudar de cena
 		_change_scene()  # Chama a função para mudar de cena
 

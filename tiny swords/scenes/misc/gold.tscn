@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0uioi610ptl7"]
+[gd_scene load_steps=8 format=3 uid="uid://c0uioi610ptl7"]
 
 [ext_resource type="Texture2D" uid="uid://bwa3a03ya5wyy" path="res://Assets/Resources/Resources/G_Spawn.png" id="1_1p357"]
 [ext_resource type="Script" uid="uid://brhuf8lnkkisc" path="res://scenes/misc/gold_generator.gd" id="2_gwj1q"]
+[ext_resource type="AudioStream" uid="uid://dpavm0ytk7c6x" path="res://audios/collect_gold.mp3" id="3_l6bib"]
 
 [sub_resource type="Animation" id="Animation_s8pkr"]
 length = 0.001
@@ -72,6 +73,9 @@ scale = Vector2(2.56818, 2.56818)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(18.690277, -7.398235)
 shape = SubResource("CircleShape2D_jch0n")
+
+[node name="collect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_l6bib")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vrd5kyaxosv5"]
+[gd_scene load_steps=7 format=3 uid="uid://vrd5kyaxosv5"]
 
 [ext_resource type="Script" uid="uid://bup2j1bchcsnx" path="res://door_area_1.gd" id="1_v36n3"]
 [ext_resource type="Texture2D" uid="uid://or7fldw1mrmo" path="res://Assets/Decorations/Buildings/Castle/Area_1_door.png" id="2_76i3t"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="3_b4nq0"]
 [ext_resource type="FontFile" uid="uid://rxmx4et71ae5" path="res://Assets/font/AlbertTextBold.otf" id="4_kmsc7"]
+[ext_resource type="AudioStream" uid="uid://cguixbciqtb6y" path="res://audios/buttonClick.wav" id="5_76i3t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_045sk"]
 
@@ -45,6 +46,10 @@ offset_bottom = 22.9209
 theme_override_fonts/font = ExtResource("4_kmsc7")
 theme_override_font_sizes/font_size = 30
 text = "Entrar"
+
+[node name="button2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_76i3t")
+volume_db = 15.0
 
 [connection signal="body_entered" from="ProximityArea" to="." method="_on_proximity_area_body_entered"]
 [connection signal="body_exited" from="ProximityArea" to="." method="_on_proximity_area_body_exited"]

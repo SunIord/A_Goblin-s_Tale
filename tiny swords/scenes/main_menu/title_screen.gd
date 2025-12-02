@@ -1,6 +1,6 @@
 extends Control
 
-@onready var clickBtn = $button_click as AudioStreamPlayer
+@onready var clickBtn = $button_sfx as AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

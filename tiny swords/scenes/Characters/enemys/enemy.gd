@@ -14,13 +14,18 @@ var damage_digit_prefab:PackedScene
 
 func _ready():
 	damage_digit_prefab = preload("res://scenes/misc/damage2D.tscn")
+	
+	# INICIALIZA A BARRA DE VIDA COM O VALOR MÁXIMO CORRETO
+	if health_progress_bar:
+		health_progress_bar.max_value = health  # Define o máximo como a vida inicial
+		health_progress_bar.value = health      # Começa com a barra cheia
 
 func damage(amount:int) -> void:
 	hitSfx.play()
 	health -= amount
 
 	if health_progress_bar:
-		health_progress_bar.value = health
+		health_progress_bar.value = health  # Apenas atualiza o valor atual
 
 	modulate = Color.RED
 	var tween = create_tween()

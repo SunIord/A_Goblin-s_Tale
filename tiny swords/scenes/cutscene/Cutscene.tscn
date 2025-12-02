@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://hpsnwnnxovw0"]
+[gd_scene load_steps=6 format=3 uid="uid://hpsnwnnxovw0"]
 
 [ext_resource type="Script" uid="uid://du6cegcebd662" path="res://scenes/cutscene/Cutscene.gd" id="1_837in"]
 [ext_resource type="Texture2D" uid="uid://c1wls2bctsd0d" path="res://Assets/UI/Banners/Banner_Vertical.png" id="1_tulu6"]
 [ext_resource type="Texture2D" uid="uid://biquxmvoomnfh" path="res://Assets/UI/Buttons/Button_Hover_3Slides.png" id="3_i4xmo"]
-[ext_resource type="AudioStream" uid="uid://cguixbciqtb6y" path="res://audios/buttonClick.wav" id="4_6ri26"]
+[ext_resource type="FontFile" uid="uid://rxmx4et71ae5" path="res://Assets/font/AlbertTextBold.otf" id="4_6ri26"]
+[ext_resource type="AudioStream" uid="uid://cguixbciqtb6y" path="res://audios/buttonClick.wav" id="5_8prnn"]
 
 [node name="Cutscene" type="Node2D"]
 
@@ -40,6 +41,19 @@ text = "Olá, viajante..."
 
 [node name="Timer" type="Timer" parent="Control/RichTextLabel"]
 
+[node name="TitleLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 30.0
+offset_right = 754.0
+offset_bottom = 92.6875
+theme_override_colors/font_color = Color(0.843137, 0.85098, 0.156863, 1)
+theme_override_fonts/font = ExtResource("4_6ri26")
+theme_override_font_sizes/font_size = 59
+text = "A Goblin's Tale"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="NextButton" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 485.0
@@ -60,13 +74,8 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Avançar"
 
-[node name="TitleLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="button_click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_6ri26")
+stream = ExtResource("5_8prnn")
 volume_db = 15.0
 
 [connection signal="pressed" from="Control/NextButton" to="Control" method="_on_NextButton_pressed"]

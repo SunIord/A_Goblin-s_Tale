@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://j184hts6gb1t"]
+[gd_scene load_steps=19 format=3 uid="uid://j184hts6gb1t"]
 
 [ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="1_60xhp"]
-[ext_resource type="Script" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
+[ext_resource type="Script" uid="uid://bwym87tk3jmrm" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_la3b0"]
 [ext_resource type="Texture2D" uid="uid://chcaocfjphq3p" path="res://Assets/UI/Buttons/Button_Blue_9Slides.png" id="4_f4a4w"]
 [ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Dead/Dead.png" id="5_dxhck"]
+[ext_resource type="Texture2D" uid="uid://bpuelajl6ns7i" path="res://Assets/Resources/Resources/G_Idle.png" id="6_naedo"]
 [ext_resource type="Texture2D" uid="uid://bv66748gewfs0" path="res://Assets/Effects/fire attack.png" id="6_pq50j"]
 [ext_resource type="Texture2D" uid="uid://cy8dfyyfypa7u" path="res://Assets/UI/GrayRing.png" id="7_6auhn"]
 [ext_resource type="Texture2D" uid="uid://c5e7s8jx3l1g7" path="res://Assets/UI/FireRing.png" id="8_kr4q0"]
@@ -116,6 +117,41 @@ label_settings = SubResource("LabelSettings_v6ehu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Gold_panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -213.0
+offset_top = 84.0
+offset_bottom = 166.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_pebfw")
+
+[node name="TextureRect" type="TextureRect" parent="Gold_panel"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -44.0
+offset_right = 119.0
+offset_bottom = 84.0
+texture = ExtResource("6_naedo")
+
+[node name="gold_label" type="Label" parent="Gold_panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_top = 8.0
+offset_right = -40.0
+offset_bottom = 62.0
+grow_horizontal = 0
+scale = Vector2(1.01818, 0.92)
+text = "86"
+label_settings = SubResource("LabelSettings_v6ehu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Fire_attack_bar" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.992157)
 offset_left = 8.0
@@ -143,7 +179,7 @@ texture = ExtResource("6_pq50j")
 
 [node name="FireBar" type="TextureProgressBar" parent="Fire_attack_bar"]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 max_value = 15.0
@@ -178,7 +214,7 @@ scale = Vector2(0.513397, 0.513397)
 texture = SubResource("AtlasTexture_tg6hk")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Fire_attack_bar2"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 max_value = 15.0

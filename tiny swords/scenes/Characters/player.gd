@@ -39,6 +39,7 @@ func _ready() -> void:
 	gameui = level.get_node_or_null("GameUI")
 
 
+
 func _process(delta: float) -> void:
 	GameManager.player_position = position
 	read_input()
@@ -65,6 +66,7 @@ func _physics_process(delta) -> void:
 		target_velocity *= 0.5
 	velocity = lerp(velocity, target_velocity, 0.08)
 	move_and_slide()
+	
 
 func read_input() -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.15)
@@ -136,8 +138,14 @@ func rotate_sprite() -> void:
 		animation_player.flip_h = true
 
 # ===============================
-#   DANO & MORTE
+#   DANO & MORTE & OURO
 # ===============================
+
+func collect(amount: int) -> int:
+	GameManager.gold_count += amount
+	return amount
+	
+	
 func damage(amount: int) -> void:
 	health -= amount
 	hitSfx.play()

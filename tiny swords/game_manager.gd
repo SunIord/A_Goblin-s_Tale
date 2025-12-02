@@ -6,6 +6,7 @@ var is_game_over: bool = false
 
 var time_elapsed: float = 0.0
 var death_count: int = 0
+var gold_count: int = 0
 var time_elapsed_string: String
 
 
@@ -29,6 +30,7 @@ func reset():
 	is_game_over = false
 	time_elapsed = 0.0
 	death_count = 0
+	gold_count = 0
 	for connection in game_over.get_connections():
 		game_over.disconnect(connection.callable)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://dsjvjlevgyol7"]
+[gd_scene load_steps=74 format=3 uid="uid://dwd3iaaqekbp7"]
 
 [ext_resource type="Script" uid="uid://bfu13mwna7xyf" path="res://scenes/Areas/Hub.gd" id="1_fokdv"]
 [ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_4vvjd"]
@@ -1840,7 +1840,5 @@ position = Vector2(615, -484)
 position = Vector2(-548, 2250)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="CutsceneLayer" type="CanvasLayer" parent="."]
 
 [node name="click_button" type="AudioStreamPlayer" parent="."]

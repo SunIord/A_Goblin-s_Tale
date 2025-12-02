@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 func _on_start_btn_pressed() -> void:
 	clickBtn.play()
-	get_tree().change_scene_to_file("res://scenes/Areas/Hub.tscn")
+	get_tree().change_scene_to_file("res://scenes/cutscene/Cutscene.tscn")
 
 func _on_button_2_pressed() -> void:
 	pass # Replace with function body.

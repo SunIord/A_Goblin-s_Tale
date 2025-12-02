@@ -1,11 +1,11 @@
 [gd_scene load_steps=36 format=3 uid="uid://dv0ex2f4tv2yk"]
 
-[ext_resource type="Script" path="res://scenes/Characters/enemys/sheep.gd" id="1_alvac"]
+[ext_resource type="Script" uid="uid://mftsxlvkva7e" path="res://scenes/Characters/enemys/sheep.gd" id="1_alvac"]
 [ext_resource type="PackedScene" uid="uid://dayo12xu6qplh" path="res://scenes/misc/meat.tscn" id="2_6mwm0"]
 [ext_resource type="Texture2D" uid="uid://dnw5afihj7cih" path="res://Assets/Factions/Knights/Pawn/Red/Pawn_Red.png" id="3_2boew"]
 [ext_resource type="Texture2D" uid="uid://cccesn3b68ahc" path="res://Assets/Resources/Sheep/HappySheep_All.png" id="4_gl6la"]
 [ext_resource type="Texture2D" uid="uid://bbfvdxa7w4wue" path="res://Assets/Resources/Sheep/HappySheep_Bouncing.png" id="5_b7pif"]
-[ext_resource type="Script" path="res://scenes/Characters/enemys/behaviors/run_from_player.gd" id="6_o8lmq"]
+[ext_resource type="Script" uid="uid://6nenwuv6w1d2" path="res://scenes/Characters/enemys/behaviors/run_from_player.gd" id="6_o8lmq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjq1f"]
 atlas = ExtResource("4_gl6la")

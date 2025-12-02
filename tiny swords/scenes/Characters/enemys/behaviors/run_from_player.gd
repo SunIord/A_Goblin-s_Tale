@@ -46,7 +46,7 @@ func play_run_idle_anim() ->void:
 				
 func move(input_vector:Vector2)-> void:
 	var target_velocity = input_vector * speed * 100.0
-	enemy.velocity = lerp(enemy.velocity,target_velocity,0.08)
+	enemy.velocity = lerp(enemy.velocity,target_velocity,0.02)
 
 func stop(input_vector:Vector2)-> void:
 	var target_velocity = input_vector * Vector2(0,0)

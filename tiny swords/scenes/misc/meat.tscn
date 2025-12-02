@@ -1,7 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://dayo12xu6qplh"]
 
 [ext_resource type="Texture2D" uid="uid://b7glorc1fg8j1" path="res://Assets/Resources/Resources/M_Spawn.png" id="1_2cy5l"]
-[ext_resource type="Script" path="res://scenes/misc/life_generator.gd" id="2_x0lf3"]
+[ext_resource type="Script" uid="uid://dio8ddaxxabr1" path="res://scenes/misc/life_generator.gd" id="2_x0lf3"]
+
+[sub_resource type="Animation" id="Animation_s8pkr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_nlwvl"]
 resource_name = "meat_spawn"
@@ -30,25 +45,10 @@ tracks/1/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_s8pkr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6qim8"]
 _data = {
-"RESET": SubResource("Animation_s8pkr"),
-"meat_spawn": SubResource("Animation_nlwvl")
+&"RESET": SubResource("Animation_s8pkr"),
+&"meat_spawn": SubResource("Animation_nlwvl")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jch0n"]
@@ -61,7 +61,7 @@ generation_amount = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6qim8")
+&"": SubResource("AnimationLibrary_6qim8")
 }
 autoplay = "meat_spawn"
 

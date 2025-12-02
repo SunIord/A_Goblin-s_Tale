@@ -3,7 +3,7 @@ extends Sprite2D
 @export var generation_amount: int = 10
 
 @onready var Area2d:Area2D = $Area2D
-@onready var can_collect:bool = false
+@onready var can_collect:bool = true
 
 func able_to_collect()-> void:
 	can_collect = true

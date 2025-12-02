@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://hpsnwnnxovw0"]
 
-[ext_resource type="Script" uid="uid://du6cegcebd662" path="res://scenes/cutscene/DialogueBox.gd" id="1_837in"]
+[ext_resource type="Script" uid="uid://du6cegcebd662" path="res://scenes/cutscene/Cutscene.gd" id="1_837in"]
 [ext_resource type="Texture2D" uid="uid://c1wls2bctsd0d" path="res://Assets/UI/Banners/Banner_Vertical.png" id="1_tulu6"]
 [ext_resource type="Texture2D" uid="uid://biquxmvoomnfh" path="res://Assets/UI/Buttons/Button_Hover_3Slides.png" id="3_i4xmo"]
 [ext_resource type="AudioStream" uid="uid://cguixbciqtb6y" path="res://audios/buttonClick.wav" id="4_6ri26"]
@@ -14,22 +14,28 @@ offset_right = 1159.0
 offset_bottom = 638.0
 script = ExtResource("1_837in")
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1146.0
+offset_bottom = 645.0
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = 330.0
-offset_top = 9.0
-offset_right = 832.0
-offset_bottom = 580.0
+offset_left = 317.0
+offset_top = 3.0
+offset_right = 845.0
+offset_bottom = 625.0
 texture = ExtResource("1_tulu6")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 483.0
-offset_top = 144.0
-offset_right = 682.0
-offset_bottom = 403.0
+offset_left = 477.0
+offset_top = 157.0
+offset_right = 691.0
+offset_bottom = 444.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/normal_font_size = 14
 text = "Olá, viajante..."
 
 [node name="Timer" type="Timer" parent="Control/RichTextLabel"]
@@ -54,7 +60,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "Avançar"
 
-[node name="TextureRect2" type="TextureRect" parent="Control"]
+[node name="TitleLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -71,13 +71,11 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
 [node name="timer_label" type="Label" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -95.5
-offset_right = 95.5
-offset_bottom = 54.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 text = "Tiny swords"
 label_settings = SubResource("LabelSettings_icdam")
 horizontal_alignment = 1

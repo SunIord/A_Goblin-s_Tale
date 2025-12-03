@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cfgojn0wtlak5"]
 
 [ext_resource type="Texture2D" uid="uid://d1c4t0m5ls1m5" path="res://Assets/UI/Banners/Carved_9Slides.png" id="1_iyb03"]
-[ext_resource type="Script" path="res://scenes/ui/gameover.gd" id="1_orisb"]
+[ext_resource type="Script" uid="uid://bwaap528vcrxd" path="res://scenes/ui/gameover.gd" id="1_orisb"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_aqb6t"]
 [ext_resource type="Texture2D" uid="uid://b8wseoagn48ds" path="res://Assets/UI/Ribbons/Ribbon_Red_3Slides.png" id="3_hejtt"]
 
@@ -113,8 +113,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r8mim"]
 _data = {
-"BACKGROUNd_COLOR": SubResource("Animation_u1ug8"),
-"RESET": SubResource("Animation_3ca83")
+&"BACKGROUNd_COLOR": SubResource("Animation_u1ug8"),
+&"RESET": SubResource("Animation_3ca83")
 }
 
 [node name="gameover" type="CanvasLayer"]
@@ -134,10 +134,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1154.0
-offset_top = 156.0
-offset_right = 1734.0
-offset_bottom = 475.0
+offset_left = 578.0
+offset_top = -168.0
+offset_right = 1158.0
+offset_bottom = 151.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_debae")
@@ -187,9 +187,9 @@ label_settings = SubResource("LabelSettings_j8gi2")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -425.0
+offset_left = -1001.0
 offset_top = 103.0
-offset_right = 2.0
+offset_right = -574.0
 offset_bottom = 216.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vm5y4")
@@ -212,6 +212,6 @@ label_settings = SubResource("LabelSettings_6ijpb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_r8mim")
+&"": SubResource("AnimationLibrary_r8mim")
 }
 autoplay = "BACKGROUNd_COLOR"

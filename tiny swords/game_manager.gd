@@ -9,6 +9,9 @@ var death_count: int = 0
 var gold_count: int = 0
 var time_elapsed_string: String
 
+# --- HORDE SYSTEM ---
+var horde: int = 1
+
 
 func _process(delta: float):
 	time_elapsed += delta
@@ -16,21 +19,34 @@ func _process(delta: float):
 	var min: int
 	var sec: int
 	sec = time_elapsed_second % 60
-	min = time_elapsed_second/60
-	time_elapsed_string = "%02d:%02d" % [min,sec]
-	
+	min = time_elapsed_second / 60
+	time_elapsed_string = "%02d:%02d" % [min, sec]
+
+
+func increase_horde():
+	horde += 1
+
+
+func reset_horde():
+	horde = 1
+
 
 func end_game():
-	if is_game_over: return
+	if is_game_over:
+		return
 	is_game_over = true
 	game_over.emit()
+
 
 func reset():
 	player_position = Vector2.ZERO
 	is_game_over = false
+
 	time_elapsed = 0.0
 	death_count = 0
 	gold_count = 0
+
+	reset_horde()
+
 	for connection in game_over.get_connections():
 		game_over.disconnect(connection.callable)
-	

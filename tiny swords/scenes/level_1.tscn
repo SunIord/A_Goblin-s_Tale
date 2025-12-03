@@ -1,7 +1,8 @@
-[gd_scene load_steps=51 format=4 uid="uid://dcjeha31itydj"]
+[gd_scene load_steps=60 format=4 uid="uid://dcjeha31itydj"]
 
 [ext_resource type="Script" uid="uid://bh8dmk2n0fn5t" path="res://scenes/level_1.gd" id="1_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="1_3hls8"]
+[ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_hnsmf"]
 [ext_resource type="Texture2D" uid="uid://8ivkqpafjndi" path="res://Assets/Terrain/Ground/Tilemap_Elevation.png" id="2_ihfcg"]
 [ext_resource type="Texture2D" uid="uid://mkkrqglw4gdx" path="res://Assets/Terrain/Ground/Tilemap_color2.png" id="3_go7sj"]
 [ext_resource type="Texture2D" uid="uid://bcdiyyd7kn7ri" path="res://Assets/Terrain/Ground/Shadows.png" id="3_rka8t"]
@@ -23,7 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/Characters/enemys/knight.tscn" id="20_wbtxt"]
 [ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="21_x2fux"]
 [ext_resource type="PackedScene" uid="uid://c52ud2j0arqhj" path="res://scenes/Characters/enemys/lancer.tscn" id="22_s7g0b"]
+[ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="23_iw4em"]
 [ext_resource type="Texture2D" uid="uid://bexnepbqiglxr" path="res://Buildings/Blue Buildings/Castle.png" id="24_wbtxt"]
+[ext_resource type="Script" uid="uid://ljq82l53nwuv" path="res://scenes/systems/Horde_Manager.gd" id="25_x2fux"]
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="26_mbb35"]
+[ext_resource type="Resource" uid="uid://bkgoul7laubjk" path="res://scenes/systems/Horde_survive.tres" id="27_iw4em"]
+[ext_resource type="Resource" uid="uid://3a5qff33tjp7" path="res://scenes/systems/Horde_kill_40.tres" id="28_hnsmf"]
+[ext_resource type="Resource" uid="uid://owbffosfsr2d" path="res://scenes/systems/Horde_tutorial.tres" id="29_nossa"]
 
 [sub_resource type="TileSet" id="TileSet_j7kpp"]
 tile_size = Vector2i(64, 64)
@@ -755,9 +762,17 @@ sources/3 = SubResource("TileSetAtlasSource_hnsmf")
 sources/4 = SubResource("TileSetAtlasSource_hjqri")
 sources/5 = SubResource("TileSetAtlasSource_hg84p")
 
+[sub_resource type="Theme" id="Theme_hnsmf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nossa"]
+font = ExtResource("23_iw4em")
+font_size = 24
+font_color = Color(0.92156863, 0.06666667, 0.003921569, 1)
+
 [node name="level_1" type="Node2D"]
 position = Vector2(35, 3250)
 script = ExtResource("1_2cbcq")
+game_over_ui = ExtResource("2_hnsmf")
 
 [node name="player" parent="." instance=ExtResource("7_pa8r4")]
 visibility_layer = 8
@@ -799,6 +814,24 @@ scale = Vector2(2.3600001, 2.3600001)
 creatures = Array[PackedScene]([ExtResource("20_wbtxt"), ExtResource("21_x2fux"), ExtResource("22_s7g0b")])
 
 [node name="GameUI" parent="." instance=ExtResource("10_2y5yt")]
+
+[node name="HordeLabel" type="Label" parent="GameUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hnsmf")
+label_settings = SubResource("LabelSettings_nossa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Sheeps" type="Node2D" parent="."]
 
@@ -849,3 +882,8 @@ polygon = PackedVector2Array(-1079, -2123, -1080, -1198, -1020, -1195, -1017, -1
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody\'s/Lake"]
 position = Vector2(650.308, -948.4961)
 polygon = PackedVector2Array(-513.308, 8.496094, -518.308, -324.5039, 55.692017, -329.5039, 58.692017, -392.5039, 177.69202, -396.5039, 183.69202, -516.5039, 247.69202, -516.5039, 248.69202, -707.5039, 313.69202, -708.5039, 319.69202, -1176.5039, 639.692, -1175.5039, 642.692, -308.5039, 579.692, -306.5039, 579.692, -246.5039, 449.69202, -243.5039, 450.69202, -183.5039, 258.69202, -181.5039, 258.69202, -119.50391, 197.69202, -118.50391, 197.69202, -54.503906, 67.69202, -52.503906, 64.69202, 9.496094, 3.6920166, 11.496094, 3.6920166, 76.49609, -199.30798, 75.49609, -201.30798, 8.496094)
+
+[node name="HordeManager" type="Node2D" parent="." node_paths=PackedStringArray("mob_spawner") groups=["horde_manager"]]
+script = ExtResource("25_x2fux")
+hordes = Array[ExtResource("26_mbb35")]([ExtResource("29_nossa"), ExtResource("28_hnsmf"), ExtResource("27_iw4em")])
+mob_spawner = NodePath("../MobSpawner")

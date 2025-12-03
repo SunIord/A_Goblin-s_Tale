@@ -20,4 +20,4 @@ func _process(delta):
 		restart_game()
 func restart_game():
 	GameManager.reset()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/Areas/Hub.tscn")

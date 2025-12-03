@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=2 format=3 uid="uid://owbffosfsr2d"]
+
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="1_yisfx"]
+
+[resource]
+script = ExtResource("1_yisfx")
+enemy_amount = 40

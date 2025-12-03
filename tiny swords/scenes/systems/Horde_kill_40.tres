@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=2 format=3 uid="uid://3a5qff33tjp7"]
+
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="1_fbwea"]
+
+[resource]
+script = ExtResource("1_fbwea")
+enemy_amount = 40

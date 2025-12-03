@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://krf2pyaetvj8"]
+[gd_scene load_steps=30 format=3 uid="uid://krf2pyaetvj8"]
 
 [ext_resource type="Script" uid="uid://72rp7sovxak0" path="res://scenes/Characters/enemys/enemy.gd" id="1_4vh7s"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_abch8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cmdaxvm80gvqb" path="res://scenes/Characters/enemys/behaviors/follow_player.gd" id="4_htohs"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_fl8wo"]
 [ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="6_3t6a4"]
+[ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="7_wlqmu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ot8m"]
 region = Rect2(0, 576, 192, 192)
@@ -204,3 +205,7 @@ show_percentage = false
 
 [node name="hit_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3t6a4")
+
+[node name="dying_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wlqmu")
+volume_db = -5.0

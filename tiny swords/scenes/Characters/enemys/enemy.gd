@@ -9,23 +9,30 @@ var damage_digit_prefab:PackedScene
 @onready var gameui:GameUI
 @onready var damage_digit_marker = $DamageDigit2d
 @onready var hitSfx = $hit_sfx as AudioStreamPlayer
+@onready var dyingSfx = $dying_sfx as AudioStreamPlayer
 
 @onready var health_progress_bar: ProgressBar = get_node_or_null("Panel/Life")
+
+var dying_sfx_template: AudioStreamPlayer2D
 
 func _ready():
 	damage_digit_prefab = preload("res://scenes/misc/damage2D.tscn")
 	
-	# INICIALIZA A BARRA DE VIDA COM O VALOR MÁXIMO CORRETO
+	dying_sfx_template = AudioStreamPlayer2D.new()
+	dying_sfx_template.stream = dyingSfx.stream
+	dying_sfx_template.volume_db = dyingSfx.volume_db
+
 	if health_progress_bar:
-		health_progress_bar.max_value = health  # Define o máximo como a vida inicial
-		health_progress_bar.value = health      # Começa com a barra cheia
+		health_progress_bar.max_value = health
+		health_progress_bar.value = health
+
 
 func damage(amount:int) -> void:
 	hitSfx.play()
 	health -= amount
 
 	if health_progress_bar:
-		health_progress_bar.value = health  # Apenas atualiza o valor atual
+		health_progress_bar.value = health
 
 	modulate = Color.RED
 	var tween = create_tween()
@@ -43,6 +50,11 @@ func damage(amount:int) -> void:
 	self.add_child(damage_digit)
 
 	if health <= 0:
+		var audio_player = dying_sfx_template.duplicate()
+		get_parent().add_child(audio_player)
+		audio_player.global_position = global_position
+		audio_player.play()
+		audio_player.finished.connect(audio_player.queue_free)
 		die()
 
 func die()->void:
@@ -50,11 +62,14 @@ func die()->void:
 		var death_object = death_prefab.instantiate()
 		death_object.position = position	
 		get_parent().add_child(death_object)
+
 	if gold_prefab:
 		var gold_object = gold_prefab.instantiate()
 		gold_object.position = position
 		get_parent().add_child(gold_object)
+
 	var gameui: GameUI = get_tree().root.get_node("level_1/GameUI")
 	if gameui.has_method("increase_death"):
 		gameui.increase_death()
+
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://dcjeha31itydj"]
+[gd_scene load_steps=61 format=4 uid="uid://dcjeha31itydj"]
 
 [ext_resource type="Script" uid="uid://bh8dmk2n0fn5t" path="res://scenes/level_1.gd" id="1_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="1_3hls8"]
@@ -31,6 +31,7 @@
 [ext_resource type="Resource" uid="uid://bkgoul7laubjk" path="res://scenes/systems/Horde_survive.tres" id="27_iw4em"]
 [ext_resource type="Resource" uid="uid://3a5qff33tjp7" path="res://scenes/systems/Horde_kill_40.tres" id="28_hnsmf"]
 [ext_resource type="Resource" uid="uid://owbffosfsr2d" path="res://scenes/systems/Horde_tutorial.tres" id="29_nossa"]
+[ext_resource type="AudioStream" uid="uid://b52ttq46li4gh" path="res://audios/in_the_arena.mp3" id="32_nossa"]
 
 [sub_resource type="TileSet" id="TileSet_j7kpp"]
 tile_size = Vector2i(64, 64)
@@ -887,3 +888,8 @@ polygon = PackedVector2Array(-513.308, 8.496094, -518.308, -324.5039, 55.692017,
 script = ExtResource("25_x2fux")
 hordes = Array[ExtResource("26_mbb35")]([ExtResource("29_nossa"), ExtResource("28_hnsmf"), ExtResource("27_iw4em")])
 mob_spawner = NodePath("../MobSpawner")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_nossa")
+volume_db = -10.0
+parameters/looping = true

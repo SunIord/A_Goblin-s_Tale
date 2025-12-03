@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://di13ykmk7jdth"]
+[gd_scene load_steps=3 format=3 uid="uid://di13ykmk7jdth"]
 
 [ext_resource type="AudioStream" uid="uid://q88dhv28y7u1" path="res://audios/titleScreen.mp3" id="1_fvyft"]
+[ext_resource type="Script" uid="uid://dc886iudtkk76" path="res://music_player.gd" id="2_k4xj7"]
 
 [node name="BGM" type="AudioStreamPlayer"]
 stream = ExtResource("1_fvyft")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
+script = ExtResource("2_k4xj7")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfgojn0wtlak5"]
+[gd_scene load_steps=13 format=3 uid="uid://cfgojn0wtlak5"]
 
 [ext_resource type="Texture2D" uid="uid://d1c4t0m5ls1m5" path="res://Assets/UI/Banners/Carved_9Slides.png" id="1_iyb03"]
 [ext_resource type="Script" uid="uid://bwaap528vcrxd" path="res://scenes/ui/gameover.gd" id="1_orisb"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_aqb6t"]
 [ext_resource type="Texture2D" uid="uid://b8wseoagn48ds" path="res://Assets/UI/Ribbons/Ribbon_Red_3Slides.png" id="3_hejtt"]
+[ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="5_4pfak"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_debae"]
 texture = ExtResource("1_iyb03")
@@ -215,3 +216,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_r8mim")
 }
 autoplay = "BACKGROUNd_COLOR"
+
+[node name="dying_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4pfak")
+volume_db = -5.0

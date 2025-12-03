@@ -2,11 +2,13 @@ extends Node2D
 
 @onready var gameui = $GameUI
 @export var game_over_ui: PackedScene	
+@onready var sfx = $music as AudioStreamPlayer
 
 func _ready():
 	# conecta o player quando ele já existir
 	GameManager.game_over.connect(trigger_game_over)
 	MusicPlayer.stop()
+	sfx.play()
 	var player = $player
 	connect_player_restart(player)
 

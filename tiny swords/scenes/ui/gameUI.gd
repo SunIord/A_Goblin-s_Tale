@@ -10,7 +10,6 @@ extends CanvasLayer
 
 var can_time := true
 
-
 func _ready():
 	horde_label.visible = false
 

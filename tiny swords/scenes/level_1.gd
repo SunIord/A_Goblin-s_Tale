@@ -7,6 +7,7 @@ extends Node2D
 func _ready():
 	# conecta o player quando ele já existir
 	GameManager.game_over.connect(trigger_game_over)
+	GameManager.allow_timer = true
 	MusicPlayer.stop()
 	sfx.play()
 	var player = $player

@@ -8,19 +8,21 @@ var time_elapsed: float = 0.0
 var death_count: int = 0
 var gold_count: int = 0
 var time_elapsed_string: String
+var allow_timer: = false
 
 # --- HORDE SYSTEM ---
 var horde: int = 1
 
 
 func _process(delta: float):
-	time_elapsed += delta
-	var time_elapsed_second: int = floori(time_elapsed)
-	var min: int
-	var sec: int
-	sec = time_elapsed_second % 60
-	min = time_elapsed_second / 60
-	time_elapsed_string = "%02d:%02d" % [min, sec]
+	if allow_timer:
+		time_elapsed += delta
+		var time_elapsed_second: int = floori(time_elapsed)
+		var min: int
+		var sec: int
+		sec = time_elapsed_second % 60
+		min = time_elapsed_second / 60
+		time_elapsed_string = "%02d:%02d" % [min, sec]
 
 
 func increase_horde():
@@ -35,6 +37,7 @@ func end_game():
 	if is_game_over:
 		return
 	is_game_over = true
+	allow_timer = false
 	game_over.emit()
 
 

@@ -37,6 +37,9 @@ func _ready() -> void:
 	var level = get_parent()    
 	# tenta encontrar o GameUI dentro do level
 	gameui = level.get_node_or_null("GameUI")
+	
+	health = max_health
+	print("Player inicializado - Vida: ", health, "/", max_health)
 
 
 

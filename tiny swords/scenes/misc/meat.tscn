@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dayo12xu6qplh"]
+[gd_scene load_steps=8 format=3 uid="uid://dayo12xu6qplh"]
 
 [ext_resource type="Texture2D" uid="uid://b7glorc1fg8j1" path="res://Assets/Resources/Resources/M_Spawn.png" id="1_2cy5l"]
 [ext_resource type="Script" uid="uid://dio8ddaxxabr1" path="res://scenes/misc/life_generator.gd" id="2_x0lf3"]
+[ext_resource type="AudioStream" uid="uid://c51m24dl7s7sh" path="res://audios/eating.mp3" id="3_7bdqi"]
 
 [sub_resource type="Animation" id="Animation_s8pkr"]
 length = 0.001
@@ -71,6 +72,9 @@ scale = Vector2(2.56818, 2.56818)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_jch0n")
+
+[node name="meat_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7bdqi")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

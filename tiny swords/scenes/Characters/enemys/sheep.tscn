@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dv0ex2f4tv2yk"]
+[gd_scene load_steps=39 format=3 uid="uid://dv0ex2f4tv2yk"]
 
 [ext_resource type="Script" uid="uid://mftsxlvkva7e" path="res://scenes/Characters/enemys/sheep.gd" id="1_alvac"]
 [ext_resource type="PackedScene" uid="uid://dayo12xu6qplh" path="res://scenes/misc/meat.tscn" id="2_6mwm0"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cccesn3b68ahc" path="res://Assets/Resources/Sheep/HappySheep_All.png" id="4_gl6la"]
 [ext_resource type="Texture2D" uid="uid://bbfvdxa7w4wue" path="res://Assets/Resources/Sheep/HappySheep_Bouncing.png" id="5_b7pif"]
 [ext_resource type="Script" uid="uid://6nenwuv6w1d2" path="res://scenes/Characters/enemys/behaviors/run_from_player.gd" id="6_o8lmq"]
+[ext_resource type="AudioStream" uid="uid://gq8k3uoxpnh4" path="res://audios/sheepBaa.mp3" id="7_jni5s"]
+[ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="8_rg7x0"]
+[ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="9_k21gn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjq1f"]
 atlas = ExtResource("4_gl6la")
@@ -255,6 +258,15 @@ debug_color = Color(0.948607, 0.195184, 0.305533, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="baa_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jni5s")
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rg7x0")
+
+[node name="dying_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_k21gn")
 
 [connection signal="body_exited" from="Area2D" to="run_from_player" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal super_attack_used   # ← Player avisa o GameUI
+
 @export var speed: float = 3
 @export var sword_damage: int = 2
 @export var health: int = 100
@@ -27,39 +29,27 @@ var fire_spawned_in_this_attack: bool = false
 var gameui: Node = null
 @export var attack_cooldown: float = 0.8
 
-# -------------------------------
-#   PRIORIDADES DE ANIMAÇÃO
-# -------------------------------
-var current_priority := 1  # 1 idle, 2 walk, 3 attack
+var current_priority := 1
 
 func _ready() -> void:
-	# o level é o parent direto do player
-	var level = get_parent()    
-	# tenta encontrar o GameUI dentro do level
+	var level = get_parent()
 	gameui = level.get_node_or_null("GameUI")
-	
 	health = max_health
-	print("Player inicializado - Vida: ", health, "/", max_health)
-
-
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
 	read_input()
 
-	# ataque
 	if Input.is_action_just_pressed("attack_side"):
 		attack()
 		attackSfx.play()
+
 	call_super_attack()
 
-	# animações
 	if not is_attacking:
 		rotate_sprite()
-
 	play_run_idle_anim()
 
-	# healthbar
 	health_progress_bar.max_value = max_health
 	health_progress_bar.value = health
 
@@ -69,16 +59,13 @@ func _physics_process(delta) -> void:
 		target_velocity *= 0.5
 	velocity = lerp(velocity, target_velocity, 0.08)
 	move_and_slide()
-	
 
 func read_input() -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.15)
 	was_running = is_running
 	is_running = not input_vector.is_zero_approx() or velocity.length() > 60
 
-# ===============================
-#   ATAQUE
-# ===============================
+
 func attack() -> void:
 	if not can_attack or is_attacking:
 		return
@@ -86,7 +73,6 @@ func attack() -> void:
 	is_attacking = true
 	can_attack = false
 	fire_spawned_in_this_attack = false
-
 	current_priority = 3
 	animation_player.play("Attack_right")
 
@@ -111,26 +97,19 @@ func spawn_basic_attack() -> void:
 	attack_instance.owner = self
 
 	get_tree().root.add_child(attack_instance)
-	print("Spawned attack at: ", attack_instance.global_position)
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if is_attacking:
-		if animation_player.get_frame() == 2 and not fire_spawned_in_this_attack:
-			spawn_basic_attack()
+	if is_attacking and animation_player.get_frame() == 2 and not fire_spawned_in_this_attack:
+		spawn_basic_attack()
 
-# ===============================
-#   ANIMAÇÕES COM PRIORIDADE
-# ===============================
 func play_run_idle_anim() -> void:
 	if is_attacking:
 		return 
-
 	if is_running:
 		if current_priority < 2:
 			current_priority = 2
 			animation_player.play("walk")
 		return
-
 	current_priority = 1
 	animation_player.play("idle")
 
@@ -140,21 +119,17 @@ func rotate_sprite() -> void:
 	elif input_vector.x < 0:
 		animation_player.flip_h = true
 
-# ===============================
-#   DANO & MORTE & OURO
-# ===============================
-
 func collect(amount: int) -> int:
 	GameManager.gold_count += amount
 	return amount
-	
-	
+
 func damage(amount: int) -> void:
 	health -= amount
 	hitSfx.play()
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+
 	if health <= 0:
 		die()
 
@@ -170,29 +145,21 @@ func heal(amount: int) -> int:
 	health = min(max_health, health + amount)
 	return health
 
-# ===============================
-#   SUPER ATAQUE
-# ===============================
-
 func spawn_super_attack() -> void:
 	if super_attack_prefab == null:
 		return
-
 	var atk = super_attack_prefab.instantiate()
 	add_child(atk)
 
-	# conecta o sinal do ataque para o Level
-	var level = get_parent()
-	if level:
-		if not atk.is_connected("request_restart", level._on_restart_requested):
-				atk.connect("request_restart", level._on_restart_requested)
+	emit_signal("super_attack_used")
+
 func call_super_attack():
 	if gameui == null:
 		return
 
-	var already_loaded: bool = false
+	var loaded := false
 	if gameui.has_method("value_back"):
-		already_loaded = gameui.value_back()
+		loaded = gameui.value_back()
 
-	if Input.is_action_just_pressed("super_attack") and already_loaded:
+	if Input.is_action_just_pressed("super_attack") and loaded:
 		spawn_super_attack()

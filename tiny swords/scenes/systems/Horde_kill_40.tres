@@ -1,7 +1,24 @@
-[gd_resource type="Resource" script_class="HordeConfig" load_steps=2 format=3 uid="uid://3a5qff33tjp7"]
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=7 format=3 uid="uid://3a5qff33tjp7"]
 
+[ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_3218q"]
+[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="1_eb408"]
 [ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="1_fbwea"]
+[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/Characters/enemys/knight.tscn" id="2_3218q"]
+
+[sub_resource type="Resource" id="Resource_uc7sy"]
+script = ExtResource("1_3218q")
+creature = ExtResource("1_eb408")
+weight = 8.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_fl0v6"]
+script = ExtResource("1_3218q")
+creature = ExtResource("2_3218q")
+weight = 2.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
 
 [resource]
 script = ExtResource("1_fbwea")
+horde_type = 1
 enemy_amount = 40
+creature_scenes = Array[ExtResource("1_3218q")]([SubResource("Resource_uc7sy"), SubResource("Resource_fl0v6")])

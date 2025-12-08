@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://j184hts6gb1t"]
+[gd_scene load_steps=17 format=3 uid="uid://j184hts6gb1t"]
 
 [ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="1_60xhp"]
 [ext_resource type="Script" uid="uid://bwym87tk3jmrm" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bv66748gewfs0" path="res://Assets/Effects/fire attack.png" id="6_pq50j"]
 [ext_resource type="Texture2D" uid="uid://cy8dfyyfypa7u" path="res://Assets/UI/GrayRing.png" id="7_6auhn"]
 [ext_resource type="Texture2D" uid="uid://c5e7s8jx3l1g7" path="res://Assets/UI/FireRing.png" id="8_kr4q0"]
-[ext_resource type="Texture2D" uid="uid://bxupg5sl7p8tw" path="res://Assets/Factions/Goblins/TNT/Dynamite/Dynamite.png" id="9_f6dss"]
-[ext_resource type="Texture2D" uid="uid://uet6ci7fj75c" path="res://Assets/UI/DinamyteRing.png" id="10_7e7lx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtacl"]
 texture = ExtResource("1_60xhp")
@@ -50,14 +48,17 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rx81"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tg6hk"]
-atlas = ExtResource("9_f6dss")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="LabelSettings" id="LabelSettings_41emx"]
+font = ExtResource("2_la3b0")
+font_size = 30
+font_color = Color(1, 0.14117648, 0, 1)
+outline_size = 5
+outline_color = Color(0.25882354, 0.050980393, 0.03529412, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ukdt8")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Timer_Panel" type="Panel" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -68,7 +69,7 @@ offset_bottom = 84.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
 
-[node name="timer_label" type="Label" parent="Panel"]
+[node name="timer_label" type="Label" parent="Timer_Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -199,30 +200,40 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2rx81")
 
-[node name="TextureRect" type="TextureRect" parent="Fire_attack_bar2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 14.5069
-offset_top = 13.6779
-offset_right = 38.5069
-offset_bottom = 37.6779
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.513397, 0.513397)
-texture = SubResource("AtlasTexture_tg6hk")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Fire_attack_bar2"]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-max_value = 15.0
-value = 15.0
-fill_mode = 4
-texture_under = ExtResource("7_6auhn")
-texture_progress = ExtResource("10_7e7lx")
-tint_under = Color(0.0110876, 0.0110876, 0.0110876, 1)
-
 [node name="Super_attack_timer" type="Timer" parent="."]
 wait_time = 15.0
+
+[node name="Horde_goal_panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -41.0
+offset_right = 139.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.6255517, 1.941032)
+pivot_offset = Vector2(139, 41)
+theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
+
+[node name="HordeLabel" type="Label" parent="Horde_goal_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.77774495
+anchor_top = 0.30410615
+anchor_right = 0.7777449
+anchor_bottom = 0.30410618
+offset_left = -71.5
+offset_top = -20.0
+offset_right = 71.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.56140316, 1)
+label_settings = SubResource("LabelSettings_41emx")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

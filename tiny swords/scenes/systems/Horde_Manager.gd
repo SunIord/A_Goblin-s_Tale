@@ -12,16 +12,16 @@ signal horde_message(text)
 
 func _ready():
 	print("HordeManager inicializado")
-	print("Iniciando hordas")
-	start_hordes()
 
 func start_hordes():
+	print("⚡ HordeManager.start_hordes() chamado!")
+
 	current_horde_index = 0
 	_show_horde_message_and_start()
 
-# -------------------------------------------------------------------
-# NOVO → Exibe mensagem antes de cada horda
-# -------------------------------------------------------------------
+# ----------------------------------------------------------
+# Mensagem antes da horda
+# ----------------------------------------------------------
 func _show_horde_message_and_start():
 	var cfg = hordes[current_horde_index]
 
@@ -30,55 +30,59 @@ func _show_horde_message_and_start():
 		HordeConfig.HordeType.TUTORIAL:
 			msg = "Tutorial — Aprenda os controles!"
 		HordeConfig.HordeType.KILL_COUNT:
-			msg = "Horda %d — Derrote %d inimigos!" % [current_horde_index + 1, cfg.enemy_amount]
+			msg = "Horda %d — Derrote %d inimigos!" % [current_horde_index, cfg.enemy_amount]
 		HordeConfig.HordeType.SURVIVE_TIME:
-			msg = "Horda %d — Sobreviva por %ds!" % [current_horde_index + 1, cfg.survive_time]
+			msg = "Horda %d — Sobreviva por %ds!" % [current_horde_index, cfg.survive_time]
 
-	# Emite para o HUD
 	horde_message.emit(msg)
 
-	# Espera 2.5s para mostrar a mensagem
 	await get_tree().create_timer(8).timeout
-
-	# Agora sim inicia a horda de verdade
 	_start_horde()
-# -------------------------------------------------------------------
 
 
+# ----------------------------------------------------------
+# Início da horda
+# ----------------------------------------------------------
 func _start_horde():
 	var cfg = hordes[current_horde_index]
-	kill_counter = 0
+	mob_spawner.set_creatures(cfg.creature_scenes)
 
 	match cfg.horde_type:
 
 		HordeConfig.HordeType.TUTORIAL:
 			active = true
-			mob_spawner.spawn_tutorial_enemies()
-		
+			mob_spawner.start_spawning(cfg.spawn_rate)
+
 		HordeConfig.HordeType.KILL_COUNT:
 			active = true
 			mob_spawner.start_spawning(cfg.spawn_rate)
-		
+
 		HordeConfig.HordeType.SURVIVE_TIME:
 			active = true
 			time_remaining = cfg.survive_time
 			mob_spawner.start_spawning(cfg.spawn_rate)
 
-	print("Horda iniciada:", current_horde_index, cfg.horde_type)
+	print("Horda iniciada: idx=", current_horde_index,"tipo =", cfg.horde_type)
 
 
+# ----------------------------------------------------------
+# Contagem de mortes
+# ----------------------------------------------------------
 func on_enemy_killed():
 	if not active:
 		return
 
 	var cfg = hordes[current_horde_index]
 
-	if cfg.horde_type == HordeConfig.HordeType.KILL_COUNT:
-		kill_counter += 1
-		if kill_counter >= cfg.enemy_amount:
+	# Tutorial + KillCount usam contador
+	if cfg.horde_type in [HordeConfig.HordeType.TUTORIAL, HordeConfig.HordeType.KILL_COUNT]:
+		if GameManager.death_count >= cfg.enemy_amount:
 			_end_horde()
 
 
+# ----------------------------------------------------------
+# Contagem de tempo
+# ----------------------------------------------------------
 func _process(delta):
 	if not active:
 		return
@@ -91,10 +95,15 @@ func _process(delta):
 			_end_horde()
 
 
+# ----------------------------------------------------------
+# Fim da horda
+# ----------------------------------------------------------
 func _end_horde():
 	print("Horda finalizada:", current_horde_index)
 	active = false
 	mob_spawner.stop_spawning()
+	mob_spawner._kill_all_enemies()
+	GameManager.death_count = 0
 
 	current_horde_index += 1
 

@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://btlis1hyq7t6t"]
+[gd_scene load_steps=3 format=3 uid="uid://btlis1hyq7t6t"]
 
 [ext_resource type="Script" uid="uid://bi3ba1me5t2gh" path="res://test_scenes/MobSpawner.gd" id="1_0sj27"]
-[ext_resource type="PackedScene" uid="uid://dyo3e7r1g1fhs" path="res://scenes/Characters/enemys/knight.tscn" id="2_186tt"]
-[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="3_h2ukc"]
 
 [sub_resource type="Curve2D" id="Curve2D_bevq6"]
 _data = {
@@ -12,7 +10,6 @@ point_count = 11
 
 [node name="MobSpawner" type="Node2D"]
 script = ExtResource("1_0sj27")
-creatures = Array[PackedScene]([ExtResource("2_186tt"), ExtResource("3_h2ukc")])
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_bevq6")

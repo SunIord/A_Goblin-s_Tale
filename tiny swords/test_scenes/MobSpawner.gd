@@ -1,11 +1,11 @@
 extends Node2D
 class_name MobSpawner
 
-@export var creatures:Array[PackedScene]
 @export var mobs_per_minute:float = 15.0
 
 var spawn_enabled:bool = false
 var cooldown:float = 0.0
+var creatures: Array[CreatureSpawnConfig] = []
 
 @onready var path_follow_2d:PathFollow2D = %PathFollow2D
 
@@ -33,12 +33,20 @@ func _spawn_random_mob():
 	if creatures.is_empty():
 		return
 
-	var index = randi_range(0, creatures.size() - 1)
-	var creature_scene = creatures[index]
-	var creature = creature_scene.instantiate()
-	
-	creature.global_position = get_point()
-	get_parent().add_child(creature)
+	var total_weight := 0.0
+	for cfg in creatures:
+		total_weight += cfg.weight
+
+	var r := randf() * total_weight
+	var acc := 0.0
+
+	for cfg in creatures:
+		acc += cfg.weight
+		if r <= acc:
+			var creature = cfg.creature.instantiate()
+			creature.global_position = get_point()
+			get_parent().add_child(creature)
+			return
 
 
 func get_point() -> Vector2:
@@ -50,16 +58,14 @@ func get_point() -> Vector2:
 	var adjusted_point = point + Vector2(0, 10) 
 	return adjusted_point + base
 
-
-# ----------------------------------------------------------
-# HORDE MANAGER API
-# ----------------------------------------------------------
+func set_creatures(list: Array[CreatureSpawnConfig]) -> void:
+	creatures = list
 
 func start_spawning(rate:float):
 	# taxa da horda
 	# EXEMPLO: rate = 1.0 → 60 mobs/min
 	# rate = 2.0 → 120 mobs/min etc.
-	mobs_per_minute = 60.0 * rate
+	mobs_per_minute = 30.0 * rate
 
 	spawn_enabled = true
 	cooldown = 0.0
@@ -74,10 +80,12 @@ func stop_spawning():
 func set_spawn_enabled(value:bool):
 	spawn_enabled = value
 
+func _kill_all_enemies():
+	var enemies = get_tree().get_nodes_in_group("enemies")
 
-func spawn_tutorial_enemies():
-	# opcional — coloque o que quiser aqui
-	print("Spawning tutorial enemies...")
-	# Exemplo: spawn 3 fracos
-	for i in range(3):
-		_spawn_random_mob()
+	for e in enemies:
+		if e.is_inside_tree():
+			if e.has_method("die"):
+				e.die()
+			else:
+				e.queue_free()

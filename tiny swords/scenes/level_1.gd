@@ -6,7 +6,7 @@ extends Node2D
 @onready var horde_manager = $HordeManager
 
 func _ready():
-	# conecta o player quando ele já existir
+	GameManager.complete_level(0)
 	GameManager.game_over.connect(trigger_game_over)
 	GameManager.allow_timer = true
 	MusicPlayer.stop()
@@ -14,7 +14,7 @@ func _ready():
 	
 	if horde_manager:
 		print("Level pronto — iniciando hordas.")
-		horde_manager.start_hordes()
+		horde_manager.show_horde_message_and_start()
 	else:
 		print("ERRO: HordeManager NÃO encontrado!")
 

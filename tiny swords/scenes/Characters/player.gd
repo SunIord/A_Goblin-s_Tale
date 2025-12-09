@@ -43,7 +43,6 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("attack_side"):
 		attack()
-		attackSfx.play()
 
 	call_super_attack()
 
@@ -71,6 +70,7 @@ func attack() -> void:
 	if not can_attack or is_attacking:
 		return
 
+	attackSfx.play()
 	is_attacking = true
 	can_attack = false
 	fire_spawned_in_this_attack = false

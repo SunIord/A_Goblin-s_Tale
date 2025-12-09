@@ -164,10 +164,10 @@ columns = 2
 
 [node name="Label" type="Label" parent="Bottom_Panel/CenterContainer/GridContainer"]
 layout_mode = 2
-text = "Time survived:"
+text = "Arena:"
 label_settings = SubResource("LabelSettings_j8gi2")
 
-[node name="Time_Label" type="Label" parent="Bottom_Panel/CenterContainer/GridContainer"]
+[node name="Arena_Label" type="Label" parent="Bottom_Panel/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "04:20"
@@ -175,10 +175,10 @@ label_settings = SubResource("LabelSettings_j8gi2")
 
 [node name="Label3" type="Label" parent="Bottom_Panel/CenterContainer/GridContainer"]
 layout_mode = 2
-text = "Enemys deafeated:"
+text = "Horda máxima: "
 label_settings = SubResource("LabelSettings_j8gi2")
 
-[node name="Monsters_Label" type="Label" parent="Bottom_Panel/CenterContainer/GridContainer"]
+[node name="Horde_Label" type="Label" parent="Bottom_Panel/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = " 23"

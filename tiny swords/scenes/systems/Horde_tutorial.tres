@@ -14,4 +14,5 @@ metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
 script = ExtResource("1_yisfx")
 horde_type = 1
 enemy_amount = 10
+spawn_rate = 1.5
 creature_scenes = Array[ExtResource("1_u74bu")]([SubResource("Resource_47qcc")])

@@ -33,7 +33,9 @@ func reset():
 	is_game_over = false
 
 	death_count = 0
-	gold_count = 0
 	time_remaining = 0.0 
 	for connection in game_over.get_connections():
 		game_over.disconnect(connection.callable)
+		
+func reset_gold():
+	gold_count = 0

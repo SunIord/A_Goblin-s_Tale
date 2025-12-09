@@ -116,4 +116,4 @@ func _end_horde():
 		print("Horde:", GameManager.horde)
 		show_horde_message_and_start()
 	else:
-		GameManager.complete_level(1)
+		GameManager.complete_level()

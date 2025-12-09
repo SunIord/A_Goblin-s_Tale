@@ -6,7 +6,7 @@ extends Node2D
 @onready var horde_manager = $HordeManager
 
 func _ready():
-	GameManager.complete_level(0)
+	GameManager.complete_level()
 	GameManager.game_over.connect(trigger_game_over)
 	GameManager.allow_timer = true
 	MusicPlayer.stop()

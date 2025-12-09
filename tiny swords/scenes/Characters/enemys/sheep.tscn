@@ -243,7 +243,7 @@ shape = SubResource("CircleShape2D_35etj")
 
 [node name="run_from_player" type="Node2D" parent="."]
 script = ExtResource("6_o8lmq")
-speed = 2.5
+speed = 2.0
 
 [node name="DamageDigit2d" type="Marker2D" parent="."]
 position = Vector2(0, -28.4091)

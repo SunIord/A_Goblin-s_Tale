@@ -50,15 +50,16 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_41emx"]
 font = ExtResource("2_la3b0")
-font_size = 30
+font_size = 60
 font_color = Color(1, 0.14117648, 0, 1)
-outline_size = 5
+outline_size = 10
 outline_color = Color(0.25882354, 0.050980393, 0.03529412, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ukdt8")
 
 [node name="Timer_Panel" type="Panel" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -79,7 +80,7 @@ offset_top = -15.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Tiny swords"
+text = "00:00"
 label_settings = SubResource("LabelSettings_icdam")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -222,18 +223,17 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
 [node name="HordeLabel" type="Label" parent="Horde_goal_panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.77774495
-anchor_top = 0.30410615
-anchor_right = 0.7777449
-anchor_bottom = 0.30410618
-offset_left = -71.5
-offset_top = -20.0
-offset_right = 71.5
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.56140316, 1)
+anchor_left = 0.09309682
+anchor_top = 0.047638126
+anchor_right = 0.09309684
+anchor_bottom = 0.047638126
+offset_right = 288.0
+offset_bottom = 107.0
+scale = Vector2(0.280479, 0.39124328)
+text = "Lá Lá Lá"
 label_settings = SubResource("LabelSettings_41emx")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Super_attack_timer" to="." method="_on_super_attack_timer_timeout"]

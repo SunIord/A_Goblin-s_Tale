@@ -4,34 +4,21 @@ signal game_over
 var player_position: Vector2
 var is_game_over: bool = false
 
-var time_elapsed: float = 0.0
+var time_remaining: float = 0.0
 var death_count: int = 0
 var gold_count: int = 0
 var time_elapsed_string: String
 var allow_timer: = false
+var horde_manager: Node = null
 
 # --- HORDE SYSTEM ---
 var horde: int = 1
 
-
-func _process(delta: float):
-	if allow_timer:
-		time_elapsed += delta
-		var time_elapsed_second: int = floori(time_elapsed)
-		var min: int
-		var sec: int
-		sec = time_elapsed_second % 60
-		min = time_elapsed_second / 60
-		time_elapsed_string = "%02d:%02d" % [min, sec]
-
-
 func increase_horde():
 	horde += 1
 
-
 func reset_horde():
 	horde = 1
-
 
 func end_game():
 	if is_game_over:
@@ -40,12 +27,10 @@ func end_game():
 	allow_timer = false
 	game_over.emit()
 
-
 func reset():
 	player_position = Vector2.ZERO
 	is_game_over = false
 
-	time_elapsed = 0.0
 	death_count = 0
 	gold_count = 0
 

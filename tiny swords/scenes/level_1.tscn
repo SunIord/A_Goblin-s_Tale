@@ -1277,7 +1277,7 @@ position = Vector2(-365, 584)
 [node name="HordeManager" type="Node2D" parent="." node_paths=PackedStringArray("mob_spawner") groups=["horde_manager"]]
 position = Vector2(221, -17)
 script = ExtResource("25_x2fux")
-hordes = Array[ExtResource("26_mbb35")]([ExtResource("29_nossa"), ExtResource("28_hnsmf"), ExtResource("27_iw4em")])
+hordes = Array[ExtResource("26_mbb35")]([ExtResource("29_nossa"), ExtResource("27_iw4em"), ExtResource("28_hnsmf")])
 mob_spawner = NodePath("../MobSpawner")
 
 [node name="music" type="AudioStreamPlayer" parent="."]

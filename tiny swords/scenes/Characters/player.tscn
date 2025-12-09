@@ -188,7 +188,7 @@ sprite_frames = SubResource("SpriteFrames_0qful")
 animation = &"Attack_right"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(-2, -13)
 scale = Vector2(2.05625, 2.05746)
 shape = SubResource("CircleShape2D_8vq3w")

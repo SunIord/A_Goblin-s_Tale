@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal super_attack_used   # ← Player avisa o GameUI
+signal super_attack_used
 
 @export var speed: float = 3
 @export var sword_damage: int = 2
@@ -26,7 +26,7 @@ var can_attack: bool = true
 var ritual_cooldown: float = 0.0
 var time_over: bool = false
 var fire_spawned_in_this_attack: bool = false
-var gameui: Node = null
+var gameui: Node = null # Será o GameUI
 @export var attack_cooldown: float = 0.8
 
 var current_priority := 1
@@ -35,6 +35,7 @@ func _ready() -> void:
 	var level = get_parent()
 	gameui = level.get_node_or_null("GameUI")
 	health = max_health
+
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
@@ -104,7 +105,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 func play_run_idle_anim() -> void:
 	if is_attacking:
-		return 
+		return
 	if is_running:
 		if current_priority < 2:
 			current_priority = 2
@@ -150,16 +151,15 @@ func spawn_super_attack() -> void:
 		return
 	var atk = super_attack_prefab.instantiate()
 	add_child(atk)
-
 	emit_signal("super_attack_used")
 
 func call_super_attack():
 	if gameui == null:
 		return
 
-	var loaded := false
-	if gameui.has_method("value_back"):
-		loaded = gameui.value_back()
+	var is_ready = false
+	if gameui.has_method("is_super_ready"):
+		is_ready = gameui.is_super_ready()
 
-	if Input.is_action_just_pressed("super_attack") and loaded:
+	if Input.is_action_just_pressed("super_attack") and is_ready:
 		spawn_super_attack()

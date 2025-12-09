@@ -18,7 +18,6 @@ func _ready():
 	else:
 		print("ERRO: HordeManager NÃO encontrado!")
 
-
 func trigger_game_over():
 	if gameui:
 		gameui.queue_free()

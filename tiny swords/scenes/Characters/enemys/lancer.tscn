@@ -1,12 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://c52ud2j0arqhj"]
+[gd_scene load_steps=22 format=3 uid="uid://c52ud2j0arqhj"]
 
 [ext_resource type="Script" uid="uid://72rp7sovxak0" path="res://scenes/Characters/enemys/enemy.gd" id="1_38gbg"]
 [ext_resource type="PackedScene" uid="uid://dhouobuyf6k3e" path="res://scenes/misc/skull_knight.tscn" id="2_gn7eb"]
 [ext_resource type="Texture2D" uid="uid://ci8wjol80ow3t" path="res://Assets/Factions/Knights/Lancer/Red/Lancer_Run.png" id="3_8l6uc"]
+[ext_resource type="Texture2D" uid="uid://130gykyc040t" path="res://Assets/Factions/Knights/Lancer/Red/Lancer_Right_Attack.png" id="3_bgvfn"]
 [ext_resource type="Script" uid="uid://cmdaxvm80gvqb" path="res://scenes/Characters/enemys/behaviors/follow_player.gd" id="4_bgvfn"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_ckmvs"]
 [ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="6_yvv6i"]
 [ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="7_gn7eb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckmvs"]
+atlas = ExtResource("3_bgvfn")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvv6i"]
+atlas = ExtResource("3_bgvfn")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2ox7"]
+atlas = ExtResource("3_bgvfn")
+region = Rect2(640, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vwjjw"]
 atlas = ExtResource("3_8l6uc")
@@ -34,10 +47,19 @@ region = Rect2(1600, 0, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qdbgy"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckmvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvv6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2ox7")
+}],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,6 +111,7 @@ death_prefab = ExtResource("2_gn7eb")
 sprite_frames = SubResource("SpriteFrames_qdbgy")
 animation = &"attack"
 autoplay = "walk"
+frame_progress = 0.61769634
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.658511, 4.3651)

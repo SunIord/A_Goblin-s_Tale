@@ -1,46 +1,81 @@
 extends Area2D
 
-class_name Arrow
-
-@export var speed: float = 400.0
-@export var damage: int = 5
-@export var lifetime: float = 3.0
-
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export var speed: float = 300.0
+@export var damage: int = 5  # Quantidade de dano que a flecha causa
+@onready var shootSfx = $shoot_sfx as AudioStreamPlayer
 
 var direction: Vector2 = Vector2.RIGHT
 var has_hit: bool = false
-var life_timer: float = 0.0
+var lifetime: float = 3.0
+var time_alive: float = 0.0
 
 func _ready():
-	# Configura sprite com 1 frame
-	if sprite.sprite_frames:
-		sprite.play("default")  # Nome da animação de 1 frame
+	shootSfx.play()
 	
+	# Rotação da flecha
 	rotation = direction.angle()
-	print("✅ Flecha criada em: ", global_position, " Rotação: ", rotation)
+	
+	# Timer de auto-destruição
+	if has_node("LifetimeTimer"):
+		$LifetimeTimer.wait_time = lifetime
+		$LifetimeTimer.start()
+	
+	# Conectar sinais
+	connect_signals()
+	
+func connect_signals():
+	# Conectar sinais de colisão
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+	
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
+	
+	# Conectar timer se existir
+	if has_node("LifetimeTimer"):
+		if not $LifetimeTimer.timeout.is_connected(_on_lifetime_timer_timeout):
+			$LifetimeTimer.timeout.connect(_on_lifetime_timer_timeout)
 
 func _physics_process(delta):
 	if has_hit:
 		return
 	
+	# Movimento
 	position += direction * speed * delta
 	
-	# Auto-destruição por tempo
-	life_timer += delta
-	if life_timer >= lifetime:
-		print("⏰ Flecha expirou na posição: ", global_position)
+	# Fallback: auto-destruição por tempo
+	time_alive += delta
+	if time_alive >= lifetime:
 		queue_free()
 
 func _on_body_entered(body):
+	handle_collision(body)
+
+func _on_area_entered(area):
+	handle_collision(area)
+
+func handle_collision(collider):
 	if has_hit:
 		return
+	# VERIFICA SE É O PLAYER E CAUSA DANO
+	if collider.is_in_group("player"):
+		
+		# Método 1: Se o player tem função damage()
+		if collider.has_method("damage"):
+			collider.damage(damage)
+		
+		# Método 2: Se o player tem propriedade health
+		elif collider.has_method("take_damage"):
+			collider.take_damage(damage)
+		
+		# Método 3: Acesso direto à propriedade
+		elif "health" in collider:
+			collider.health -= damage
 	
-	print("🎯 Colisão detectada com: ", body.name if body else "null")
-	
-	if body and body.is_in_group("player"):
-		print("🎯 Flecha acertou player!")
-		body.damage(damage)
-		has_hit = true
-	
+	# Destrói a flecha independente do que atingiu
+	has_hit = true
 	queue_free()
+
+func _on_lifetime_timer_timeout():
+	if not has_hit:
+		queue_free()

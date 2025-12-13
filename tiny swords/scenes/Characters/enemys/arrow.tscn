@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdrr01yvoscjl"]
+[gd_scene load_steps=7 format=3 uid="uid://cdrr01yvoscjl"]
 
 [ext_resource type="Script" uid="uid://bqncwiodjv4np" path="res://scenes/Characters/enemys/arrow.gd" id="1_jr0x1"]
 [ext_resource type="AudioStream" uid="uid://barbx2htn2gon" path="res://audios/arrow_shot.mp3" id="1_ttm7t"]
@@ -19,18 +19,27 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jr0x1"]
+
 [node name="Arrow" type="Area2D"]
 script = ExtResource("1_jr0x1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
+[node name="LifetimeTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="shoot_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ttm7t")
+volume_db = -15.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m74p6")
 animation = &"walk"
 autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.658511, 4.3651)
+scale = Vector2(3.13073, 2.6545)
+shape = SubResource("CircleShape2D_jr0x1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

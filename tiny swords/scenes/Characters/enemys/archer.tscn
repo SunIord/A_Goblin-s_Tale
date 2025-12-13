@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://cjqy4lp4bp27a"]
+[gd_scene load_steps=27 format=3 uid="uid://cjqy4lp4bp27a"]
 
 [ext_resource type="Script" uid="uid://mxgyntmptt6u" path="res://scenes/Characters/enemys/archer.gd" id="1_k4kej"]
 [ext_resource type="PackedScene" uid="uid://dhouobuyf6k3e" path="res://scenes/misc/skull_knight.tscn" id="2_g8kho"]
 [ext_resource type="Texture2D" uid="uid://bs48ak8tr336g" path="res://Assets/Factions/Knights/Archer/Red/Archer_Red.png" id="2_gff6n"]
+[ext_resource type="PackedScene" uid="uid://cdrr01yvoscjl" path="res://scenes/Characters/enemys/arrow.tscn" id="2_xehmg"]
 [ext_resource type="Script" uid="uid://btw52rtff4mvk" path="res://scenes/Characters/enemys/behaviors/archer_behavior.gd" id="3_xehmg"]
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="6_ufq8i"]
 [ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="7_7ssoc"]
@@ -138,6 +139,7 @@ scale = Vector2(1.51859, 1.60363)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_k4kej")
+arrow_prefab = ExtResource("2_xehmg")
 health = 6
 death_prefab = ExtResource("2_g8kho")
 
@@ -146,7 +148,7 @@ scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_xehmg")
 animation = &"shoot"
 autoplay = "walk"
-frame_progress = 0.61844087
+frame_progress = 0.16805966
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.658511, 4.3651)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdrr01yvoscjl"]
+
+[ext_resource type="Script" uid="uid://bqncwiodjv4np" path="res://scenes/Characters/enemys/arrow.gd" id="1_jr0x1"]
+[ext_resource type="AudioStream" uid="uid://barbx2htn2gon" path="res://audios/arrow_shot.mp3" id="1_ttm7t"]
+[ext_resource type="Texture2D" uid="uid://hriufkmq5xno" path="res://Assets/Factions/Knights/Archer/Arrow/Arrow.png" id="3_i0l80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m74p6"]
+atlas = ExtResource("3_i0l80")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m74p6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m74p6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="Arrow" type="Area2D"]
+script = ExtResource("1_jr0x1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ttm7t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m74p6")
+animation = &"walk"
+autoplay = "walk"

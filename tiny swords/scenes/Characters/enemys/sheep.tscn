@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dv0ex2f4tv2yk"]
+[gd_scene load_steps=42 format=3 uid="uid://dv0ex2f4tv2yk"]
 
 [ext_resource type="Script" uid="uid://mftsxlvkva7e" path="res://scenes/Characters/enemys/sheep.gd" id="1_alvac"]
 [ext_resource type="PackedScene" uid="uid://dayo12xu6qplh" path="res://scenes/misc/meat.tscn" id="2_6mwm0"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://gq8k3uoxpnh4" path="res://audios/sheepBaa.mp3" id="7_jni5s"]
 [ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="8_rg7x0"]
 [ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="9_k21gn"]
+[ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="10_jni5s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjq1f"]
 atlas = ExtResource("4_gl6la")
@@ -220,6 +221,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2je81"]
 radius = 7.2287
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rg7x0"]
+texture = ExtResource("10_jni5s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k21gn"]
+bg_color = Color(0.233162, 0.702951, 0.411018, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing_size = 0.01
+
 [node name="sheep" type="CharacterBody2D" groups=["sheeps"]]
 scale = Vector2(1.5, 1.584)
 collision_layer = 2
@@ -267,6 +279,33 @@ stream = ExtResource("8_rg7x0")
 
 [node name="dying_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_k21gn")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -31.333338
+offset_right = 47.666664
+offset_bottom = 14.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxTexture_rg7x0")
+
+[node name="Life" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.66666
+offset_top = -5.4217167
+offset_right = 50.70833
+offset_bottom = 3.4561234
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_styles/fill = SubResource("StyleBoxFlat_k21gn")
+value = 100.0
+rounded = true
+show_percentage = false
 
 [connection signal="body_exited" from="Area2D" to="run_from_player" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

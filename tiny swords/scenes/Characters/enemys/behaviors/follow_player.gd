@@ -7,7 +7,7 @@ var enemy: Enemy
 var animation_player: AnimatedSprite2D
 var input_vector: Vector2
 var is_following := true
-var is_attacking: bool = false  # ← NOVO: Estado de ataque
+var is_attacking: bool = false 
 
 # Distância mínima para evitar grude
 const MIN_DISTANCE = 10.0

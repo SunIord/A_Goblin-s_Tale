@@ -1,0 +1,195 @@
+[gd_scene load_steps=26 format=3 uid="uid://cjqy4lp4bp27a"]
+
+[ext_resource type="Script" uid="uid://mxgyntmptt6u" path="res://scenes/Characters/enemys/archer.gd" id="1_k4kej"]
+[ext_resource type="PackedScene" uid="uid://dhouobuyf6k3e" path="res://scenes/misc/skull_knight.tscn" id="2_g8kho"]
+[ext_resource type="Texture2D" uid="uid://bs48ak8tr336g" path="res://Assets/Factions/Knights/Archer/Red/Archer_Red.png" id="2_gff6n"]
+[ext_resource type="Script" uid="uid://btw52rtff4mvk" path="res://scenes/Characters/enemys/behaviors/archer_behavior.gd" id="3_xehmg"]
+[ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="6_ufq8i"]
+[ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="7_7ssoc"]
+[ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="8_vkd4w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8kho"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(0, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxtgl"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(192, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqjrj"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(384, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q7fh"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(576, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufq8i"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(768, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ssoc"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(960, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkd4w"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(1152, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atkux"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(1344, 768, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkx7q"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eioss"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk6s5"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3fdx"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86tru"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdvo1"]
+atlas = ExtResource("2_gff6n")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xehmg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8kho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxtgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqjrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q7fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufq8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ssoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkd4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atkux")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkx7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eioss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk6s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3fdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86tru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdvo1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8kho"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lxtgl"]
+texture = ExtResource("6_ufq8i")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqjrj"]
+bg_color = Color(0.233162, 0.702951, 0.411018, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing_size = 0.01
+
+[node name="archer" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(-2.00001, 1)
+scale = Vector2(1.51859, 1.60363)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_k4kej")
+health = 6
+death_prefab = ExtResource("2_g8kho")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_xehmg")
+animation = &"shoot"
+autoplay = "walk"
+frame_progress = 0.61844087
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.658511, 4.3651)
+scale = Vector2(3.13073, 2.6545)
+shape = SubResource("CircleShape2D_g8kho")
+
+[node name="follow_player" type="Node2D" parent="."]
+script = ExtResource("3_xehmg")
+
+[node name="DamageDigit2d" type="Marker2D" parent="."]
+position = Vector2(-1.31701, -24.9434)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -31.608265
+offset_top = 34.297188
+offset_right = 33.58379
+offset_bottom = 43.65097
+theme_override_styles/panel = SubResource("StyleBoxTexture_lxtgl")
+
+[node name="Life" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.505
+anchor_top = 0.56100005
+anchor_right = 0.505
+anchor_bottom = 0.56100005
+offset_left = -27.653942
+offset_top = -4.0003
+offset_right = 27.660534
+offset_bottom = 0.36479712
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_fqjrj")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7ssoc")
+
+[node name="dying_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_vkd4w")
+volume_db = -5.0
+
+[node name="ArrowSpawn" type="Marker2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://krf2pyaetvj8"]
+[gd_scene load_steps=35 format=3 uid="uid://krf2pyaetvj8"]
 
 [ext_resource type="Script" uid="uid://72rp7sovxak0" path="res://scenes/Characters/enemys/enemy.gd" id="1_4vh7s"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_abch8"]
@@ -7,6 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_fl8wo"]
 [ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="6_3t6a4"]
 [ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="7_wlqmu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlqmu"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4h6r"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxtma"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu2kp"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45qfp"]
+atlas = ExtResource("3_ap7u2")
+region = Rect2(960, 384, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ot8m"]
 region = Rect2(0, 576, 192, 192)
@@ -72,6 +92,26 @@ region = Rect2(960, 192, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wlqmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4h6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxtma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu2kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45qfp")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1ot8m")
 }, {
 "duration": 1.0,
@@ -90,7 +130,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2xjqb")
 }],
 "loop": false,
-"name": &"pawn_sec_attack",
+"name": &"new_animation",
 "speed": 10.0
 }, {
 "frames": [{
@@ -166,13 +206,14 @@ death_prefab = ExtResource("2_abch8")
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_k84g0")
 animation = &"walk"
+autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -25)
 scale = Vector2(2.3244, 2.20207)
 shape = SubResource("CircleShape2D_t5dg6")
 
-[node name="follow_player" type="Node2D" parent="."]
+[node name="archer_behavior" type="Node2D" parent="."]
 script = ExtResource("4_htohs")
 
 [node name="DamageDigit2d" type="Marker2D" parent="."]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://buvg0t3pd0y5q"]
+
+[ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/Characters/player.tscn" id="1_lb1ck"]
+[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="2_n8ss8"]
+
+[node name="ArcherTest" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_lb1ck")]
+
+[node name="archer" parent="." instance=ExtResource("2_n8ss8")]
+position = Vector2(508, -44)
+
+[node name="archer2" parent="." instance=ExtResource("2_n8ss8")]
+position = Vector2(536, 190)
+
+[node name="archer3" parent="." instance=ExtResource("2_n8ss8")]
+position = Vector2(410, -44)

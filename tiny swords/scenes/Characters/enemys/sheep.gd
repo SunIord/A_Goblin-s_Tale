@@ -7,12 +7,17 @@ extends Node2D
 @onready var baaSfx = $baa_sfx as AudioStreamPlayer
 @onready var hitSfx = $hit_sfx as AudioStreamPlayer
 @onready var dyingSfx = $dying_sfx as AudioStreamPlayer
+@onready var health_progress_bar: ProgressBar = get_node_or_null("Panel/Life")
 
 # Templates de áudio para evitar delay
 var dying_audio_template: AudioStreamPlayer2D
 var meat_audio_template: AudioStreamPlayer2D
 
 func _ready():
+	if health_progress_bar:
+		health_progress_bar.max_value = health
+		health_progress_bar.value = health
+	
 	if dyingSfx and dyingSfx.stream:
 		dying_audio_template = AudioStreamPlayer2D.new()
 		dying_audio_template.stream = dyingSfx.stream
@@ -20,6 +25,9 @@ func _ready():
 
 func damage(amount:int) -> void:
 	health -= amount
+	
+	if health_progress_bar:
+		health_progress_bar.value = health
 	
 	if hitSfx:
 		hitSfx.play()

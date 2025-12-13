@@ -13,7 +13,6 @@ var dying_audio_template: AudioStreamPlayer2D
 var meat_audio_template: AudioStreamPlayer2D
 
 func _ready():
-	# Pré-configura os áudios que precisam de posição
 	if dyingSfx and dyingSfx.stream:
 		dying_audio_template = AudioStreamPlayer2D.new()
 		dying_audio_template.stream = dyingSfx.stream
@@ -22,11 +21,9 @@ func _ready():
 func damage(amount:int) -> void:
 	health -= amount
 	
-	# Toca som de hit (AudioStreamPlayer normal)
 	if hitSfx:
 		hitSfx.play()
 	
-	# Efeito visual
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
@@ -39,14 +36,13 @@ func damage(amount:int) -> void:
 		die()
 
 func die() -> void:
-	# Toca som de morte (com posição, AudioStreamPlayer2D)
 	if dying_audio_template:
 		var dying_audio = dying_audio_template.duplicate()
 		get_parent().add_child(dying_audio)
 		dying_audio.global_position = global_position
 		dying_audio.play()
 		dying_audio.finished.connect(dying_audio.queue_free)
-	elif dyingSfx:  # Fallback
+	elif dyingSfx: 
 		dyingSfx.play()
 	
 	# Spawna a carne

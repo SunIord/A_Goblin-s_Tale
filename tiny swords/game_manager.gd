@@ -11,6 +11,7 @@ var allow_timer: = false
 var horde_manager: Node = null
 var current_level: int = 0
 var horde: int = 1
+var level1_cutscene_played: bool = false
 
 func increase_horde():
 	horde += 1

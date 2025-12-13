@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv50ypkjh2ahu"]
 
-[ext_resource type="Texture2D" uid="uid://b2t6gspxow4sf" path="res://Assets/Decorations/Buildings/Wood_House/Goblin_House.png" id="1_mxym3"]
+[ext_resource type="Texture2D" uid="uid://d0tjcfqrrbdam" path="res://Assets/Decorations/Buildings/Wood_House/Goblin_House_Destroyed.png" id="1_e7gs7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o75gl"]
 radius = 19.0271
@@ -10,7 +10,7 @@ scale = Vector2(1.04, 0.919999)
 
 [node name="GoblinHouse" type="Sprite2D" parent="."]
 position = Vector2(1, -62)
-texture = ExtResource("1_mxym3")
+texture = ExtResource("1_e7gs7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.96046e-08, -27.1739)

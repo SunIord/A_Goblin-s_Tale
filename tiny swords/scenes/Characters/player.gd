@@ -7,6 +7,7 @@ signal super_attack_used
 @export var health: int = 100
 @export var max_health: int = 100
 @export var death_prefab: PackedScene
+
 @export_category("Ritual")
 @export var super_attack_prefab: PackedScene
 @export var ritual_damage:int = 1
@@ -26,10 +27,17 @@ var can_attack: bool = true
 var ritual_cooldown: float = 0.0
 var time_over: bool = false
 var fire_spawned_in_this_attack: bool = false
-var gameui: Node = null # Será o GameUI
+var gameui: Node = null
 @export var attack_cooldown: float = 0.8
 
 var current_priority := 1
+
+# -------------------------------------------------
+# CUTSCENE
+# -------------------------------------------------
+var in_cutscene: bool = false
+var cutscene_target: Vector2
+# -------------------------------------------------
 
 func _ready() -> void:
 	var level = get_parent()
@@ -39,9 +47,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	GameManager.player_position = position
-	read_input()
 
-	if Input.is_action_just_pressed("attack_side"):
+	if not in_cutscene:
+		read_input()
+	else:
+		input_vector = Vector2.ZERO
+		is_running = true
+		current_priority = 2
+		if animation_player.animation != "walk":
+			animation_player.play("walk")
+
+	if Input.is_action_just_pressed("attack_side") and not in_cutscene:
 		attack()
 
 	call_super_attack()
@@ -53,12 +69,27 @@ func _process(delta: float) -> void:
 	health_progress_bar.max_value = max_health
 	health_progress_bar.value = health
 
+
 func _physics_process(delta) -> void:
-	var target_velocity = input_vector * speed * 100
-	if is_attacking:
-		target_velocity *= 0.5
-	velocity = lerp(velocity, target_velocity, 0.08)
+	var target_velocity: Vector2
+
+	if in_cutscene:
+		var dir = cutscene_target - global_position
+
+		if dir.length() < 5:
+			velocity = Vector2.ZERO
+			in_cutscene = false
+		else:
+			target_velocity = dir.normalized() * speed * 100
+			velocity = lerp(velocity, target_velocity, 0.1)
+	else:
+		target_velocity = input_vector * speed * 100
+		if is_attacking:
+			target_velocity *= 0.5
+		velocity = lerp(velocity, target_velocity, 0.08)
+
 	move_and_slide()
+
 
 func read_input() -> void:
 	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.15)
@@ -80,10 +111,12 @@ func attack() -> void:
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animation_player.animation == "Attack_right":
 		is_attacking = false
 		current_priority = 0
+
 
 func spawn_basic_attack() -> void:
 	if fire_spawned_in_this_attack:
@@ -99,20 +132,25 @@ func spawn_basic_attack() -> void:
 
 	get_tree().root.add_child(attack_instance)
 
+
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if is_attacking and animation_player.get_frame() == 2 and not fire_spawned_in_this_attack:
 		spawn_basic_attack()
 
+
 func play_run_idle_anim() -> void:
 	if is_attacking:
 		return
+
 	if is_running:
 		if current_priority < 2:
 			current_priority = 2
 			animation_player.play("walk")
 		return
+
 	current_priority = 1
 	animation_player.play("idle")
+
 
 func rotate_sprite() -> void:
 	if input_vector.x > 0:
@@ -120,9 +158,11 @@ func rotate_sprite() -> void:
 	elif input_vector.x < 0:
 		animation_player.flip_h = true
 
+
 func collect(amount: int) -> int:
 	GameManager.gold_count += amount
 	return amount
+
 
 func damage(amount: int) -> void:
 	health -= amount
@@ -134,6 +174,7 @@ func damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
+
 func die() -> void:
 	GameManager.end_game()
 	if death_prefab:
@@ -142,9 +183,11 @@ func die() -> void:
 		get_parent().add_child(death_object)
 	queue_free()
 
+
 func heal(amount: int) -> int:
 	health = min(max_health, health + amount)
 	return health
+
 
 func spawn_super_attack() -> void:
 	if super_attack_prefab == null:
@@ -153,8 +196,9 @@ func spawn_super_attack() -> void:
 	add_child(atk)
 	emit_signal("super_attack_used")
 
+
 func call_super_attack():
-	if gameui == null:
+	if gameui == null or in_cutscene:
 		return
 
 	var is_ready = false
@@ -163,3 +207,11 @@ func call_super_attack():
 
 	if Input.is_action_just_pressed("super_attack") and is_ready:
 		spawn_super_attack()
+
+
+# -------------------------------------------------
+# FUNÇÃO PÚBLICA PARA CUTSCENE
+# -------------------------------------------------
+func start_cutscene(target: Vector2):
+	in_cutscene = true
+	cutscene_target = target

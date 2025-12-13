@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://dwd3iaaqekbp7"]
+[gd_scene load_steps=75 format=4 uid="uid://dwd3iaaqekbp7"]
 
 [ext_resource type="Script" uid="uid://bfu13mwna7xyf" path="res://scenes/Areas/Hub.gd" id="1_fokdv"]
 [ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_4vvjd"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://bs41k1ypkqn6v" path="res://scenes/Areas/medium_rock.tscn" id="39_xrba7"]
 [ext_resource type="PackedScene" uid="uid://dehumpte632ki" path="res://scenes/Areas/tree.tscn" id="40_870rc"]
 [ext_resource type="PackedScene" uid="uid://bv50ypkjh2ahu" path="res://scenes/Areas/simple_house.tscn" id="41_4brqe"]
+[ext_resource type="PackedScene" uid="uid://b7rl5dqey8u1l" path="res://scenes/Areas/Big Goblin House.tscn" id="41_cfcn5"]
 [ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/Characters/enemys/sheep.tscn" id="42_kpg8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v65kt"]
@@ -1803,12 +1804,7 @@ position = Vector2(2392, 500)
 
 [node name="Houses" type="Node2D" parent="YSort/decorations"]
 y_sort_enabled = true
-
-[node name="HouseRed" type="Sprite2D" parent="YSort/decorations/Houses"]
-z_index = 4
-position = Vector2(2364.0002, 1310)
-scale = Vector2(2.21875, 1.96354)
-texture = ExtResource("27_a5p1q")
+position = Vector2(-1, 0)
 
 [node name="Simple House" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
 position = Vector2(1950.0002, 1367)
@@ -1822,6 +1818,39 @@ position = Vector2(1902, 1660)
 [node name="Simple House4" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
 position = Vector2(1731, 1597)
 
+[node name="Simple House7" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1793.0001, 1981)
+
+[node name="Simple House8" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1561, 2149)
+
+[node name="Simple House9" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(2045.0001, 2264)
+
+[node name="Simple House10" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1747.0001, 2333)
+
+[node name="Simple House11" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(2420, 2439)
+
+[node name="Simple House12" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(2578.0002, 2249)
+
+[node name="Simple House13" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(2091.0002, 2486)
+
+[node name="Simple House14" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1418.0002, 2417)
+
+[node name="Simple House15" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1360.0001, 2040)
+
+[node name="Simple House16" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1248, 2283)
+
+[node name="Simple House17" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
+position = Vector2(1482.0001, 1578)
+
 [node name="Simple House5" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
 position = Vector2(2544, 1410)
 rotation = 0.0729486
@@ -1829,6 +1858,10 @@ rotation = 0.0729486
 [node name="Simple House6" parent="YSort/decorations/Houses" instance=ExtResource("41_4brqe")]
 position = Vector2(2681, 1452)
 rotation = -0.0545777
+
+[node name="BigGoblinHouse" parent="YSort/decorations/Houses" instance=ExtResource("41_cfcn5")]
+position = Vector2(2358, 1306.0001)
+scale = Vector2(2.1508865, 2.1508865)
 
 [node name="sheeps" type="Node2D" parent="YSort"]
 y_sort_enabled = true

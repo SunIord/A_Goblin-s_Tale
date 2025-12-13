@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://j184hts6gb1t"]
+[gd_scene load_steps=18 format=3 uid="uid://j184hts6gb1t"]
 
 [ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="1_60xhp"]
 [ext_resource type="Script" uid="uid://bwym87tk3jmrm" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bv66748gewfs0" path="res://Assets/Effects/fire attack.png" id="6_pq50j"]
 [ext_resource type="Texture2D" uid="uid://cy8dfyyfypa7u" path="res://Assets/UI/GrayRing.png" id="7_6auhn"]
 [ext_resource type="Texture2D" uid="uid://c5e7s8jx3l1g7" path="res://Assets/UI/FireRing.png" id="8_kr4q0"]
+[ext_resource type="Texture2D" uid="uid://cio6q3egumxu0" path="res://Assets/UI/Title Level 1.png" id="10_4vxfa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtacl"]
 texture = ExtResource("1_60xhp")
@@ -57,19 +58,46 @@ outline_size = 10
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ukdt8")
 
-[node name="Timer_Panel" type="Panel" parent="."]
+[node name="ContainerTitleLevel" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.99997
+offset_top = -239.0
+offset_right = -51.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.3629823, 1.8937365)
+
+[node name="Level1" type="TextureRect" parent="ContainerTitleLevel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("10_4vxfa")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Timer_Panel" type="Panel" parent="HUD"]
 visible = false
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -140.0
+offset_left = 436.0
 offset_top = 2.0
-offset_right = 138.0
+offset_right = 714.0
 offset_bottom = 84.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
 
-[node name="timer_label" type="Label" parent="Timer_Panel"]
+[node name="timer_label" type="Label" parent="HUD/Timer_Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -84,16 +112,18 @@ label_settings = SubResource("LabelSettings_icdam")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Death_panel" type="Panel" parent="."]
+[node name="Death_panel" type="Panel" parent="HUD"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -213.0
+offset_left = 939.0
+offset_right = 1152.0
 offset_bottom = 82.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pebfw")
 
-[node name="TextureRect" type="TextureRect" parent="Death_panel"]
+[node name="TextureRect" type="TextureRect" parent="HUD/Death_panel"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 4.0
@@ -101,7 +131,7 @@ offset_right = 112.0
 offset_bottom = 68.0
 texture = SubResource("AtlasTexture_vl5ef")
 
-[node name="death_label" type="Label" parent="Death_panel"]
+[node name="death_label" type="Label" parent="HUD/Death_panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -118,17 +148,19 @@ label_settings = SubResource("LabelSettings_v6ehu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Gold_panel" type="Panel" parent="."]
+[node name="Gold_panel" type="Panel" parent="HUD"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -213.0
+offset_left = 939.0
 offset_top = 84.0
+offset_right = 1152.0
 offset_bottom = 166.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pebfw")
 
-[node name="TextureRect" type="TextureRect" parent="Gold_panel"]
+[node name="TextureRect" type="TextureRect" parent="HUD/Gold_panel"]
 layout_mode = 0
 offset_left = -9.0
 offset_top = -44.0
@@ -136,7 +168,7 @@ offset_right = 119.0
 offset_bottom = 84.0
 texture = ExtResource("6_naedo")
 
-[node name="gold_label" type="Label" parent="Gold_panel"]
+[node name="gold_label" type="Label" parent="HUD/Gold_panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -153,8 +185,9 @@ label_settings = SubResource("LabelSettings_v6ehu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fire_attack_bar" type="Panel" parent="."]
+[node name="Fire_attack_bar" type="Panel" parent="HUD"]
 modulate = Color(1, 1, 1, 0.992157)
+layout_mode = 0
 offset_left = 8.0
 offset_top = 9.0
 offset_right = 48.0
@@ -164,7 +197,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2rx81")
 
-[node name="TextureRect" type="TextureRect" parent="Fire_attack_bar"]
+[node name="TextureRect" type="TextureRect" parent="HUD/Fire_attack_bar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,7 +211,7 @@ grow_vertical = 2
 scale = Vector2(0.513397, 0.513397)
 texture = ExtResource("6_pq50j")
 
-[node name="FireBar" type="TextureProgressBar" parent="Fire_attack_bar"]
+[node name="FireBar" type="TextureProgressBar" parent="HUD/Fire_attack_bar"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 64.0
@@ -189,8 +222,9 @@ texture_under = ExtResource("7_6auhn")
 texture_progress = ExtResource("8_kr4q0")
 tint_under = Color(0.0110876, 0.0110876, 0.0110876, 1)
 
-[node name="Fire_attack_bar2" type="Panel" parent="."]
+[node name="Fire_attack_bar2" type="Panel" parent="HUD"]
 modulate = Color(1, 1, 1, 0.992157)
+layout_mode = 0
 offset_left = 134.0
 offset_top = 8.0
 offset_right = 174.0
@@ -200,30 +234,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2rx81")
 
-[node name="Super_attack_timer" type="Timer" parent="."]
-wait_time = 15.0
-
-[node name="Horde_goal_panel" type="Panel" parent="."]
+[node name="Horde_goal_panel" type="Panel" parent="HUD"]
+visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -139.0
-offset_top = -41.0
-offset_right = 139.0
-offset_bottom = 41.0
+offset_left = 437.0
+offset_top = 283.0
+offset_right = 715.0
+offset_bottom = 365.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.6255517, 1.941032)
 pivot_offset = Vector2(139, 41)
 theme_override_styles/panel = SubResource("StyleBoxTexture_dtacl")
 
-[node name="HordeLabel" type="Label" parent="Horde_goal_panel"]
+[node name="HordeLabel" type="Label" parent="HUD/Horde_goal_panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14652854
-anchor_top = 0.03507252
+anchor_left = 0.1465285
+anchor_top = 0.035072513
 anchor_right = 0.1465285
 anchor_bottom = 0.035072513
 offset_right = 288.0
@@ -235,4 +268,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="timeout" from="Super_attack_timer" to="." method="_on_super_attack_timer_timeout"]
+[node name="Super_attack_timer" type="Timer" parent="HUD"]
+wait_time = 15.0
+
+[connection signal="timeout" from="HUD/Super_attack_timer" to="." method="_on_super_attack_timer_timeout"]

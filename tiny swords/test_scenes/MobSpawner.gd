@@ -14,15 +14,12 @@ func _process(delta:float):
 	if not spawn_enabled:
 		return
 
-	# Seguir player
 	global_position = GameManager.player_position
 
-	# Temporizador
 	cooldown -= delta
 	if cooldown > 0:
 		return
 
-	# Intervalo baseado em mobs_per_minute
 	var interval = 60.0 / mobs_per_minute
 	cooldown = interval
 
@@ -62,9 +59,6 @@ func set_creatures(list: Array[CreatureSpawnConfig]) -> void:
 	creatures = list
 
 func start_spawning(rate:float):
-	# taxa da horda
-	# EXEMPLO: rate = 1.0 → 60 mobs/min
-	# rate = 2.0 → 120 mobs/min etc.
 	mobs_per_minute = 30.0 * rate
 
 	spawn_enabled = true

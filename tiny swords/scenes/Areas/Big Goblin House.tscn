@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7rl5dqey8u1l"]
+
+[ext_resource type="Texture2D" uid="uid://cryi6qi6nenmo" path="res://Assets/Decorations/Buildings/House/House_Destroyed.png" id="1_wc82m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc82m"]
+radius = 27.513634
+
+[node name="BigGoblinHouse" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wc82m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 27)
+scale = Vector2(1.5789465, 1.2000004)
+shape = SubResource("CircleShape2D_wc82m")

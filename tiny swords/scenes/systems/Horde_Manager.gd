@@ -12,9 +12,7 @@ signal horde_message(text)
 signal timer_manage(show_timer: bool) 
 signal time_update(time_string: String) 
 
-# ----------------------------------------------------------
 # Mensagem antes da horda
-# ----------------------------------------------------------
 func show_horde_message_and_start():
 	var msg := ""
 	var h := GameManager.horde
@@ -33,9 +31,7 @@ func show_horde_message_and_start():
 	await get_tree().create_timer(6).timeout
 	start_horde()
 
-# ----------------------------------------------------------
 # Início da horda
-# ----------------------------------------------------------
 func start_horde():
 	var h := GameManager.horde
 	var cfg := hordes[h - 1]
@@ -55,9 +51,7 @@ func start_horde():
 
 	print("Horda iniciada: idx=", current_horde_index,"tipo =", cfg.horde_type)
 
-# ----------------------------------------------------------
 # Contagem de mortes
-# ----------------------------------------------------------
 func on_enemy_killed():
 	if not active:
 		return
@@ -65,14 +59,11 @@ func on_enemy_killed():
 	var h := GameManager.horde
 	var cfg := hordes[h - 1]
 
-	# Tutorial + KillCount usam contador
 	if cfg.horde_type in [HordeConfig.HordeType.TUTORIAL, HordeConfig.HordeType.KILL_COUNT]:
 		if GameManager.death_count >= cfg.enemy_amount:
 			_end_horde()
 
-# ----------------------------------------------------------
-# Contagem de tempo (Lógica de Decremento, Formatação e Checagem)
-# ----------------------------------------------------------
+# Contagem de tempo 
 func _process(delta):
 	if not active:
 		return
@@ -96,9 +87,7 @@ func _process(delta):
 		if time_remaining <= 0:
 			_end_horde()
 
-# ----------------------------------------------------------
 # Fim da horda
-# ----------------------------------------------------------
 func _end_horde():
 	if not active: 
 		return

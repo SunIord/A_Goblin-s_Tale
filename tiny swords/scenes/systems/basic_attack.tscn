@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df4bjixu1r0cb"]
 
-[ext_resource type="Script" path="res://basicAttack.gd" id="1_j284q"]
+[ext_resource type="Script" uid="uid://cgtc2k245k5w0" path="res://basicAttack.gd" id="1_j284q"]
 [ext_resource type="Texture2D" uid="uid://xyo3bxdympm5" path="res://Assets/Effects/Fire/Fire.png" id="2_v5qgf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jvqsy"]
@@ -86,8 +86,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_godci"]
 _data = {
-"Basic_attack": SubResource("Animation_e1w0m"),
-"RESET": SubResource("Animation_pcp55")
+&"Basic_attack": SubResource("Animation_e1w0m"),
+&"RESET": SubResource("Animation_pcp55")
 }
 
 [node name="basicAttack" type="Area2D"]
@@ -109,7 +109,7 @@ hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_godci")
+&"": SubResource("AnimationLibrary_godci")
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

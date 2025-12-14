@@ -2,10 +2,6 @@ extends CharacterBody2D
 
 signal super_attack_used
 
-@export var speed: float = 3
-@export var sword_damage: int = 2
-@export var health: int = 100
-@export var max_health: int = 100
 @export var death_prefab: PackedScene
 
 @export_category("Ritual")
@@ -14,7 +10,7 @@ signal super_attack_used
 @export var ritual_interval: float = 30
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_progress_bar: ProgressBar = %PlayerLife
+@onready var health_bar: HealthBar = $HealthBar
 @onready var basicAttack = preload("res://scenes/systems/basic_attack.tscn")
 @onready var attackSfx = $attack_sfx as AudioStreamPlayer
 @onready var hitSfx = $hit_sfx as AudioStreamPlayer
@@ -42,7 +38,8 @@ var cutscene_target: Vector2
 func _ready() -> void:
 	var level = get_parent()
 	gameui = level.get_node_or_null("GameUI")
-	health = max_health
+	GameManager.current_health = GameManager.max_health
+	health_bar.setup(GameManager.current_health, GameManager.max_health)
 
 
 func _process(delta: float) -> void:
@@ -66,9 +63,6 @@ func _process(delta: float) -> void:
 		rotate_sprite()
 	play_run_idle_anim()
 
-	health_progress_bar.max_value = max_health
-	health_progress_bar.value = health
-
 
 func _physics_process(delta) -> void:
 	var target_velocity: Vector2
@@ -80,10 +74,10 @@ func _physics_process(delta) -> void:
 			velocity = Vector2.ZERO
 			in_cutscene = false
 		else:
-			target_velocity = dir.normalized() * speed * 100
+			target_velocity = dir.normalized() * GameManager.move_speed * 100
 			velocity = lerp(velocity, target_velocity, 0.1)
 	else:
-		target_velocity = input_vector * speed * 100
+		target_velocity = input_vector * GameManager.move_speed * 100
 		if is_attacking:
 			target_velocity *= 0.5
 		velocity = lerp(velocity, target_velocity, 0.08)
@@ -165,13 +159,14 @@ func collect(amount: int) -> int:
 
 
 func damage(amount: int) -> void:
-	health -= amount
+	GameManager.current_health -= amount
+	health_bar.set_health(GameManager.current_health)
 	hitSfx.play()
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 
-	if health <= 0:
+	if GameManager.current_health <= 0:
 		die()
 
 
@@ -184,9 +179,10 @@ func die() -> void:
 	queue_free()
 
 
-func heal(amount: int) -> int:
-	health = min(max_health, health + amount)
-	return health
+func heal(amount: int) -> void:
+	GameManager.current_health = min(GameManager.max_health, 
+	GameManager.current_health + amount)
+	health_bar.set_health(GameManager.current_health)
 
 
 func spawn_super_attack() -> void:

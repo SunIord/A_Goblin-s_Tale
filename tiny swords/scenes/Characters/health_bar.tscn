@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjguayjd4itdw"]
+
+[ext_resource type="Texture2D" uid="uid://dkmy8cxdue4om" path="res://Assets/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="1_xf4kw"]
+[ext_resource type="Texture2D" uid="uid://p2bum6ruou7s" path="res://Assets/UI/Buttons/Button_Disable_3Slides.png" id="2_b6bg7"]
+[ext_resource type="Script" uid="uid://pv60x24pmwxu" path="res://scenes/Characters/health_bar.gd" id="2_xf4kw"]
+
+[sub_resource type="Theme" id="Theme_b6bg7"]
+
+[node name="Frame" type="TextureProgressBar"]
+offset_left = -40.0
+offset_top = 10.0
+offset_right = 39.0
+offset_bottom = 24.0
+scale = Vector2(1.008656, 1.6530011)
+theme = SubResource("Theme_b6bg7")
+nine_patch_stretch = true
+texture_under = ExtResource("1_xf4kw")
+texture_progress = ExtResource("2_b6bg7")
+script = ExtResource("2_xf4kw")

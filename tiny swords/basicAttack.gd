@@ -2,7 +2,6 @@ extends Area2D
 
 @export var speed: float = 400
 @export var lifetime: float = 0.7
-@export var damage_amount: int = 2
 
 @export_category("Extra Efeitos")
 @export var pierce_targets: bool = false  # TRUE = atravessa vários inimigos
@@ -45,4 +44,4 @@ func _on_body_entered(body):
 # ============================================================
 func _apply_damage(target):
 	if target.has_method("damage"):
-		target.damage(damage_amount)
+		target.damage(GameManager.base_damage)

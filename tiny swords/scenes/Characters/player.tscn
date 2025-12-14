@@ -1,11 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://bsrmhxqcm5ucx"]
+[gd_scene load_steps=30 format=3 uid="uid://bsrmhxqcm5ucx"]
 
 [ext_resource type="Script" uid="uid://r5jnmmys6wpb" path="res://scenes/Characters/player.gd" id="1_jmoox"]
 [ext_resource type="PackedScene" uid="uid://b40ew05fomdxu" path="res://scenes/misc/skull.tscn" id="2_5uqo3"]
 [ext_resource type="PackedScene" uid="uid://s57opg0hd8pf" path="res://scenes/misc/Firespell.tscn" id="3_4aw38"]
 [ext_resource type="Texture2D" uid="uid://b7qxou4sadrpl" path="res://Assets/Factions/Goblins/Torch/Blue/Torch_Blue.png" id="4_vf2g2"]
-[ext_resource type="Texture2D" uid="uid://dhcgvdj8x0jt8" path="res://Assets/UI/Buttons/Button_Blue_3Slides.png" id="5_0wpxf"]
+[ext_resource type="PackedScene" uid="uid://cjguayjd4itdw" path="res://scenes/Characters/health_bar.tscn" id="5_8u6hb"]
 [ext_resource type="AudioStream" uid="uid://ctmjfcq4gay6s" path="res://audios/goblinAttack.wav" id="6_5vcpl"]
+[ext_resource type="Texture2D" uid="uid://biquxmvoomnfh" path="res://Assets/UI/Buttons/Button_Hover_3Slides.png" id="6_jbyc3"]
 [ext_resource type="AudioStream" uid="uid://dyv432cv2anjy" path="res://audios/hit.mp3" id="7_8u6hb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_re60e"]
@@ -162,23 +163,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vq3w"]
 radius = 9.24012
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8qeb"]
-texture = ExtResource("5_0wpxf")
-region_rect = Rect2(0, 0, 192, 64)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opauh"]
-bg_color = Color(0.233162, 0.702951, 0.411018, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-anti_aliasing_size = 0.01
-
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_jmoox")
-health = 90
 death_prefab = ExtResource("2_5uqo3")
 super_attack_prefab = ExtResource("3_4aw38")
 
@@ -197,31 +185,18 @@ debug_color = Color(0.181383, 0.528887, 0.958296, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -40.0
-offset_top = 10.0
-offset_right = 39.0
-offset_bottom = 24.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_m8qeb")
-
-[node name="PlayerLife" type="ProgressBar" parent="Panel"]
-unique_name_in_owner = true
-layout_mode = 1
+[node name="HealthBar" parent="." instance=ExtResource("5_8u6hb")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.5
-offset_top = -5.0
-offset_right = 34.5
-offset_bottom = 2.0
+offset_top = 5.000003
+offset_bottom = 19.000004
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_opauh")
-value = 100.0
-rounded = true
-show_percentage = false
+scale = Vector2(1.0042477, 1.6530011)
+texture_under = ExtResource("6_jbyc3")
 
 [node name="attack_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5vcpl")

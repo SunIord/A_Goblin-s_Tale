@@ -59,6 +59,7 @@ outline_size = 10
 script = ExtResource("1_ukdt8")
 
 [node name="ContainerTitleLevel" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

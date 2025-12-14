@@ -106,3 +106,12 @@ func reset_super_attack():
 
 func _on_super_attack_timer_timeout() -> void:
 	super_attack_ready = true
+	
+func increase_gold():
+	GameManager.gold_count += 1
+
+func increase_death():
+	GameManager.death_count += 1
+	var horde_manager = get_tree().get_first_node_in_group("horde_manager")
+	if horde_manager:
+		horde_manager.on_enemy_killed()

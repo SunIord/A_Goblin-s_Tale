@@ -64,8 +64,6 @@ func start_intro_cutscene():
 	if gameui:
 		gameui.hide_cutscene_ui()
 
-	await get_tree().create_timer(1.5).timeout
-
 	# Voltar zoom normal
 	zoom_camera(Vector2(0.8, 0.8), 1.5)
 

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://287htq7afmae"]
+
+[ext_resource type="Texture2D" uid="uid://dvvb3o5w1gsoe" path="res://Assets/UI/Buttons/Button_Hover_9Slides.png" id="1_i6fen"]
+[ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_sdf6e"]
+[ext_resource type="PackedScene" uid="uid://drhox32vpbgou" path="res://scenes/ui/PowerUpCard.tscn" id="3_nsx80"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct0bx"]
+texture = ExtResource("1_i6fen")
+texture_margin_left = 30.0
+texture_margin_top = 20.0
+texture_margin_right = 32.0
+texture_margin_bottom = 37.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_1wvf5"]
+font = ExtResource("2_sdf6e")
+font_size = 60
+font_color = Color(0.98039216, 0.93333334, 0.42745098, 1)
+outline_size = 15
+outline_color = Color(0.08627451, 0.10980392, 0.18039216, 1)
+
+[node name="PowerUpBanner" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 400)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ct0bx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "PowerUps"
+label_settings = SubResource("LabelSettings_1wvf5")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PowerUpCard" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_nsx80")]
+layout_mode = 2
+
+[node name="PowerUpCard2" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_nsx80")]
+layout_mode = 2
+
+[node name="PowerUpCard3" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_nsx80")]
+layout_mode = 2

@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="PowerUpData" load_steps=3 format=3 uid="uid://bs3ya2fvcvrd0"]
+[gd_resource type="Resource" script_class="PowerUpData" load_steps=4 format=3 uid="uid://bs3ya2fvcvrd0"]
 
 [ext_resource type="Texture2D" uid="uid://irbm42y7k5nt" path="res://Assets/PowerUpIcons/speedIncreaseIcon.png" id="1_0htwp"]
 [ext_resource type="Script" uid="uid://bb78qh4e110w0" path="res://scenes/systems/PowerUps/power_up_data.gd" id="2_75gk5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0htwp"]
+atlas = ExtResource("1_0htwp")
+region = Rect2(11, 5, 46, 48)
 
 [resource]
 script = ExtResource("2_75gk5")
 id = "3"
 title = "Botas muito estilosas"
-description = "Além de ficar MUITO mais estiloso, o conforto dessas botas permitem qeu você se desloque mais rapidamente"
+description = "Além de ficar MUITO estiloso, essas botas permitem que você fique mais rápido"
 price = 400
-icon = ExtResource("1_0htwp")
+icon = SubResource("AtlasTexture_0htwp")

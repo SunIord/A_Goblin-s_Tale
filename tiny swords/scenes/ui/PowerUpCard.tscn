@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://drhox32vpbgou"]
+[gd_scene load_steps=18 format=3 uid="uid://drhox32vpbgou"]
 
 [ext_resource type="Texture2D" uid="uid://dvvb3o5w1gsoe" path="res://Assets/UI/Buttons/Button_Hover_9Slides.png" id="1_8i2do"]
 [ext_resource type="Script" uid="uid://cbqj261g86xg3" path="res://scenes/systems/PowerUps/power_up_card.gd" id="2_1lx0b"]
-[ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="2_6j4nn"]
+[ext_resource type="Texture2D" uid="uid://dpemr247wkdgm" path="res://Assets/UI/Ribbons/Ribbon_Yellow_3Slides.png" id="3_6j4nn"]
 [ext_resource type="FontFile" uid="uid://rxmx4et71ae5" path="res://Assets/font/AlbertTextBold.otf" id="3_8i2do"]
-[ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="4_fyo2m"]
 [ext_resource type="Texture2D" uid="uid://ccgyf6mph2q3k" path="res://Assets/Resources/Resources/G_Idle_(NoShadow).png" id="5_6j4nn"]
 [ext_resource type="Texture2D" uid="uid://bvclmnseaa5vw" path="res://Assets/UI/Buttons/Button_Hover.png" id="5_2456y"]
+[ext_resource type="Texture2D" uid="uid://cwjgvkw5ddl6d" path="res://Assets/UI/Buttons/Button_Red_3Slides_Pressed.png" id="7_1lx0b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fyo2m"]
 texture = ExtResource("1_8i2do")
@@ -14,20 +14,30 @@ expand_margin_left = 13.0
 expand_margin_right = 13.0
 expand_margin_bottom = 13.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcplm"]
+atlas = ExtResource("3_6j4nn")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2456y"]
-texture = ExtResource("2_6j4nn")
+texture = SubResource("AtlasTexture_jcplm")
+texture_margin_left = 55.0
+texture_margin_top = 10.0
+texture_margin_right = 51.0
+texture_margin_bottom = 25.0
 expand_margin_left = 25.0
 expand_margin_right = 25.0
+region_rect = Rect2(0, 0, 192, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyo2m"]
 font = ExtResource("3_8i2do")
-font_size = 24
+font_size = 22
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_1lx0b"]
+base_font = ExtResource("3_8i2do")
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lx0b"]
+line_spacing = 2.0
 font = SubResource("FontVariation_1lx0b")
 font_size = 17
 font_color = Color(0.9955804, 0.99558026, 0.99558026, 1)
@@ -36,9 +46,9 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2456y"]
 line_spacing = 0.0
-font = ExtResource("4_fyo2m")
-font_size = 30
-outline_size = 5
+font = ExtResource("3_8i2do")
+font_size = 25
+outline_size = 7
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lx0b"]
@@ -52,6 +62,11 @@ texture_margin_top = 10.0
 texture_margin_right = 17.0
 texture_margin_bottom = 25.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jcplm"]
+texture = ExtResource("7_1lx0b")
+texture_margin_top = 1.0
+region_rect = Rect2(0, -1, 191, 65)
+
 [node name="PowerUpCard" type="Panel"]
 offset_right = 220.0
 offset_bottom = 280.0
@@ -61,62 +76,62 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_fyo2m")
 script = ExtResource("2_1lx0b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9978546, 1)
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 0
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_2456y")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Panel"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 4
+anchors_preset = -1
+anchor_left = 0.51500005
+anchor_top = 0.393
+anchor_right = 0.51500005
+anchor_bottom = 0.393
+offset_left = -22.474194
+offset_top = -22.480814
+offset_right = 22.52581
+offset_bottom = 22.519186
+expand_mode = 2
 
-[node name="PowerName" type="Label" parent="VBoxContainer"]
+[node name="PowerName" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "bla bla"
 label_settings = SubResource("LabelSettings_fyo2m")
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 11
-theme_override_constants/margin_right = 8
-
-[node name="PowerDescription" type="Label" parent="VBoxContainer/MarginContainer2"]
+[node name="PowerDescription" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-text = "bla blakkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+text = "bla blakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
 label_settings = SubResource("LabelSettings_1lx0b")
 autowrap_mode = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_constants/margin_left = 9
-theme_override_constants/margin_right = 4
+theme_override_constants/separation = 3
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer3"]
-layout_mode = 2
-
-[node name="PowerPrice" type="Label" parent="VBoxContainer/MarginContainer3/HBoxContainer"]
+[node name="PowerPrice" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -126,20 +141,22 @@ label_settings = SubResource("LabelSettings_2456y")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(35, 12)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 10)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_1lx0b")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BuyButton" type="Button" parent="VBoxContainer/MarginContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(110, 0)
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_fyo2m")
-theme_override_font_sizes/font_size = 19
+theme_override_fonts/font = ExtResource("3_8i2do")
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxTexture_6j4nn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jcplm")
 text = "Comprar"

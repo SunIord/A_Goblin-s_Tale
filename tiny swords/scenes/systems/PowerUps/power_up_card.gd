@@ -1,11 +1,11 @@
 extends Control
 class_name PowerUpCard
 
-@onready var icon: TextureRect = $VBoxContainer/Panel/TextureRect
-@onready var name_label: Label = $VBoxContainer/PowerName
-@onready var description_label: Label = $VBoxContainer/MarginContainer2/PowerDescription
-@onready var price_label: Label = $VBoxContainer/MarginContainer3/HBoxContainer/PowerPrice
-@onready var buy_button: Button = $VBoxContainer/MarginContainer3/HBoxContainer/BuyButton
+@onready var icon: TextureRect = $MarginContainer/VBoxContainer/Panel/TextureRect
+@onready var name_label: Label = $MarginContainer/VBoxContainer/PowerName
+@onready var description_label: Label = $MarginContainer/VBoxContainer/PowerDescription
+@onready var price_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/PowerPrice
+@onready var buy_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/BuyButton
 
 var data: PowerUpData
 

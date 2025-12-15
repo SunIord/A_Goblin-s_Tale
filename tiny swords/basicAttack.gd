@@ -21,7 +21,6 @@ func _ready():
 	# Configura os sprites baseado no estado
 	_setup_sprites()
 	_start_lifetime()
-	animationPlayer.play("Basic_attack")
 
 
 func _process(delta):
@@ -33,6 +32,7 @@ func _process(delta):
 # ============================================================
 func set_is_upgraded(upgraded: bool):
 	is_upgraded = upgraded
+	_setup_sprites()
 	print("Ataque: Upgrade status = ", is_upgraded)  # DEBUG
 
 
@@ -42,12 +42,10 @@ func set_is_upgraded(upgraded: bool):
 func _setup_sprites():
 	if fire1_sprite and fire2_sprite:
 		if is_upgraded:
-			fire1_sprite.visible = false
-			fire2_sprite.visible = true
+			animationPlayer.play("Basic_attack_blue")
 			print("Ataque: Mostrando Fire_2 (UPGRADED)")
 		else:
-			fire1_sprite.visible = true
-			fire2_sprite.visible = false
+			animationPlayer.play("Basic_attack")
 			print("Ataque: Mostrando Fire_1 (NORMAL)")
 
 
@@ -66,7 +64,6 @@ func _start_lifetime():
 func _on_body_entered(body):
 	if body.is_in_group("enemies") or body.is_in_group("sheeps"):
 		_apply_damage(body)
-
 
 # ============================================================
 #   DANO

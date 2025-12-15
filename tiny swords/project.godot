@@ -25,6 +25,12 @@ Bttn="*res://bttn.tscn"
 
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
+theme/custom_font="uid://csg3yg6tsxdt8"
+
 [input]
 
 move_right={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dehumpte632ki"]
+[gd_scene load_steps=6 format=3 uid="uid://dehumpte632ki"]
 
 [ext_resource type="Texture2D" uid="uid://d4e163slxbemi" path="res://Assets/Decorations/Nature/Tree.png" id="1_fe3ob"]
 
@@ -33,13 +33,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 5]
 }
 
-[sub_resource type="Animation" id="Animation_8clld"]
-resource_name = "new_animation"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r24ev"]
 _data = {
 &"RESET": SubResource("Animation_j0vwd"),
-&"new_animation": SubResource("Animation_8clld"),
 &"tree_mov": SubResource("Animation_7ei6w")
 }
 

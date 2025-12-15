@@ -42,5 +42,9 @@ func _process(delta):
 		return_to_hub()
 
 func return_to_hub():
+	# Marca a arena atual como completada
+	var current_scene = get_tree().current_scene.name.to_lower()  # "level_1", "level_2", etc.
+	GameManager.mark_arena_completed(current_scene)
+	
 	# Volta para o hub
 	get_tree().change_scene_to_file("res://scenes/Areas/Hub.tscn")

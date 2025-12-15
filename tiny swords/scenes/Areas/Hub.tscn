@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dwd3iaaqekbp7"]
+[gd_scene load_steps=76 format=4 uid="uid://dwd3iaaqekbp7"]
 
 [ext_resource type="Script" uid="uid://bfu13mwna7xyf" path="res://scenes/Areas/Hub.gd" id="1_fokdv"]
 [ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_4vvjd"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bv50ypkjh2ahu" path="res://scenes/Areas/simple_house.tscn" id="41_4brqe"]
 [ext_resource type="PackedScene" uid="uid://b7rl5dqey8u1l" path="res://scenes/Areas/Big Goblin House.tscn" id="41_cfcn5"]
 [ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/Characters/enemys/sheep.tscn" id="42_kpg8r"]
+[ext_resource type="PackedScene" uid="uid://bfmdym28li6gq" path="res://door_area_2.tscn" id="43_kt0dq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v65kt"]
 texture = ExtResource("3_umqp4")
@@ -1875,3 +1876,6 @@ position = Vector2(-935, 2205.0002)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="click_button" type="AudioStreamPlayer" parent="."]
+
+[node name="door_area_2" parent="." instance=ExtResource("43_kt0dq")]
+position = Vector2(-1574, -18)

@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 300.0
-@export var damage: int = 5  # Quantidade de dano que a flecha causa
+@export var damage: int = 10  # Quantidade de dano que a flecha causa
 @onready var shootSfx = $shoot_sfx as AudioStreamPlayer
 
 var direction: Vector2 = Vector2.RIGHT

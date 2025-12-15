@@ -79,3 +79,20 @@ func reset():
 
 func reset_gold():
 	gold_count = 0
+
+# Sistema de progresso
+var completed_arenas: Array[String] = []  # Ex: ["level_1", "level_2"]
+
+# -------------------------------------------------
+# ARENA PROGRESS SYSTEM
+# -------------------------------------------------
+func mark_arena_completed(arena_name: String):
+	if not is_arena_completed(arena_name):
+		completed_arenas.append(arena_name)
+		print("Arena marcada como completada:", arena_name)
+
+func is_arena_completed(arena_name: String) -> bool:
+	return completed_arenas.has(arena_name)
+
+func get_completed_arenas() -> Array[String]:
+	return completed_arenas.duplicate()

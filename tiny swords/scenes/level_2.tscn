@@ -1,7 +1,10 @@
-[gd_scene load_steps=61 format=4 uid="uid://lwchehaydw0q"]
+[gd_scene load_steps=73 format=4 uid="uid://lwchehaydw0q"]
 
 [ext_resource type="Texture2D" uid="uid://ce5qsr18cafjx" path="res://Assets/Terrain/Water/Water Background color.png" id="1_1sb0y"]
+[ext_resource type="Script" uid="uid://bbajd3wabt6hg" path="res://scenes/level_2.gd" id="1_taw0e"]
+[ext_resource type="PackedScene" uid="uid://cfgojn0wtlak5" path="res://scenes/ui/gameover.tscn" id="2_nquw4"]
 [ext_resource type="Texture2D" uid="uid://dkbhjf4w3wmfn" path="res://Assets/Terrain/Water/Water.png" id="2_vhnap"]
+[ext_resource type="PackedScene" uid="uid://ybfj5wapdd5b" path="res://scenes/ui/victory.tscn" id="3_3buw8"]
 [ext_resource type="Texture2D" uid="uid://28xf4hgue3mu" path="res://Assets/Terrain/Water/No collision Water.png" id="3_63d2t"]
 [ext_resource type="Texture2D" uid="uid://bv05viss0fh0a" path="res://Assets/Terrain/Ground/Shadow.png" id="3_vwfin"]
 [ext_resource type="Texture2D" uid="uid://bcdiyyd7kn7ri" path="res://Assets/Terrain/Ground/Shadows.png" id="4_63d2t"]
@@ -29,6 +32,15 @@
 [ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="26_va6c3"]
 [ext_resource type="PackedScene" uid="uid://bs41k1ypkqn6v" path="res://scenes/Areas/medium_rock.tscn" id="27_73m23"]
 [ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/Characters/enemys/sheep.tscn" id="28_45kkt"]
+[ext_resource type="AudioStream" uid="uid://b52ttq46li4gh" path="res://audios/in_the_arena.mp3" id="31_7egwj"]
+[ext_resource type="Script" uid="uid://ljq82l53nwuv" path="res://scenes/systems/Horde_Manager.gd" id="34_xc1pa"]
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="35_j2jmx"]
+[ext_resource type="Resource" uid="uid://owbffosfsr2d" path="res://scenes/systems/Horde_tutorial.tres" id="36_bbkd8"]
+[ext_resource type="Resource" uid="uid://bkgoul7laubjk" path="res://scenes/systems/Horde_survive.tres" id="37_kqn1b"]
+[ext_resource type="Resource" uid="uid://3a5qff33tjp7" path="res://scenes/systems/Horde_kill_40.tres" id="38_y6uxt"]
+[ext_resource type="PackedScene" uid="uid://287htq7afmae" path="res://scenes/ui/PowerUpBanner.tscn" id="39_r72fi"]
+[ext_resource type="PackedScene" uid="uid://btlis1hyq7t6t" path="res://scenes/systems/mob_spawner.tscn" id="40_00rct"]
+[ext_resource type="PackedScene" uid="uid://j184hts6gb1t" path="res://scenes/ui/gameUI.tscn" id="41_tv75f"]
 
 [sub_resource type="TileSet" id="TileSet_kqn1b"]
 tile_size = Vector2i(64, 64)
@@ -1099,6 +1111,9 @@ sources/13 = SubResource("TileSetAtlasSource_xc1pa")
 sources/14 = SubResource("TileSetAtlasSource_j2jmx")
 
 [node name="level_2" type="Node2D"]
+script = ExtResource("1_taw0e")
+game_over_ui = ExtResource("2_nquw4")
+victory_ui = ExtResource("3_3buw8")
 
 [node name="arena" type="TileMapLayer" parent="."]
 position = Vector2(762, 465)
@@ -1510,3 +1525,22 @@ scale = Vector2(3.7307703, 4.754384)
 texture = ExtResource("16_srjk8")
 region_enabled = true
 region_rect = Rect2(0, 74, 65, 171)
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_7egwj")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="HordeManager" type="Node2D" parent="." groups=["horde_manager"]]
+position = Vector2(221, -17)
+script = ExtResource("34_xc1pa")
+hordes = Array[ExtResource("35_j2jmx")]([ExtResource("36_bbkd8"), ExtResource("37_kqn1b"), ExtResource("38_y6uxt")])
+
+[node name="PowerUpBanner" parent="." instance=ExtResource("39_r72fi")]
+visible = false
+
+[node name="MobSpawner" parent="." instance=ExtResource("40_00rct")]
+position = Vector2(-11, 0)
+scale = Vector2(2.3600001, 2.3600001)
+
+[node name="GameUI" parent="." instance=ExtResource("41_tv75f")]

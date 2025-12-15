@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @export var generation_amount: int = 10
-@export var lifetime: float = 8.0   # ← Tempo até a carne sumir
+@export var lifetime: float = 8.0 
 
 @onready var Area2d: Area2D = $Area2D
 @onready var sfx = $meat_sfx as AudioStreamPlayer

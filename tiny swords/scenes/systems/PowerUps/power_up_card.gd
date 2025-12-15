@@ -19,11 +19,59 @@ func setup(power_data: PowerUpData) -> void:
 	if power_data.icon:
 		icon.texture = power_data.icon
 
-	buy_button.pressed.connect(_on_buy_pressed)
+	# Verifica se já foi comprado
+	if GameManager.is_powerup_purchased(data.id):
+		buy_button.text = "COMPRADO"
+		buy_button.disabled = true
+	else:
+		buy_button.pressed.connect(_on_buy_pressed)
 
 func _on_buy_pressed():
+	if GameManager.gold_count < data.price:
+		print("Ouro insuficiente!")
+		return
+	
+	# Compra o power-up
+	GameManager.gold_count -= data.price
+	GameManager.purchase_powerup(data.id)
+	
+	# Aplica o efeito específico
+	_apply_powerup_effect()
+	
 	print("Comprou:", data.id)
-	# Aqui depois você:
-	# - desconta gold
-	# - aplica efeito
-	# - fecha banner
+	
+	# Atualiza UI
+	buy_button.text = "COMPRADO"
+	buy_button.disabled = true
+
+func _apply_powerup_effect():
+	var powerup_id = str(data.id)  # Converte para string para segurança
+	
+	print("Aplicando power-up ID:", powerup_id)
+	
+	match powerup_id:
+		"health_upgrade", "1":
+			# Calcula a porcentagem atual de vida ANTES do upgrade
+			var health_percentage_before = float(GameManager.current_health) / float(GameManager.max_health)
+			print("Porcentagem de vida antes:", health_percentage_before * 100, "%")
+			
+			# Aumenta a vida máxima
+			var extra_health = GameManager.max_health * 0.10  # 10%
+			GameManager.max_health += int(extra_health)
+			
+			# Aumenta a vida atual PROPORCIONALMENTE
+			GameManager.current_health = int(GameManager.max_health * health_percentage_before)
+			
+			print("Vida aumentada para:", GameManager.max_health)
+			print("Vida atual ajustada para:", GameManager.current_health)
+		
+		"damage_upgrade", "2":
+			GameManager.base_damage += 2
+			print("Dano aumentado para:", GameManager.base_damage)
+		
+		"speed_upgrade", "3":
+			GameManager.move_speed *= 1.25  # +25%
+			print("Velocidade aumentada para:", GameManager.move_speed)
+		
+		_:
+			print("Power-up desconhecido:", powerup_id)

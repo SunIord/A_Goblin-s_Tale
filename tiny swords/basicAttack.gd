@@ -4,17 +4,22 @@ extends Area2D
 @export var lifetime: float = 0.7
 
 @export_category("Extra Efeitos")
-@export var pierce_targets: bool = false  # TRUE = atravessa vários inimigos
+@export var pierce_targets: bool = false
 @export var hit_vfx: PackedScene
 @export var hit_sfx: AudioStream
 
 @onready var damage_area: Area2D = $Area
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var fire1_sprite: Sprite2D = $Fire_1
+@onready var fire2_sprite: Sprite2D = $Fire_2
 
 var direction: Vector2 = Vector2.RIGHT
+var is_upgraded: bool = false
 
 
 func _ready():
+	# Configura os sprites baseado no estado
+	_setup_sprites()
 	_start_lifetime()
 	animationPlayer.play("Basic_attack")
 
@@ -24,7 +29,30 @@ func _process(delta):
 
 
 # ============================================================
-#   Tempo de vida sem Timer
+#   Método público para setar o estado do upgrade
+# ============================================================
+func set_is_upgraded(upgraded: bool):
+	is_upgraded = upgraded
+	print("Ataque: Upgrade status = ", is_upgraded)  # DEBUG
+
+
+# ============================================================
+#   Configura os sprites (um visível, outro invisível)
+# ============================================================
+func _setup_sprites():
+	if fire1_sprite and fire2_sprite:
+		if is_upgraded:
+			fire1_sprite.visible = false
+			fire2_sprite.visible = true
+			print("Ataque: Mostrando Fire_2 (UPGRADED)")
+		else:
+			fire1_sprite.visible = true
+			fire2_sprite.visible = false
+			print("Ataque: Mostrando Fire_1 (NORMAL)")
+
+
+# ============================================================
+#   Tempo de vida
 # ============================================================
 func _start_lifetime():
 	await get_tree().create_timer(lifetime).timeout
@@ -33,11 +61,12 @@ func _start_lifetime():
 
 
 # ============================================================
-#   Quando o ataque colide com um inimigo
+#   Quando o ataque colide
 # ============================================================
 func _on_body_entered(body):
-		if body.is_in_group("enemies") or body.is_in_group("sheeps"):
-			_apply_damage(body)
+	if body.is_in_group("enemies") or body.is_in_group("sheeps"):
+		_apply_damage(body)
+
 
 # ============================================================
 #   DANO

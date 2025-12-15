@@ -69,7 +69,6 @@ func _physics_process(delta) -> void:
 
 	if in_cutscene:
 		var dir = cutscene_target - global_position
-
 		if dir.length() < 5:
 			velocity = Vector2.ZERO
 			in_cutscene = false
@@ -119,6 +118,11 @@ func spawn_basic_attack() -> void:
 	fire_spawned_in_this_attack = true
 
 	var attack_instance = basicAttack.instantiate()
+	
+	# PASSA O ESTADO DO UPGRADE PARA O ATAQUE
+	var is_upgraded = GameManager.is_powerup_purchased("damage_upgrade") or GameManager.is_powerup_purchased("2")
+	attack_instance.set_is_upgraded(is_upgraded)
+	
 	var attack_direction = Vector2.LEFT if animation_player.flip_h else Vector2.RIGHT
 	attack_instance.direction = attack_direction
 	attack_instance.position = global_position + attack_direction * 70 + Vector2(0, -35)

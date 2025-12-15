@@ -1,6 +1,7 @@
 extends Node
 
 signal game_over
+signal powerup_purchased(powerup_id: String)  # Novo sinal
 
 # -------------------------------------------------
 # PLAYER STATS (POWER-UPS BÁSICOS)
@@ -8,7 +9,7 @@ signal game_over
 var max_health: int = 100
 var current_health: int = 100
 var move_speed: float = 3.0
-var base_damage: int = 2
+var base_damage: int = 2  # DANO BASE DO PLAYER
 
 # -------------------------------------------------
 # GAME STATE
@@ -25,9 +26,20 @@ var current_level: int = 0
 var horde: int = 1
 var level1_cutscene_played: bool = false
 
-# ADICIONE ESTAS VARIÁVEIS (opcional para estatísticas):
-var total_kills: int = 0
-var total_damage_taken: int = 0
+# NOVO: Sistema de power-ups comprados
+var purchased_powerups: Array[String] = []  # IDs dos power-ups comprados
+
+# -------------------------------------------------
+# POWER-UP SYSTEM
+# -------------------------------------------------
+func purchase_powerup(powerup_id: String):
+	if not is_powerup_purchased(powerup_id):
+		purchased_powerups.append(powerup_id)
+		powerup_purchased.emit(powerup_id)
+		print("Power-up comprado:", powerup_id)
+
+func is_powerup_purchased(powerup_id: String) -> bool:
+	return purchased_powerups.has(powerup_id)
 
 # -------------------------------------------------
 # HORDE / LEVEL
@@ -58,8 +70,9 @@ func reset():
 	death_count = 0
 	time_remaining = 0.0
 
-	# reseta stats do player
+	# reseta stats do player (MAS MANTÉM DANO UPGRADE!)
 	current_health = max_health
+	# NÃO reseta base_damage aqui - upgrades são permanentes
 
 	for connection in game_over.get_connections():
 		game_over.disconnect(connection.callable)

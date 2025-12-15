@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://287htq7afmae"]
+[gd_scene load_steps=14 format=3 uid="uid://287htq7afmae"]
 
+[ext_resource type="Script" uid="uid://cr4e81e4wwkfc" path="res://scenes/systems/PowerUps/power_up_banner.gd" id="1_ct0bx"]
 [ext_resource type="Texture2D" uid="uid://dvvb3o5w1gsoe" path="res://Assets/UI/Buttons/Button_Hover_9Slides.png" id="1_i6fen"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_sdf6e"]
+[ext_resource type="Script" uid="uid://bb78qh4e110w0" path="res://scenes/systems/PowerUps/power_up_data.gd" id="3_1wvf5"]
 [ext_resource type="PackedScene" uid="uid://drhox32vpbgou" path="res://scenes/ui/PowerUpCard.tscn" id="3_nsx80"]
+[ext_resource type="Resource" uid="uid://v32iv2sblivf" path="res://scenes/systems/PowerUps/increase_life.tres" id="4_3c3j7"]
+[ext_resource type="Resource" uid="uid://sdtppapslfwv" path="res://scenes/systems/PowerUps/increase_damage.tres" id="5_3c3j7"]
+[ext_resource type="Resource" uid="uid://bs3ya2fvcvrd0" path="res://scenes/systems/PowerUps/increase_speed.tres" id="6_67s7h"]
+[ext_resource type="Texture2D" uid="uid://cy8fj3i04xr2f" path="res://Assets/UI/Buttons/Button_Red.png" id="9_67s7h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct0bx"]
 texture = ExtResource("1_i6fen")
@@ -15,12 +21,27 @@ axis_stretch_vertical = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_1wvf5"]
 font = ExtResource("2_sdf6e")
-font_size = 60
+font_size = 50
 font_color = Color(0.98039216, 0.93333334, 0.42745098, 1)
 outline_size = 15
 outline_color = Color(0.08627451, 0.10980392, 0.18039216, 1)
 
+[sub_resource type="Theme" id="Theme_67s7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81rit"]
+texture = ExtResource("9_67s7h")
+texture_margin_left = 17.0
+texture_margin_top = 10.0
+texture_margin_right = 17.0
+texture_margin_bottom = 25.0
+
 [node name="PowerUpBanner" type="CanvasLayer"]
+offset = Vector2(60, 110)
+scale = Vector2(1.3, 1.3)
+transform = Transform2D(1.3, 0, 0, 1.3, 60, 110)
+script = ExtResource("1_ct0bx")
+power_up_card_scene = ExtResource("3_nsx80")
+available_powerups = Array[ExtResource("3_1wvf5")]([ExtResource("4_3c3j7"), ExtResource("5_3c3j7"), ExtResource("6_67s7h")])
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(800, 400)
@@ -36,11 +57,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 260
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 27
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "PowerUps"
 label_settings = SubResource("LabelSettings_1wvf5")
 horizontal_alignment = 1
+
+[node name="LeaveButton" type="Button" parent="Panel/VBoxContainer/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = SubResource("Theme_67s7h")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sdf6e")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxTexture_81rit")
+theme_override_styles/hover = SubResource("StyleBoxTexture_81rit")
+text = "Sair
+"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2

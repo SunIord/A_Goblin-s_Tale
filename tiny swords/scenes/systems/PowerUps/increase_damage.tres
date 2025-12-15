@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PowerUpData" load_steps=4 format=3 uid="uid://sdtppapslfwv"]
+
+[ext_resource type="Texture2D" uid="uid://32bkqom3ld5a" path="res://Assets/Effects/Fire/Fire_blue.png" id="1_8htbq"]
+[ext_resource type="Script" uid="uid://bb78qh4e110w0" path="res://scenes/systems/PowerUps/power_up_data.gd" id="2_077sy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_077sy"]
+atlas = ExtResource("1_8htbq")
+region = Rect2(0, 0, 127, 128)
+
+[resource]
+script = ExtResource("2_077sy")
+id = "2"
+title = "Fogo impetuoso"
+description = "Essa tipo de chama concede ao seu ataque básico +2 de dano"
+price = 400
+icon = SubResource("AtlasTexture_077sy")

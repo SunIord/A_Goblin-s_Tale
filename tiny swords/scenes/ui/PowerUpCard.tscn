@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drhox32vpbgou"]
+[gd_scene load_steps=16 format=3 uid="uid://drhox32vpbgou"]
 
 [ext_resource type="Texture2D" uid="uid://dvvb3o5w1gsoe" path="res://Assets/UI/Buttons/Button_Hover_9Slides.png" id="1_8i2do"]
 [ext_resource type="Script" uid="uid://cbqj261g86xg3" path="res://scenes/systems/PowerUps/power_up_card.gd" id="2_1lx0b"]
@@ -25,8 +25,11 @@ font_size = 24
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_1lx0b"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_1lx0b"]
-font = ExtResource("4_fyo2m")
+font = SubResource("FontVariation_1lx0b")
+font_size = 17
 font_color = Color(0.9955804, 0.99558026, 0.99558026, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -85,6 +88,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 4
 
 [node name="PowerName" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -94,8 +98,8 @@ horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 9
-theme_override_constants/margin_right = 4
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_right = 8
 
 [node name="PowerDescription" type="Label" parent="VBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(0, 60)

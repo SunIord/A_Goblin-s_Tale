@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" load_steps=3 format=3 uid="uid://v32iv2sblivf"]
+
+[ext_resource type="Texture2D" uid="uid://dien7gm5hipav" path="res://Assets/PowerUpIcons/Icon22.png" id="1_85hev"]
+[ext_resource type="Script" uid="uid://bb78qh4e110w0" path="res://scenes/systems/PowerUps/power_up_data.gd" id="2_m2h3f"]
+
+[resource]
+script = ExtResource("2_m2h3f")
+id = "1"
+title = "Poção de vida"
+description = "Ao tomar essa poção de cura, sua vida irá aumentar em 10%"
+price = 200
+icon = ExtResource("1_85hev")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://df4bjixu1r0cb"]
+[gd_scene load_steps=8 format=3 uid="uid://df4bjixu1r0cb"]
 
 [ext_resource type="Script" uid="uid://cgtc2k245k5w0" path="res://basicAttack.gd" id="1_j284q"]
 [ext_resource type="Texture2D" uid="uid://xyo3bxdympm5" path="res://Assets/Effects/Fire/Fire.png" id="2_v5qgf"]
+[ext_resource type="Texture2D" uid="uid://32bkqom3ld5a" path="res://Assets/Effects/Fire/Fire_blue.png" id="3_24vct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jvqsy"]
 radius = 10.4189
@@ -11,7 +12,7 @@ resource_name = "Basic_attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/path = NodePath("Fire_1:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/path = NodePath("Fire_1:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/path = NodePath("Fire_1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -50,7 +51,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/path = NodePath("Fire_1:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/path = NodePath("Fire_1:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -74,7 +75,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/path = NodePath("Fire_1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -101,10 +102,17 @@ script = ExtResource("1_j284q")
 scale = Vector2(3.4, 4.08)
 shape = SubResource("CircleShape2D_jvqsy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Fire_1" type="Sprite2D" parent="."]
 z_index = 4
 z_as_relative = false
 texture = ExtResource("2_v5qgf")
+hframes = 7
+
+[node name="Fire_2" type="Sprite2D" parent="."]
+visible = false
+z_index = 4
+z_as_relative = false
+texture = ExtResource("3_24vct")
 hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

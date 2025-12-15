@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name PowerUpBanner
 
 @export var power_up_card_scene: PackedScene
@@ -25,3 +25,7 @@ func pick_random_powerups(amount: int) -> Array[PowerUpData]:
 	var copy = available_powerups.duplicate()
 	copy.shuffle()
 	return copy.slice(0, amount)
+
+
+func _on_leave_button_pressed() -> void:
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://dcjeha31itydj"]
+[gd_scene load_steps=75 format=4 uid="uid://dcjeha31itydj"]
 
 [ext_resource type="Script" uid="uid://bh8dmk2n0fn5t" path="res://scenes/level_1.gd" id="1_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="1_3hls8"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dlrthkevxmfj6" path="res://Assets/Decorations/Buildings/Monastery/Red_Monastery.png" id="32_v8pws"]
 [ext_resource type="Texture2D" uid="uid://cith8w34fqsw2" path="res://Assets/Decorations/18.png" id="35_rscm6"]
 [ext_resource type="Texture2D" uid="uid://cnnx6rsplm1uk" path="res://Assets/Decorations/17.png" id="36_wom8k"]
+[ext_resource type="PackedScene" uid="uid://287htq7afmae" path="res://scenes/ui/PowerUpBanner.tscn" id="37_tdlki"]
 
 [sub_resource type="TileSet" id="TileSet_j7kpp"]
 tile_size = Vector2i(64, 64)
@@ -1373,3 +1374,6 @@ parameters/looping = true
 
 [node name="CutsceneEndPoint" type="Marker2D" parent="."]
 position = Vector2(-1642, -26)
+
+[node name="PowerUpBanner" parent="." instance=ExtResource("37_tdlki")]
+visible = false

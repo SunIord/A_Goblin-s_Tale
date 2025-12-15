@@ -1155,7 +1155,7 @@ tile_set = SubResource("TileSet_srjk8")
 [node name="player" parent="." instance=ExtResource("22_bbkd8")]
 visibility_layer = 8
 z_index = 4
-position = Vector2(-3357, -1837)
+position = Vector2(-3257, 1092)
 
 [node name="archer" parent="." instance=ExtResource("26_va6c3")]
 position = Vector2(-311, 22)
@@ -1173,7 +1173,7 @@ position = Vector2(-2419, 1666)
 position = Vector2(639, -969)
 
 [node name="sheep4" parent="Sheeps" instance=ExtResource("28_45kkt")]
-position = Vector2(-3748, -1691)
+position = Vector2(-3781.0002, -1684.0001)
 
 [node name="sheep7" parent="Sheeps" instance=ExtResource("28_45kkt")]
 position = Vector2(-4343, -1464)
@@ -1313,6 +1313,9 @@ position = Vector2(-1295, 369)
 
 [node name="tree_island" parent="StaticBody\'s/trees_sheep_island" instance=ExtResource("45_r72fi")]
 position = Vector2(-3762, -2101)
+
+[node name="tree_island4" parent="StaticBody\'s/trees_sheep_island" instance=ExtResource("45_r72fi")]
+position = Vector2(-3241, -1511)
 
 [node name="tree_island2" parent="StaticBody\'s/trees_sheep_island" instance=ExtResource("45_r72fi")]
 position = Vector2(-3854, -1602)

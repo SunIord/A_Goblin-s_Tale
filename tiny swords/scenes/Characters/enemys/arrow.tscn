@@ -29,7 +29,7 @@ wait_time = 3.0
 
 [node name="shoot_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ttm7t")
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m74p6")

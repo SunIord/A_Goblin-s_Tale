@@ -41,8 +41,9 @@ func _on_area_2d_body_entered(body):
 		can_eat = false  # Previne coletas múltiplas
 		
 		# CALCULA A CURA REALMENTE NECESSÁRIA
-		var current_health = body.health
-		var max_health = body.max_health
+		# Usa GameManager em vez de propriedades do player
+		var current_health = GameManager.current_health
+		var max_health = GameManager.max_health
 		var heal_possible = max_health - current_health
 		
 		# Toca o som de coleta (SOM RESTAURADO)
@@ -51,6 +52,7 @@ func _on_area_2d_body_entered(body):
 		audio_player.global_position = global_position
 		audio_player.play()
 		audio_player.finished.connect(audio_player.queue_free)
+		
 		# Só cura se o player precisar
 		if heal_possible > 0:
 			# A cura não pode exceder o necessário nem a geração da carne
@@ -61,13 +63,10 @@ func _on_area_2d_body_entered(body):
 			
 			print("Carne consumida! Cura aplicada: ", actual_heal, 
 				  " | Vida antes: ", current_health, 
-				  " | Vida depois: ", body.health)
+				  " | Vida depois: ", GameManager.current_health)
 		else:
 			# Player já está com vida cheia - não faz nada visual/sonoro
 			print("Player já está com vida cheia. Carne ignorada.")
 		
 		# Remove a carne (agora funciona)
 		queue_free()
-
-#func _on_animation_player_animation_finished(anim_name):
-	#can_eat = true

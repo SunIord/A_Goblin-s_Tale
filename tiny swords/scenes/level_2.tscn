@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://lwchehaydw0q"]
+[gd_scene load_steps=63 format=4 uid="uid://lwchehaydw0q"]
 
 [ext_resource type="Texture2D" uid="uid://ce5qsr18cafjx" path="res://Assets/Terrain/Water/Water Background color.png" id="1_1sb0y"]
 [ext_resource type="Texture2D" uid="uid://dkbhjf4w3wmfn" path="res://Assets/Terrain/Water/Water.png" id="2_vhnap"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bsrmhxqcm5ucx" path="res://scenes/Characters/player.tscn" id="22_bbkd8"]
 [ext_resource type="PackedScene" uid="uid://dseafbfr01jur" path="res://scenes/Areas/little_rock.tscn" id="24_bgibu"]
 [ext_resource type="PackedScene" uid="uid://dxvsylqmfa4ft" path="res://scenes/Areas/huge_rock.tscn" id="25_73m23"]
+[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="26_va6c3"]
 
 [sub_resource type="TileSet" id="TileSet_kqn1b"]
 tile_size = Vector2i(64, 64)
@@ -1030,3 +1031,5 @@ position = Vector2(-2994, 1116)
 
 [node name="StaticBody2D10" parent="rocks/Large" instance=ExtResource("25_73m23")]
 position = Vector2(-2904, 1117)
+
+[node name="archer" parent="." instance=ExtResource("26_va6c3")]

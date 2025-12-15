@@ -1,32 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfgojn0wtlak5"]
+[gd_scene load_steps=11 format=3 uid="uid://ybfj5wapdd5b"]
 
-[ext_resource type="Texture2D" uid="uid://d1c4t0m5ls1m5" path="res://Assets/UI/Banners/Carved_9Slides.png" id="1_iyb03"]
-[ext_resource type="Script" uid="uid://bwaap528vcrxd" path="res://scenes/ui/gameover.gd" id="1_orisb"]
-[ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_aqb6t"]
-[ext_resource type="Texture2D" uid="uid://b8wseoagn48ds" path="res://Assets/UI/Ribbons/Ribbon_Red_3Slides.png" id="3_hejtt"]
-[ext_resource type="AudioStream" uid="uid://fci5vi6ikldr" path="res://audios/slay.mp3" id="5_4pfak"]
+[ext_resource type="Script" uid="uid://cdm8i7s3xtxxa" path="res://scenes/ui/victory.gd" id="1_xfc8j"]
+[ext_resource type="Texture2D" uid="uid://d1c4t0m5ls1m5" path="res://Assets/UI/Banners/Carved_9Slides.png" id="2_olkpf"]
+[ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="3_n1s74"]
+[ext_resource type="Texture2D" uid="uid://lbu4m7olyb4j" path="res://Assets/UI/Ribbons/Ribbon_Blue_3Slides.png" id="4_xrgte"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_debae"]
-texture = ExtResource("1_iyb03")
+texture = ExtResource("2_olkpf")
 texture_margin_left = 48.0
 texture_margin_top = 48.0
 texture_margin_right = 48.0
 texture_margin_bottom = 48.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_j8gi2"]
-font = ExtResource("2_aqb6t")
+font = ExtResource("3_n1s74")
 font_size = 42
 font_color = Color(0.00566115, 0.00566115, 0.00566115, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vm5y4"]
-texture = ExtResource("3_hejtt")
-texture_margin_left = 64.0
-texture_margin_right = 64.0
-axis_stretch_horizontal = 2
-region_rect = Rect2(0, 0, 192, 64)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_px5c3"]
+texture = ExtResource("4_xrgte")
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ijpb"]
-font = ExtResource("2_aqb6t")
+font = ExtResource("3_n1s74")
 font_size = 50
 font_color = Color(0.00566115, 0.00566115, 0.00566115, 1)
 outline_size = 7
@@ -34,8 +29,8 @@ outline_color = Color(0.977937, 0.977937, 0.977937, 1)
 shadow_size = 9
 shadow_color = Color(0.00784314, 0.00784314, 0.00784314, 0.960784)
 
-[sub_resource type="Animation" id="Animation_u1ug8"]
-resource_name = "BACKGROUNd_COLOR"
+[sub_resource type="Animation" id="Animation_aluhx"]
+resource_name = "new_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,9 +39,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(1.035265, 1),
 "update": 0,
-"values": [Color(0.67451, 0, 0, 0), Color(0.67451, 0, 0, 0.576471)]
+"values": [Color(0.8156863, 0.88235295, 1, 0), Color(0.1596702, 0.4340259, 1, 0.5764706)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -58,7 +53,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 0.353553),
 "update": 0,
-"values": [Vector2(-425, 103), Vector2(359, 103)]
+"values": [Vector2(-600, 103), Vector2(284.015, 103)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -68,58 +63,18 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.217638),
+"transitions": PackedFloat32Array(1, 0.353553),
 "update": 0,
 "values": [Vector2(1154, 156), Vector2(283, 156)]
 }
 
-[sub_resource type="Animation" id="Animation_3ca83"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.67451, 0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Top_Panel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-425, 103)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Bottom_Panel:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1154, 156)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8mim"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5ojc"]
 _data = {
-&"BACKGROUNd_COLOR": SubResource("Animation_u1ug8"),
-&"RESET": SubResource("Animation_3ca83")
+&"new_animation": SubResource("Animation_aluhx")
 }
 
-[node name="gameover" type="CanvasLayer"]
-script = ExtResource("1_orisb")
+[node name="victory" type="CanvasLayer"]
+script = ExtResource("1_xfc8j")
 
 [node name="background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -127,7 +82,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.67451, 0, 0, 0)
+color = Color(0.1596702, 0.4340259, 1, 0.5764706)
 
 [node name="Bottom_Panel" type="Panel" parent="."]
 anchors_preset = 8
@@ -135,9 +90,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 578.0
+offset_left = -293.0
 offset_top = -168.0
-offset_right = 1158.004
+offset_right = 287.00995
 offset_bottom = 151.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -188,12 +143,12 @@ label_settings = SubResource("LabelSettings_j8gi2")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -1001.0
+offset_left = -291.985
 offset_top = 103.0
-offset_right = -574.0004
+offset_right = 286.015
 offset_bottom = 216.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_vm5y4")
+theme_override_styles/panel = SubResource("StyleBoxTexture_px5c3")
 
 [node name="Label" type="Label" parent="Top_Panel"]
 layout_mode = 1
@@ -208,15 +163,13 @@ offset_right = 126.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GAME OVER"
+text = "ARENA CLEARED"
 label_settings = SubResource("LabelSettings_6ijpb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="victory" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_r8mim")
+&"": SubResource("AnimationLibrary_n5ojc")
 }
-autoplay = "BACKGROUNd_COLOR"
+autoplay = "new_animation"
 
-[node name="dying_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_4pfak")
-volume_db = -5.0
+[node name="victory_sfx" type="AudioStreamPlayer" parent="."]

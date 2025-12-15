@@ -4,7 +4,6 @@ extends Node
 @export var mob_spawner : MobSpawner
 @onready var powerup_banner: PowerUpBanner = get_parent().get_node("PowerUpBanner")
 
-
 var current_horde_index := 0
 var kill_counter := 0
 var time_remaining := 0.0
@@ -13,6 +12,7 @@ var active := false
 signal horde_message(text)
 signal timer_manage(show_timer: bool) 
 signal time_update(time_string: String) 
+signal arena_completed()  # NOVO SINAL!
 
 func _ready() -> void:
 	var leave_button = powerup_banner.get_node("Panel/VBoxContainer/MarginContainer2/HBoxContainer/LeaveButton")
@@ -112,11 +112,14 @@ func _end_horde():
 		show_powerups_between_hordes()
 	else:
 		GameManager.complete_level()
+		print("Todas as hordas completadas!")
+		arena_completed.emit()  # EMITE SINAL DE VITÓRIA!
 		
 func show_powerups_between_hordes():
 	active = false  # pausa as hordas
 	powerup_banner.visible = true
 	powerup_banner.show_powerups()
+	
 func _on_powerup_leave_pressed():
 	# Fecha o banner
 	powerup_banner.visible = false

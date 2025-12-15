@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var speed: float = 1.2
-@export var attack_range: float = 600.0
+@export var attack_range: float = 550.0
 @export var MIN_DISTANCE: float = 100.0
 @export var attack_cooldown_time: float = 1.5
 @export var HYSTERESIS_MARGIN: float = 20.0  # Zona morta para evitar oscilações

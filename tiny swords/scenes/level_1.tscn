@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dcjeha31itydj"]
+[gd_scene load_steps=76 format=4 uid="uid://dcjeha31itydj"]
 
 [ext_resource type="Script" uid="uid://bh8dmk2n0fn5t" path="res://scenes/level_1.gd" id="1_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="1_3hls8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://mkkrqglw4gdx" path="res://Assets/Terrain/Ground/Tilemap_color2.png" id="3_go7sj"]
 [ext_resource type="Texture2D" uid="uid://bcdiyyd7kn7ri" path="res://Assets/Terrain/Ground/Shadows.png" id="3_rka8t"]
 [ext_resource type="Texture2D" uid="uid://ce5qsr18cafjx" path="res://Assets/Terrain/Water/Water Background color.png" id="3_so66j"]
+[ext_resource type="PackedScene" uid="uid://ybfj5wapdd5b" path="res://scenes/ui/victory.tscn" id="3_v8pws"]
 [ext_resource type="Texture2D" uid="uid://bmukrjdw5ggwq" path="res://Assets/Terrain/Water/Foam/Foam.png" id="4_tr1x6"]
 [ext_resource type="Texture2D" uid="uid://dkbhjf4w3wmfn" path="res://Assets/Terrain/Water/Water.png" id="5_5hph3"]
 [ext_resource type="Texture2D" uid="uid://04wiccv1xd1c" path="res://Assets/Decorations/Nature/Water Rocks/Rocks_04.png" id="6_j7kpp"]
@@ -1173,6 +1174,7 @@ size = Vector2(267.25, 258.375)
 position = Vector2(1652, 4620)
 script = ExtResource("1_2cbcq")
 game_over_ui = ExtResource("2_hnsmf")
+victory_ui = ExtResource("3_v8pws")
 
 [node name="player" parent="." instance=ExtResource("7_pa8r4")]
 visibility_layer = 8

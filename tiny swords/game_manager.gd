@@ -25,6 +25,10 @@ var current_level: int = 0
 var horde: int = 1
 var level1_cutscene_played: bool = false
 
+# ADICIONE ESTAS VARIÁVEIS (opcional para estatísticas):
+var total_kills: int = 0
+var total_damage_taken: int = 0
+
 # -------------------------------------------------
 # HORDE / LEVEL
 # -------------------------------------------------

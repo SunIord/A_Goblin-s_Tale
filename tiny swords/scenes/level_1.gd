@@ -1,7 +1,8 @@
 extends Node2D
 
 @onready var gameui = $GameUI
-@export var game_over_ui: PackedScene	
+@export var game_over_ui: PackedScene
+@export var victory_ui: PackedScene 
 @onready var sfx = $music as AudioStreamPlayer
 @onready var horde_manager = $HordeManager
 @onready var camera = $player/Camera2D
@@ -12,6 +13,8 @@ extends Node2D
 func _ready():
 	GameManager.complete_level()
 	GameManager.game_over.connect(trigger_game_over)
+	
+	horde_manager.arena_completed.connect(trigger_victory)
 
 	MusicPlayer.stop()
 	sfx.play()
@@ -99,3 +102,15 @@ func trigger_game_over():
 	game_over.time_survived = "01:58"
 
 	add_child(game_over)
+
+
+# --------------------------------------------------
+# VICTORY 
+# --------------------------------------------------
+func trigger_victory():
+	if gameui:
+		gameui.queue_free()
+		gameui = null
+
+	var victory: VictoryScreen = victory_ui.instantiate()
+	add_child(victory)

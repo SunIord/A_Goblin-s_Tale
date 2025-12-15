@@ -204,7 +204,6 @@ func call_super_attack():
 	if Input.is_action_just_pressed("super_attack") and is_ready:
 		spawn_super_attack()
 
-
 # -------------------------------------------------
 # FUNÇÃO PÚBLICA PARA CUTSCENE
 # -------------------------------------------------

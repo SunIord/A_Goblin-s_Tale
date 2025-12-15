@@ -37,7 +37,7 @@ func fire_damage():
 
 	for body in get_overlapping_bodies():
 		print("atacou")
-		if body.is_in_group("enemies"):
+		if body.is_in_group("enemies") or body.is_in_group("animals"):
 			body.damage(damage)
 
 func restart_timer() -> void:

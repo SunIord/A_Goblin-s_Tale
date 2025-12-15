@@ -14,6 +14,8 @@ var dying_audio_template: AudioStreamPlayer2D
 var meat_audio_template: AudioStreamPlayer2D
 
 func _ready():
+	add_to_group("animals")
+	
 	if health_progress_bar:
 		health_progress_bar.max_value = health
 		health_progress_bar.value = health

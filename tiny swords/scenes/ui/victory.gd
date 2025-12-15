@@ -1,14 +1,13 @@
-class_name GameOver
-
+class_name VictoryScreen
 extends CanvasLayer
+
 @onready var arena_label: Label = %Arena_Label
 @onready var horde_label: Label = %Horde_Label
-@onready var dyingSfx = $dying_sfx as AudioStreamPlayer
+# @onready var victorySfx = $victory_sfx as AudioStreamPlayer
+# https://www.youtube.com/watch?v=B6njtbldrjc
 
-@export var restart_delay: float = 5.0
-var restart_cooldown: float
-var time_survived: String
-var monsters_defeated: int
+@export var return_delay: float = 3.0
+var return_cooldown: float
 
 var arena_names = {
 	"level_1": "O Fosso",
@@ -32,15 +31,16 @@ func get_arena_name() -> String:
 		return scene_name
 
 func _ready():
-	dyingSfx.play()
+	#victorySfx.play()
 	arena_label.text = get_arena_name()
-	horde_label.text = str(GameManager.horde)
-	restart_cooldown = restart_delay
+	horde_label.text = " " % GameManager.horde
+	return_cooldown = return_delay
 
 func _process(delta):
-	restart_cooldown -= delta
-	if restart_cooldown <= 0.0:
-		restart_game()
-func restart_game():
-	GameManager.reset()
+	return_cooldown -= delta
+	if return_cooldown <= 0.0:
+		return_to_hub()
+
+func return_to_hub():
+	# Volta para o hub
 	get_tree().change_scene_to_file("res://scenes/Areas/Hub.tscn")

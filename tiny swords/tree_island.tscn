@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://l3m377cr3yv2"]
+
+[ext_resource type="Texture2D" uid="uid://c0qotgq60h6tu" path="res://Assets/Decorations/Nature/Tree3.png" id="1_0xvpp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pd2ek"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssttu"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6ei3"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkl8q"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m0nq"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fofi6"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yf5l"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4ork"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6pyc"]
+atlas = ExtResource("1_0xvpp")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mevin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssttu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6ei3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkl8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m0nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fofi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yf5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4ork")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6pyc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="tree_island" type="StaticBody2D"]
+collision_layer = 5
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, -46)
+shape = SubResource("CircleShape2D_pd2ek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, -106)
+sprite_frames = SubResource("SpriteFrames_mevin")

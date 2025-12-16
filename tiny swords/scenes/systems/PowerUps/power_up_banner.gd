@@ -22,11 +22,19 @@ func clear_cards():
 		child.queue_free()
 
 func pick_random_powerups(amount: int) -> Array[PowerUpData]:
-	var copy = available_powerups.duplicate()
+	# 1. Filtra apenas os NÃO comprados
+	var available: Array[PowerUpData] = []
+	for powerup in available_powerups:
+		if not GameManager.is_powerup_purchased(powerup.id):
+			available.append(powerup)
+	
+	print("Power-ups disponíveis: ", available.size(), "/", available_powerups.size())
+	
+	# 2. Se não tem enough, retorna menos (pode ficar slot vazio)
+	var copy = available.duplicate()
 	copy.shuffle()
-	print(copy)
-	return copy.slice(0, amount)
+	return copy.slice(0, min(amount, copy.size()))
 
 
 func _on_leave_button_pressed() -> void:
-	pass # Replace with function body.
+	pass # Replace with function body.aaaa

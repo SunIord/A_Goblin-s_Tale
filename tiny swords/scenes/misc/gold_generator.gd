@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var generation_amount: int = 10
+@export var generation_amount: int = 9999
 @export var lifetime: float = 8.0   # ← Tempo até a moeda sumir
 
 @onready var Area2d: Area2D = $Area2D

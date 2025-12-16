@@ -161,4 +161,6 @@ theme_override_fonts/font = ExtResource("3_8i2do")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxTexture_6j4nn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_jcplm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6j4nn")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jcplm")
 text = "Comprar"

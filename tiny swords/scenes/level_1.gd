@@ -11,6 +11,9 @@ extends Node2D
 
 
 func _ready():
+	var targets: Array[Vector2] = [
+		intro_end.global_position
+	]
 	GameManager.complete_level()
 	GameManager.game_over.connect(trigger_game_over)
 	
@@ -20,7 +23,7 @@ func _ready():
 	sfx.play()
 
 	if not GameManager.level1_cutscene_played:
-		start_intro_cutscene()
+		start_intro_cutscene(targets)
 	else:
 		start_gameplay()
 
@@ -36,13 +39,12 @@ func zoom_camera(target_zoom: Vector2, duration: float):
 # --------------------------------------------------
 # CUTSCENE
 # --------------------------------------------------
-func start_intro_cutscene():
+func start_intro_cutscene(targets: Array[Vector2]) -> void:
 	GameManager.level1_cutscene_played = true
 
 	# Travar sistemas
 	GameManager.allow_timer = false
-	player.in_cutscene = true
-	player.cutscene_target = intro_end.global_position
+	player.start_cutscene(targets)
 
 	if horde_manager:
 		horde_manager.active = false

@@ -5,7 +5,8 @@ extends Resource
 enum HordeType {
 	TUTORIAL,
 	KILL_COUNT,
-	SURVIVE_TIME
+	SURVIVE_TIME,
+	KILL_COUNT_AND_SURVIVE
 }
 
 @export var horde_type : HordeType

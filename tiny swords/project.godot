@@ -25,6 +25,10 @@ Bttn="*res://bttn.tscn"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+game_ui=""
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

@@ -68,8 +68,5 @@ func die()->void:
 		gold_object.position = position
 		get_parent().add_child(gold_object)
 
-	var gameui: GameUI = get_tree().root.get_node("level_1/GameUI")
-	if gameui.has_method("increase_death"):
-		gameui.increase_death()
-
+	GameManager.notify_enemy_killed()
 	queue_free()

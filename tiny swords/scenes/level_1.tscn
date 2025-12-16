@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://dcjeha31itydj"]
+[gd_scene load_steps=75 format=4 uid="uid://dcjeha31itydj"]
 
 [ext_resource type="Script" uid="uid://bh8dmk2n0fn5t" path="res://scenes/level_1.gd" id="1_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://hraiylv277rt" path="res://Assets/Terrain/Ground/Tilemap_Flat.png" id="1_3hls8"]
@@ -26,13 +26,12 @@
 [ext_resource type="Texture2D" uid="uid://b3s35orn1kevy" path="res://Assets/Terrain/Bridge/Bridge_All.png" id="13_d5akn"]
 [ext_resource type="Texture2D" uid="uid://bpuelajl6ns7i" path="res://Assets/Resources/Resources/G_Idle.png" id="13_v0i6o"]
 [ext_resource type="Texture2D" uid="uid://bel85c2ck3ntv" path="res://Assets/Decorations/16.png" id="19_tdlki"]
-[ext_resource type="Texture2D" uid="uid://bexnepbqiglxr" path="res://Buildings/Blue Buildings/Castle.png" id="24_wbtxt"]
 [ext_resource type="Script" uid="uid://ljq82l53nwuv" path="res://scenes/systems/Horde_Manager.gd" id="25_x2fux"]
 [ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="26_mbb35"]
-[ext_resource type="Resource" uid="uid://bkgoul7laubjk" path="res://scenes/systems/Horde_survive.tres" id="27_iw4em"]
+[ext_resource type="Resource" uid="uid://bkgoul7laubjk" path="res://scenes/systems/Horde_survive_100.tres" id="27_iw4em"]
 [ext_resource type="Resource" uid="uid://3a5qff33tjp7" path="res://scenes/systems/Horde_kill_40.tres" id="28_hnsmf"]
-[ext_resource type="Texture2D" uid="uid://cj1w1kmlgwpdk" path="res://Assets/Decorations/Buildings/House/House_Blue.png" id="28_v8pws"]
 [ext_resource type="Resource" uid="uid://owbffosfsr2d" path="res://scenes/systems/Horde_tutorial.tres" id="29_nossa"]
+[ext_resource type="Texture2D" uid="uid://blapc2fpqu36l" path="res://Buildings/Red Buildings/Castle.png" id="29_v8pws"]
 [ext_resource type="AudioStream" uid="uid://b52ttq46li4gh" path="res://audios/in_the_arena.mp3" id="32_nossa"]
 [ext_resource type="Texture2D" uid="uid://dlrthkevxmfj6" path="res://Assets/Decorations/Buildings/Monastery/Red_Monastery.png" id="32_v8pws"]
 [ext_resource type="Texture2D" uid="uid://cith8w34fqsw2" path="res://Assets/Decorations/18.png" id="35_rscm6"]
@@ -1223,7 +1222,7 @@ rendering_quadrant_size = 64
 position = Vector2(-11, 0)
 scale = Vector2(2.3600001, 2.3600001)
 
-[node name="GameUI" parent="." instance=ExtResource("10_2y5yt")]
+[node name="GameUI" parent="." groups=["game_ui"] instance=ExtResource("10_2y5yt")]
 
 [node name="Sheeps" type="Node2D" parent="."]
 position = Vector2(694, -142)
@@ -1256,87 +1255,10 @@ collision_layer = 5
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody\'s/Castle"]
 position = Vector2(48.999878, -1839.0001)
 scale = Vector2(4.2375, 3.8828125)
-texture = ExtResource("24_wbtxt")
+texture = ExtResource("29_v8pws")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody\'s/Castle"]
 polygon = PackedVector2Array(-508, -1509, -451, -1464, -313, -1453, -268, -1460, -165, -1439, -38, -1421, 169, -1423, 303, -1445, 430, -1462, 539, -1460, 609, -1515, 640, -1632, 630, -1725, 646, -1813, 701, -1916, 730, -2037, 669, -2109, 572, -2170, 436, -2183, 338, -2183, 311, -2139, 264, -2121, -196, -2123, -231, -2170, -340, -2185, -494, -2160, -576, -2100, -617, -2010, -603, -1899, -570, -1838, -550, -1805, -541, -1760, -529, -1706, -547, -1640, -533, -1581)
-
-[node name="Houses" type="Node2D" parent="StaticBody\'s"]
-position = Vector2(-3150, 355)
-
-[node name="House4" type="StaticBody2D" parent="StaticBody\'s/Houses"]
-collision_layer = 5
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody\'s/Houses/House4"]
-z_index = 4
-position = Vector2(-1360, 591.25)
-shape = SubResource("RectangleShape2D_q0ron")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody\'s/Houses/House4"]
-light_mask = 17
-z_index = 5
-position = Vector2(-1362, 509)
-scale = Vector2(2.978906, 2.3808594)
-texture = ExtResource("28_v8pws")
-
-[node name="House1" type="StaticBody2D" parent="StaticBody\'s/Houses"]
-collision_layer = 5
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody\'s/Houses/House1"]
-z_index = 5
-position = Vector2(-852, -53)
-scale = Vector2(2.978906, 2.3808594)
-texture = ExtResource("28_v8pws")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody\'s/Houses/House1"]
-z_index = 4
-position = Vector2(-849, 21)
-shape = SubResource("RectangleShape2D_q0ron")
-
-[node name="House2" type="StaticBody2D" parent="StaticBody\'s/Houses"]
-collision_layer = 5
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody\'s/Houses/House2"]
-z_index = 4
-position = Vector2(-1368, 33)
-shape = SubResource("RectangleShape2D_q0ron")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody\'s/Houses/House2"]
-light_mask = 17
-z_index = 5
-position = Vector2(-1371, -52)
-scale = Vector2(2.978906, 2.3808594)
-texture = ExtResource("28_v8pws")
-
-[node name="House3" type="StaticBody2D" parent="StaticBody\'s/Houses"]
-collision_layer = 5
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody\'s/Houses/House3"]
-z_index = 4
-position = Vector2(-1942.5, 29.25)
-shape = SubResource("RectangleShape2D_q0ron")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody\'s/Houses/House3"]
-light_mask = 17
-z_index = 5
-position = Vector2(-1942.0001, -55)
-scale = Vector2(2.978906, 2.3808594)
-texture = ExtResource("28_v8pws")
-
-[node name="House5" type="StaticBody2D" parent="StaticBody\'s/Houses"]
-collision_layer = 5
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody\'s/Houses/House5"]
-z_index = 4
-position = Vector2(-1945.5, 588)
-shape = SubResource("RectangleShape2D_q0ron")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody\'s/Houses/House5"]
-light_mask = 17
-z_index = 5
-position = Vector2(-1946, 503)
-scale = Vector2(2.978906, 2.3808594)
-texture = ExtResource("28_v8pws")
 
 [node name="Monastery" type="StaticBody2D" parent="StaticBody\'s"]
 z_index = 5

@@ -2,6 +2,7 @@ extends Node
 
 signal game_over
 signal powerup_purchased(powerup_id: String)  # Novo sinal
+signal enemy_killed
 
 # -------------------------------------------------
 # PLAYER STATS (POWER-UPS BÁSICOS)
@@ -25,6 +26,7 @@ var horde_manager: Node = null
 var current_level: int = 0
 var horde: int = 1
 var level1_cutscene_played: bool = false
+var level2_cutscene_played: bool = false
 
 # NOVO: Sistema de power-ups comprados
 var purchased_powerups: Array[String] = []  # IDs dos power-ups comprados
@@ -50,11 +52,15 @@ func increase_horde():
 	horde += 1
 
 func complete_level():
+	print(current_level)
 	current_level += 1
+	print(current_level)
 
 func reset_horde():
 	horde = 1
-
+func notify_enemy_killed():
+	death_count +=1
+	enemy_killed.emit()
 # -------------------------------------------------
 # GAME FLOW
 # -------------------------------------------------

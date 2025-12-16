@@ -31,7 +31,8 @@ func show_horde_message_and_start():
 			msg = "Horda %d — Derrote %d inimigos!" % [h, cfg.enemy_amount]
 		HordeConfig.HordeType.SURVIVE_TIME:
 			msg = "Horda %d — Sobreviva por %ds!" % [h, cfg.survive_time]
-
+		HordeConfig.HordeType.KILL_COUNT_AND_SURVIVE:
+			msg = "Horda %d — Mate %d inimigos em %ds!" % [h,cfg.enemy_amount, cfg.survive_time]
 	horde_message.emit(msg)
 
 	await get_tree().create_timer(6).timeout
@@ -47,7 +48,10 @@ func start_horde():
 	active = true
 	mob_spawner.start_spawning(cfg.spawn_rate)
 	
-	var is_survival_horde = cfg.horde_type == HordeConfig.HordeType.SURVIVE_TIME
+	var is_survival_horde = cfg.horde_type in [
+	HordeConfig.HordeType.SURVIVE_TIME,
+	HordeConfig.HordeType.KILL_COUNT_AND_SURVIVE
+]
 	
 	if is_survival_horde:
 		time_remaining = cfg.survive_time
@@ -65,9 +69,25 @@ func on_enemy_killed():
 	var h := GameManager.horde
 	var cfg := hordes[h - 1]
 
-	if cfg.horde_type in [HordeConfig.HordeType.TUTORIAL, HordeConfig.HordeType.KILL_COUNT]:
+	if cfg.horde_type in [
+	HordeConfig.HordeType.TUTORIAL,
+	HordeConfig.HordeType.KILL_COUNT
+	]:
 		if GameManager.death_count >= cfg.enemy_amount:
 			_end_horde()
+
+		elif cfg.horde_type == HordeConfig.HordeType.KILL_COUNT_AND_SURVIVE:
+			_check_kill_and_survive()
+
+func _check_kill_and_survive():
+	var h := GameManager.horde
+	var cfg := hordes[h - 1]
+
+	if time_remaining <= 0:
+		if GameManager.death_count >= cfg.enemy_amount:
+			_end_horde()
+		else:
+			GameManager.game_end()
 
 # Contagem de tempo 
 func _process(delta):
@@ -91,7 +111,10 @@ func _process(delta):
 		time_update.emit(time_string)
 
 		if time_remaining <= 0:
-			_end_horde()
+			if cfg.horde_type == HordeConfig.HordeType.SURVIVE_TIME:
+				_end_horde()
+			elif cfg.horde_type == HordeConfig.HordeType.KILL_COUNT_AND_SURVIVE:
+				_check_kill_and_survive()
 
 # Fim da horda
 func _end_horde():

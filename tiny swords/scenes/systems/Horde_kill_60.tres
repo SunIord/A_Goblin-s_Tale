@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=7 format=3 uid="uid://c6i75x34tpnti"]
+
+[ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_mwv8w"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_mwv8w"]
+[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="3_f7axl"]
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="4_h1dll"]
+
+[sub_resource type="Resource" id="Resource_uc7sy"]
+script = ExtResource("1_mwv8w")
+creature = ExtResource("2_mwv8w")
+weight = 9.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_2qbv8"]
+script = ExtResource("1_mwv8w")
+creature = ExtResource("3_f7axl")
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[resource]
+script = ExtResource("4_h1dll")
+horde_type = 1
+enemy_amount = 60
+spawn_rate = 1.5
+creature_scenes = Array[ExtResource("1_mwv8w")]([SubResource("Resource_uc7sy"), SubResource("Resource_2qbv8")])

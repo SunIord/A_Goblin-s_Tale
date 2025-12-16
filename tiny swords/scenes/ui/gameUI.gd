@@ -13,6 +13,8 @@ extends CanvasLayer
 @onready var super_timer: Timer = $HUD/Super_attack_timer
 @onready var horde_panel: Control = $HUD/Horde_goal_panel
 @onready var horde_label: Label = $HUD/Horde_goal_panel/HordeLabel
+@onready var title_level1: Control = $ContainerTitleLevel/Level1
+@onready var title_level2: Control = $ContainerTitleLevel/Level2
 
 # ----------------------------
 # UI DE CUTSCENE
@@ -24,6 +26,7 @@ var super_attack_ready := true
 # ------------------------------------------------------------------
 func _ready():
 	# Estados iniciais
+	GameManager.enemy_killed.connect(increase_death)
 	hud.visible = true
 	container_title_level.visible = false
 	horde_panel.visible = false
@@ -52,6 +55,16 @@ func hide_all():
 func show_cutscene_ui():
 	hud.visible = false
 	container_title_level.visible = true
+
+	# Desliga todos primeiro
+	title_level1.visible = false
+	title_level2.visible = false
+
+	match GameManager.current_level:
+		1:
+			title_level1.visible = true
+		2:
+			title_level2.visible = true
 
 func hide_cutscene_ui():
 	container_title_level.visible = false
@@ -111,7 +124,6 @@ func increase_gold():
 	GameManager.gold_count += 1
 
 func increase_death():
-	GameManager.death_count += 1
 	var horde_manager = get_tree().get_first_node_in_group("horde_manager")
 	if horde_manager:
 		horde_manager.on_enemy_killed()

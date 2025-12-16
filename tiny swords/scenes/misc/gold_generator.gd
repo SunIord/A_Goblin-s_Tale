@@ -44,7 +44,7 @@ func _on_area_2d_body_entered(body):
 		audio_player.play()
 		audio_player.finished.connect(audio_player.queue_free)
 		
-		body.collect(generation_amount)
+		GameManager.gold_count += generation_amount
 		queue_free()
 
 func _on_animation_player_animation_finished(anim_name):

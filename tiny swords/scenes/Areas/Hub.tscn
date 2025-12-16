@@ -42,7 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bv50ypkjh2ahu" path="res://scenes/Areas/simple_house.tscn" id="41_4brqe"]
 [ext_resource type="PackedScene" uid="uid://b7rl5dqey8u1l" path="res://scenes/Areas/Big Goblin House.tscn" id="41_cfcn5"]
 [ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/Characters/enemys/sheep.tscn" id="42_kpg8r"]
-[ext_resource type="PackedScene" uid="uid://bfmdym28li6gq" path="res://door_area_2.tscn" id="43_kt0dq"]
+[ext_resource type="PackedScene" uid="uid://srk4rkfihn3f" path="res://door_area_2.tscn" id="43_kt0dq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v65kt"]
 texture = ExtResource("3_umqp4")
@@ -1878,4 +1878,5 @@ position = Vector2(-935, 2205.0002)
 [node name="click_button" type="AudioStreamPlayer" parent="."]
 
 [node name="door_area_2" parent="." instance=ExtResource("43_kt0dq")]
-position = Vector2(-1574, -18)
+position = Vector2(-1574, -55)
+scale = Vector2(2.7199974, 2.7199974)

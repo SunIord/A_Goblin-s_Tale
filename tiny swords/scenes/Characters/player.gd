@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal super_attack_used
+signal cutscene_path_finished
 
 @export var death_prefab: PackedScene
 
@@ -34,12 +35,11 @@ var current_priority := 1
 # CUTSCENE
 # -------------------------------------------------
 var in_cutscene: bool = false
-var cutscene_target: Vector2
+var cutscene_targets: Array[Vector2] = []
 # -------------------------------------------------
 
 func _ready() -> void:
-	var level = get_parent()
-	gameui = level.get_node_or_null("GameUI")
+	gameui = get_tree().get_first_node_in_group("game_ui")
 	GameManager.current_health = GameManager.max_health
 	health_bar.setup(GameManager.current_health, GameManager.max_health)
 
@@ -70,13 +70,7 @@ func _physics_process(delta) -> void:
 	var target_velocity: Vector2
 
 	if in_cutscene:
-		var dir = cutscene_target - global_position
-		if dir.length() < 5:
-			velocity = Vector2.ZERO
-			in_cutscene = false
-		else:
-			target_velocity = dir.normalized() * GameManager.move_speed * 100
-			velocity = lerp(velocity, target_velocity, 0.1)
+		_process_cutscene_movement()
 	else:
 		target_velocity = input_vector * GameManager.move_speed * 100
 		if is_attacking:
@@ -86,12 +80,41 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 
+# -------------------------------------------------
+# CUTSCENE MOVEMENT
+# -------------------------------------------------
+func _process_cutscene_movement():
+	if cutscene_targets.is_empty():
+		in_cutscene = false
+		velocity = Vector2.ZERO
+		emit_signal("cutscene_path_finished")
+		return
+
+	var target := cutscene_targets[0]
+	var dir := target - global_position
+
+	if dir.length() < 5:
+		cutscene_targets.pop_front()
+		return
+
+	var target_velocity = dir.normalized() * GameManager.move_speed * 100
+	velocity = lerp(velocity, target_velocity, 0.1)
+
+
+# -------------------------------------------------
+# INPUT / MOVIMENTO
+# -------------------------------------------------
 func read_input() -> void:
-	input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.15)
+	input_vector = Input.get_vector(
+		"move_left", "move_right", "move_up", "move_down", 0.15
+	)
 	was_running = is_running
 	is_running = not input_vector.is_zero_approx() or velocity.length() > 60
 
 
+# -------------------------------------------------
+# ATAQUE
+# -------------------------------------------------
 func attack() -> void:
 	if not can_attack or is_attacking:
 		return
@@ -120,11 +143,10 @@ func spawn_basic_attack() -> void:
 	fire_spawned_in_this_attack = true
 
 	var attack_instance = basicAttack.instantiate()
-	
-	# PASSA O ESTADO DO UPGRADE PARA O ATAQUE
-	var is_upgraded = GameManager.is_powerup_purchased("damage_upgrade") or GameManager.is_powerup_purchased("2")
+	var is_upgraded = GameManager.is_powerup_purchased("damage_upgrade") \
+		or GameManager.is_powerup_purchased("2")
 	attack_instance.set_is_upgraded(is_upgraded)
-	
+
 	var attack_direction = Vector2.LEFT if animation_player.flip_h else Vector2.RIGHT
 	attack_instance.direction = attack_direction
 	attack_instance.position = global_position + attack_direction * 70 + Vector2(0, -35)
@@ -138,6 +160,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		spawn_basic_attack()
 
 
+# -------------------------------------------------
+# ANIMAÇÃO
+# -------------------------------------------------
 func play_run_idle_anim() -> void:
 	if is_attacking:
 		return
@@ -159,22 +184,20 @@ func rotate_sprite() -> void:
 		animation_player.flip_h = true
 
 
-func collect(amount: int) -> int:
-	GameManager.gold_count += amount
-	return amount
-
-
+# -------------------------------------------------
+# VIDA
+# -------------------------------------------------
 func damage(amount: int) -> void:
 	GameManager.current_health -= amount
 	health_bar.set_health(GameManager.current_health)
 	hitSfx.play()
+
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 
 	if GameManager.current_health <= 0:
 		die()
-
 
 func die() -> void:
 	GameManager.end_game()
@@ -186,11 +209,16 @@ func die() -> void:
 
 
 func heal(amount: int) -> void:
-	GameManager.current_health = min(GameManager.max_health, 
-	GameManager.current_health + amount)
+	GameManager.current_health = min(
+		GameManager.max_health,
+		GameManager.current_health + amount
+	)
 	health_bar.set_health(GameManager.current_health)
 
 
+# -------------------------------------------------
+# SUPER ATTACK
+# -------------------------------------------------
 func spawn_super_attack() -> void:
 	if super_attack_prefab == null:
 		return
@@ -210,9 +238,10 @@ func call_super_attack():
 	if Input.is_action_just_pressed("super_attack") and is_ready:
 		spawn_super_attack()
 
+
 # -------------------------------------------------
-# FUNÇÃO PÚBLICA PARA CUTSCENE
+# API PÚBLICA DE CUTSCENE
 # -------------------------------------------------
-func start_cutscene(target: Vector2):
+func start_cutscene(targets: Array[Vector2]):
+	cutscene_targets = targets.duplicate()
 	in_cutscene = true
-	cutscene_target = target

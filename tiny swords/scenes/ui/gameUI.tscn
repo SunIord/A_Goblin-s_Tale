@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://j184hts6gb1t"]
+[gd_scene load_steps=19 format=3 uid="uid://j184hts6gb1t"]
 
 [ext_resource type="Texture2D" uid="uid://5a726lkku3qm" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="1_60xhp"]
 [ext_resource type="Script" uid="uid://bwym87tk3jmrm" path="res://scenes/ui/gameUI.gd" id="1_ukdt8"]
 [ext_resource type="FontFile" uid="uid://csg3yg6tsxdt8" path="res://Assets/font/AlbertText-Bold.ttf" id="2_la3b0"]
+[ext_resource type="Texture2D" uid="uid://boulo14jhildc" path="res://Assets/UI/Title Level 2.png" id="3_naedo"]
 [ext_resource type="Texture2D" uid="uid://chcaocfjphq3p" path="res://Assets/UI/Buttons/Button_Blue_9Slides.png" id="4_f4a4w"]
 [ext_resource type="Texture2D" uid="uid://badyak7mxkweb" path="res://Assets/Factions/Knights/Dead/Dead.png" id="5_dxhck"]
 [ext_resource type="Texture2D" uid="uid://bpuelajl6ns7i" path="res://Assets/Resources/Resources/G_Idle.png" id="6_naedo"]
@@ -80,6 +81,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("10_4vxfa")
+
+[node name="Level2" type="TextureRect" parent="ContainerTitleLevel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("3_naedo")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

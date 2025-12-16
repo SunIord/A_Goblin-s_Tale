@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=11 format=3 uid="uid://bqybribksr2uc"]
+
+[ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_2aiqo"]
+[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="2_alyk1"]
+[ext_resource type="PackedScene" path="res://scenes/Characters/enemys/purple_lancer.tscn" id="3_banmk"]
+[ext_resource type="PackedScene" uid="uid://cpm1onpbb86ap" path="res://scenes/Characters/enemys/purple_knight.tscn" id="4_fvgm0"]
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="4_lf0v1"]
+[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="5_k4tcn"]
+
+[sub_resource type="Resource" id="Resource_8nhfy"]
+script = ExtResource("1_2aiqo")
+creature = ExtResource("2_alyk1")
+weight = 6.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_qodis"]
+script = ExtResource("1_2aiqo")
+creature = ExtResource("3_banmk")
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_lgtbl"]
+script = ExtResource("1_2aiqo")
+creature = ExtResource("4_fvgm0")
+weight = 2.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_slq6i"]
+script = ExtResource("1_2aiqo")
+creature = ExtResource("5_k4tcn")
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[resource]
+script = ExtResource("4_lf0v1")
+horde_type = 3
+enemy_amount = 50
+survive_time = 100.0
+spawn_rate = 1.5
+creature_scenes = Array[ExtResource("1_2aiqo")]([SubResource("Resource_8nhfy"), SubResource("Resource_qodis"), SubResource("Resource_lgtbl"), SubResource("Resource_slq6i")])

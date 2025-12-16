@@ -10,10 +10,19 @@ extends Node2D
 @onready var intro_end = $CutsceneEndPoint
 @onready var intro_end2 = $CutsceneEndPoint2
 
+# NOVO: Para saber se já resetou a horda neste level
+var has_reset_horde_for_level: bool = false
+
 func _ready():
 	GameManager.complete_level()
 	GameManager.game_over.connect(trigger_game_over)
-	GameManager.reset_horde()
+	horde_manager.arena_completed.connect(trigger_victory)
+	
+	# RESETA HORDA APENAS NA PRIMEIRA VEZ QUE ENTRAR NO LEVEL 2
+	if not has_reset_horde_for_level:
+		GameManager.reset_horde()
+		has_reset_horde_for_level = true
+		print("Level 2 - Horda resetada para 1")
 
 	MusicPlayer.stop()
 	sfx.play()
@@ -91,7 +100,7 @@ func start_gameplay():
 	GameManager.allow_timer = true
 
 	if horde_manager:
-		print("Level pronto — iniciando hordas.")
+		print("Level 2 - Horda atual: ", GameManager.horde)
 		horde_manager.show_horde_message_and_start()
 	else:
 		print("ERRO: HordeManager NÃO encontrado!")
@@ -120,5 +129,10 @@ func trigger_victory():
 		gameui.queue_free()
 		gameui = null
 
+	# RESETA HORDA APÓS VENCER LEVEL 2
+	GameManager.reset_horde()
+	has_reset_horde_for_level = false  # Permite resetar na próxima entrada
+	print("Level 2 completo! Horda resetada.")
+	
 	var victory: VictoryScreen = victory_ui.instantiate()
 	add_child(victory)

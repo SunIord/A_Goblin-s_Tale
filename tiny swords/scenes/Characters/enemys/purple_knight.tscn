@@ -124,7 +124,6 @@ scale = Vector2(1.51859, 1.60363)
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_jb6wn")
-health = 8
 death_prefab = ExtResource("2_ekihg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

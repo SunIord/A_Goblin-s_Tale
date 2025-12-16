@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=9 format=3 uid="uid://bq5v4ucwe1wua"]
+
+[ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_arx2a"]
+[ext_resource type="PackedScene" uid="uid://bddy673t04fae" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_bv2rr"]
+[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="3_5sub6"]
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="4_moi73"]
+[ext_resource type="PackedScene" uid="uid://cpm1onpbb86ap" path="res://scenes/Characters/enemys/purple_knight.tscn" id="4_t1hty"]
+
+[sub_resource type="Resource" id="Resource_uc7sy"]
+script = ExtResource("1_arx2a")
+creature = ExtResource("2_bv2rr")
+weight = 3.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_fl0v6"]
+script = ExtResource("1_arx2a")
+creature = ExtResource("3_5sub6")
+weight = 4.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_ep2v2"]
+script = ExtResource("1_arx2a")
+creature = ExtResource("4_t1hty")
+weight = 3.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[resource]
+script = ExtResource("4_moi73")
+horde_type = 1
+enemy_amount = 100
+spawn_rate = 1.8
+creature_scenes = Array[ExtResource("1_arx2a")]([SubResource("Resource_uc7sy"), SubResource("Resource_fl0v6"), SubResource("Resource_ep2v2")])

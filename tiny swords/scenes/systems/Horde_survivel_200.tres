@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=9 format=3 uid="uid://ddpwsrbcfgyg"]
+
+[ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_edoth"]
+[ext_resource type="PackedScene" uid="uid://bddy673t04fae" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_v0eiw"]
+[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="3_vaoik"]
+[ext_resource type="PackedScene" uid="uid://cpm1onpbb86ap" path="res://scenes/Characters/enemys/purple_knight.tscn" id="4_7lsqr"]
+[ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="5_bxtej"]
+
+[sub_resource type="Resource" id="Resource_uc7sy"]
+script = ExtResource("1_edoth")
+creature = ExtResource("2_v0eiw")
+weight = 4.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_fl0v6"]
+script = ExtResource("1_edoth")
+creature = ExtResource("3_vaoik")
+weight = 4.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[sub_resource type="Resource" id="Resource_t2kj1"]
+script = ExtResource("1_edoth")
+creature = ExtResource("4_7lsqr")
+weight = 2.0
+metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
+
+[resource]
+script = ExtResource("5_bxtej")
+horde_type = 2
+survive_time = 200.0
+spawn_rate = 1.6
+creature_scenes = Array[ExtResource("1_edoth")]([SubResource("Resource_uc7sy"), SubResource("Resource_fl0v6"), SubResource("Resource_t2kj1")])

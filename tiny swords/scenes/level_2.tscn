@@ -32,17 +32,17 @@
 [ext_resource type="AudioStream" uid="uid://dxh1fl8qk7feb" path="res://audios/the-pirates-battle.mp3" id="26_bbkd8"]
 [ext_resource type="PackedScene" uid="uid://bs41k1ypkqn6v" path="res://scenes/Areas/medium_rock.tscn" id="27_73m23"]
 [ext_resource type="PackedScene" uid="uid://dv0ex2f4tv2yk" path="res://scenes/Characters/enemys/sheep.tscn" id="28_45kkt"]
+[ext_resource type="Resource" uid="uid://ddpwsrbcfgyg" path="res://scenes/systems/Horde_survivel_200.tres" id="30_bbkd8"]
 [ext_resource type="Resource" uid="uid://c6i75x34tpnti" path="res://scenes/systems/Horde_kill_60.tres" id="31_bbkd8"]
-[ext_resource type="Resource" uid="uid://bkgoul7laubjk" path="res://scenes/systems/Horde_survive_100.tres" id="32_kqn1b"]
-[ext_resource type="Resource" uid="uid://bqybribksr2uc" path="res://scenes/systems/Horde_survive_100_kill_50.tres" id="33_y6uxt"]
+[ext_resource type="Resource" uid="uid://bq5v4ucwe1wua" path="res://scenes/systems/Horde_kill_100.tres" id="31_kqn1b"]
 [ext_resource type="Script" uid="uid://ljq82l53nwuv" path="res://scenes/systems/Horde_Manager.gd" id="34_xc1pa"]
 [ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="35_j2jmx"]
 [ext_resource type="PackedScene" uid="uid://287htq7afmae" path="res://scenes/ui/PowerUpBanner.tscn" id="39_r72fi"]
 [ext_resource type="PackedScene" uid="uid://btlis1hyq7t6t" path="res://scenes/systems/mob_spawner.tscn" id="40_00rct"]
 [ext_resource type="PackedScene" uid="uid://j184hts6gb1t" path="res://scenes/ui/gameUI.tscn" id="41_tv75f"]
 [ext_resource type="Texture2D" uid="uid://b4m24qgltm2f7" path="res://Assets/Decorations/Buildings/Castle/Castle_Purple.png" id="43_bbkd8"]
-[ext_resource type="PackedScene" path="res://tree_island.tscn" id="45_r72fi"]
-[ext_resource type="PackedScene" path="res://tree_arena_2.tscn" id="45_y6uxt"]
+[ext_resource type="PackedScene" uid="uid://l3m377cr3yv2" path="res://tree_island.tscn" id="45_r72fi"]
+[ext_resource type="PackedScene" uid="uid://dwicipf87tdli" path="res://tree_arena_2.tscn" id="45_y6uxt"]
 
 [sub_resource type="TileSet" id="TileSet_kqn1b"]
 tile_size = Vector2i(64, 64)
@@ -1161,7 +1161,7 @@ parameters/looping = true
 [node name="HordeManager" type="Node2D" parent="." node_paths=PackedStringArray("mob_spawner") groups=["horde_manager"]]
 position = Vector2(221, -17)
 script = ExtResource("34_xc1pa")
-hordes = Array[ExtResource("35_j2jmx")]([ExtResource("31_bbkd8"), ExtResource("32_kqn1b"), ExtResource("33_y6uxt")])
+hordes = Array[ExtResource("35_j2jmx")]([ExtResource("31_bbkd8"), ExtResource("30_bbkd8"), ExtResource("31_kqn1b")])
 mob_spawner = NodePath("../MobSpawner")
 
 [node name="PowerUpBanner" parent="." instance=ExtResource("39_r72fi")]

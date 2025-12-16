@@ -8,12 +8,13 @@
 [sub_resource type="Resource" id="Resource_uc7sy"]
 script = ExtResource("1_mwv8w")
 creature = ExtResource("2_mwv8w")
-weight = 9.0
+weight = 8.0
 metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
 
 [sub_resource type="Resource" id="Resource_2qbv8"]
 script = ExtResource("1_mwv8w")
 creature = ExtResource("3_f7axl")
+weight = 2.0
 metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
 
 [resource]

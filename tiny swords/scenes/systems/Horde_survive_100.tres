@@ -1,26 +1,19 @@
-[gd_resource type="Resource" script_class="HordeConfig" load_steps=9 format=3 uid="uid://bkgoul7laubjk"]
+[gd_resource type="Resource" script_class="HordeConfig" load_steps=7 format=3 uid="uid://bkgoul7laubjk"]
 
 [ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="1_77rw5"]
 [ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_xxqt8"]
-[ext_resource type="PackedScene" uid="uid://bddy673t04fae" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_g0uu5"]
-[ext_resource type="PackedScene" uid="uid://cxqqcpkncrxd4" path="res://scenes/Characters/enemys/purple_lancer.tscn" id="3_ygee3"]
-[ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="4_yhibl"]
+[ext_resource type="PackedScene" uid="uid://krf2pyaetvj8" path="res://scenes/Characters/enemys/pawn.tscn" id="2_h4fx4"]
+[ext_resource type="PackedScene" uid="uid://c52ud2j0arqhj" path="res://scenes/Characters/enemys/lancer.tscn" id="3_g0uu5"]
 
 [sub_resource type="Resource" id="Resource_8nhfy"]
 script = ExtResource("1_xxqt8")
-creature = ExtResource("2_g0uu5")
+creature = ExtResource("2_h4fx4")
 weight = 7.0
-metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
-
-[sub_resource type="Resource" id="Resource_qodis"]
-script = ExtResource("1_xxqt8")
-creature = ExtResource("3_ygee3")
-weight = 2.0
 metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
 
 [sub_resource type="Resource" id="Resource_o5tnu"]
 script = ExtResource("1_xxqt8")
-creature = ExtResource("4_yhibl")
+creature = ExtResource("3_g0uu5")
 metadata/_custom_type_script = "uid://bh7p6ujlsvud4"
 
 [resource]
@@ -28,4 +21,4 @@ script = ExtResource("1_77rw5")
 horde_type = 2
 survive_time = 100.0
 spawn_rate = 1.5
-creature_scenes = Array[ExtResource("1_xxqt8")]([SubResource("Resource_8nhfy"), SubResource("Resource_qodis"), SubResource("Resource_o5tnu")])
+creature_scenes = Array[ExtResource("1_xxqt8")]([SubResource("Resource_8nhfy"), SubResource("Resource_o5tnu")])

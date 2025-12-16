@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://287htq7afmae"]
+[gd_scene load_steps=16 format=3 uid="uid://287htq7afmae"]
 
 [ext_resource type="Script" uid="uid://cr4e81e4wwkfc" path="res://scenes/systems/PowerUps/power_up_banner.gd" id="1_ct0bx"]
 [ext_resource type="Texture2D" uid="uid://dvvb3o5w1gsoe" path="res://Assets/UI/Buttons/Button_Hover_9Slides.png" id="1_i6fen"]
@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://v32iv2sblivf" path="res://scenes/systems/PowerUps/increase_life.tres" id="4_3c3j7"]
 [ext_resource type="Resource" uid="uid://sdtppapslfwv" path="res://scenes/systems/PowerUps/increase_damage.tres" id="5_3c3j7"]
 [ext_resource type="Resource" uid="uid://bs3ya2fvcvrd0" path="res://scenes/systems/PowerUps/increase_speed.tres" id="6_67s7h"]
+[ext_resource type="Resource" uid="uid://dvku42kxrp7os" path="res://scenes/systems/PowerUps/increase_atk_speed.tres" id="7_81rit"]
+[ext_resource type="Resource" uid="uid://dp5h4t8ssolbj" path="res://scenes/systems/PowerUps/firefly_upgrade.tres" id="8_m76jt"]
 [ext_resource type="Texture2D" uid="uid://cy8fj3i04xr2f" path="res://Assets/UI/Buttons/Button_Red.png" id="9_67s7h"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct0bx"]
@@ -41,7 +43,7 @@ scale = Vector2(1.3, 1.3)
 transform = Transform2D(1.3, 0, 0, 1.3, 60, 110)
 script = ExtResource("1_ct0bx")
 power_up_card_scene = ExtResource("3_nsx80")
-available_powerups = Array[ExtResource("3_1wvf5")]([ExtResource("4_3c3j7"), ExtResource("5_3c3j7"), ExtResource("6_67s7h")])
+available_powerups = Array[ExtResource("3_1wvf5")]([ExtResource("4_3c3j7"), ExtResource("5_3c3j7"), ExtResource("6_67s7h"), ExtResource("7_81rit"), ExtResource("8_m76jt")])
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(800, 400)

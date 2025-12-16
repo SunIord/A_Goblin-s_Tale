@@ -24,6 +24,7 @@ func clear_cards():
 func pick_random_powerups(amount: int) -> Array[PowerUpData]:
 	var copy = available_powerups.duplicate()
 	copy.shuffle()
+	print(copy)
 	return copy.slice(0, amount)
 
 

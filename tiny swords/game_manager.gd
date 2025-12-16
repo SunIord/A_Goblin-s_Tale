@@ -29,6 +29,8 @@ var level1_cutscene_played: bool = false
 # NOVO: Sistema de power-ups comprados
 var purchased_powerups: Array[String] = []  # IDs dos power-ups comprados
 
+
+
 # -------------------------------------------------
 # POWER-UP SYSTEM
 # -------------------------------------------------

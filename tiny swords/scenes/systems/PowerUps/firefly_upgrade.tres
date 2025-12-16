@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PowerUpData" load_steps=3 format=3 uid="uid://dp5h4t8ssolbj"]
+
+[ext_resource type="Texture2D" uid="uid://bb8tplsclohw" path="res://Assets/PowerUpIcons/Icon35.png" id="1_pvvai"]
+[ext_resource type="Script" uid="uid://bb78qh4e110w0" path="res://scenes/systems/PowerUps/power_up_data.gd" id="2_y0hoi"]
+
+[resource]
+script = ExtResource("2_y0hoi")
+id = "5"
+title = "Fogo fátuo"
+description = "Prometinha, a chaminha camarada está presa nesse frasco. Liberte-a para que ele lhe ajude na bataha"
+price = 400
+icon = ExtResource("1_pvvai")

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://clnq7oo5lnfps"]
+
+[ext_resource type="Script" uid="uid://di8s3q1ugjvf5" path="res://scenes/systems/PowerUps/firefly.gd" id="1_53v6p"]
+[ext_resource type="Texture2D" uid="uid://xyo3bxdympm5" path="res://Assets/Effects/Fire/Fire.png" id="2_gfjh4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbww2"]
+radius = 50.08992
+
+[sub_resource type="Animation" id="Animation_vvg2b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire_1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_myi3t"]
+resource_name = "attack"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire_1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.06666667, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20000002, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r13nr"]
+_data = {
+&"RESET": SubResource("Animation_vvg2b"),
+&"attack": SubResource("Animation_myi3t")
+}
+
+[node name="Firefly" type="Area2D"]
+collision_layer = 8
+collision_mask = 254
+script = ExtResource("1_53v6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(201, 16)
+shape = SubResource("CircleShape2D_lbww2")
+
+[node name="Fire_1" type="Sprite2D" parent="."]
+z_index = 4
+z_as_relative = false
+texture = ExtResource("2_gfjh4")
+offset = Vector2(200, 0)
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+callback_mode_method = 1
+libraries = {
+&"": SubResource("AnimationLibrary_r13nr")
+}
+autoplay = "attack"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

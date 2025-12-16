@@ -8,12 +8,14 @@ signal super_attack_used
 @export var super_attack_prefab: PackedScene
 @export var ritual_damage:int = 1
 @export var ritual_interval: float = 30
+@export var has_firefly: bool = false
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: HealthBar = $HealthBar
 @onready var basicAttack = preload("res://scenes/systems/basic_attack.tscn")
 @onready var attackSfx = $attack_sfx as AudioStreamPlayer
 @onready var hitSfx = $hit_sfx as AudioStreamPlayer
+
 
 var input_vector: Vector2 = Vector2.ZERO
 var is_running: bool = false

@@ -7,6 +7,7 @@ class_name PowerUpCard
 @onready var price_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/PowerPrice
 @onready var buy_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/BuyButton
 
+@export var firefly_scene: PackedScene
 var data: PowerUpData
 
 func setup(power_data: PowerUpData) -> void:
@@ -64,14 +65,47 @@ func _apply_powerup_effect():
 			
 			print("Vida aumentada para:", GameManager.max_health)
 			print("Vida atual ajustada para:", GameManager.current_health)
+			
+			var firefly = firefly_scene.instantiate()
+			get_tree().get_first_node_in_group("player").add_child(firefly)
+			print("Vagalume adquirido")
+			print(firefly)
 		
 		"damage_upgrade", "2":
 			GameManager.base_damage += 2
 			print("Dano aumentado para:", GameManager.base_damage)
+			
+			var firefly = firefly_scene.instantiate()
+			get_tree().get_first_node_in_group("player").add_child(firefly)
+			print("Vagalume adquirido")
+			print(firefly)
 		
 		"speed_upgrade", "3":
 			GameManager.move_speed *= 1.25  # +25%
 			print("Velocidade aumentada para:", GameManager.move_speed)
+			
+			var firefly = firefly_scene.instantiate()
+			get_tree().get_first_node_in_group("player").add_child(firefly)
+			print("Vagalume adquirido")
+			print(firefly)
+			
+		"atk_speed_upgrade", "4":
+			get_tree().get_first_node_in_group("player").attack_cooldown *= 0.1
+			print("Velocidade de ataque aumentada em 25%")
+			
+			var firefly = firefly_scene.instantiate()
+			get_tree().get_first_node_in_group("player").add_child(firefly)
+			print("Vagalume adquirido")
+			print(firefly)
+			
+		"firefly_upgrade", "5":
+			var firefly = firefly_scene.instantiate()
+			get_tree().get_first_node_in_group("player").add_child(firefly)
+			print("Vagalume adquirido")
+			print(firefly)
+			
+			
+			
 		
 		_:
 			print("Power-up desconhecido:", powerup_id)

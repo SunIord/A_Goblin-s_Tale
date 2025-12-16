@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp8ksjih5e2j8"]
+
+[ext_resource type="Script" uid="uid://dywo3hg0ldcmd" path="res://orbit_2d.gd" id="1_npo1v"]
+[ext_resource type="PackedScene" uid="uid://clnq7oo5lnfps" path="res://scenes/systems/PowerUps/firefly.tscn" id="2_a3t84"]
+
+[node name="Orbit2D" type="Node2D"]
+script = ExtResource("1_npo1v")
+
+[node name="Firefly" parent="." instance=ExtResource("2_a3t84")]

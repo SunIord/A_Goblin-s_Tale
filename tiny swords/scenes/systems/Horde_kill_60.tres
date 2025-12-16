@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="HordeConfig" load_steps=7 format=3 uid="uid://c6i75x34tpnti"]
 
 [ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_mwv8w"]
-[ext_resource type="PackedScene" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_mwv8w"]
+[ext_resource type="PackedScene" uid="uid://bddy673t04fae" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_mwv8w"]
 [ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="3_f7axl"]
 [ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="4_h1dll"]
 

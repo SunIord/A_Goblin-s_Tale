@@ -4,19 +4,18 @@ signal super_attack_used
 signal cutscene_path_finished
 
 @export var death_prefab: PackedScene
+@export var firefly_scene: PackedScene  # ADICIONADO: Referência à cena do firefly
 
 @export_category("Ritual")
 @export var super_attack_prefab: PackedScene
 @export var ritual_damage:int = 1
 @export var ritual_interval: float = 30
-@export var has_firefly: bool = false
 
 @onready var animation_player: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: HealthBar = $HealthBar
 @onready var basicAttack = preload("res://scenes/systems/basic_attack.tscn")
 @onready var attackSfx = $attack_sfx as AudioStreamPlayer
 @onready var hitSfx = $hit_sfx as AudioStreamPlayer
-
 
 var input_vector: Vector2 = Vector2.ZERO
 var is_running: bool = false
@@ -27,7 +26,8 @@ var ritual_cooldown: float = 0.0
 var time_over: bool = false
 var fire_spawned_in_this_attack: bool = false
 var gameui: Node = null
-@export var attack_cooldown: float = 0.8
+@export var base_attack_cooldown: float = 0.8  # RENOMEADO: valor base
+var attack_cooldown: float = 0.8  # Valor atual (com multiplicadores)
 
 var current_priority := 1
 
@@ -42,6 +42,47 @@ func _ready() -> void:
 	gameui = get_tree().get_first_node_in_group("game_ui")
 	GameManager.current_health = GameManager.max_health
 	health_bar.setup(GameManager.current_health, GameManager.max_health)
+	
+	# APLICA UPGRADES PERSISTENTES
+	_apply_persistent_upgrades()
+
+
+func _apply_persistent_upgrades():
+	# Aplica multiplicador de velocidade de ataque
+	attack_cooldown = base_attack_cooldown * GameManager.attack_speed_multiplier
+	print("Player - Attack cooldown: ", attack_cooldown, 
+		  " (base: ", base_attack_cooldown, 
+		  " * multiplier: ", GameManager.attack_speed_multiplier, ")")
+	
+	# Spawna firefly se tiver o upgrade
+	if GameManager.has_firefly and firefly_scene:
+		_spawn_firefly_if_needed()
+
+
+func _spawn_firefly_if_needed():
+	# SOLUÇÃO NUCLEAR: Remove TODOS os fireflies primeiro
+	_remove_all_fireflies()
+	
+	# Depois instancia um NOVO
+	if firefly_scene:
+		var firefly = firefly_scene.instantiate()
+		firefly.name = "PlayerFirefly_Unique"
+		add_child(firefly)
+		print("Firefly ÚNICO instanciado")
+
+func _remove_all_fireflies():
+	var to_remove = []
+	for child in get_children():
+		# Identifica fireflies por nome, tipo, ou grupo
+		if child.name.contains("Firefly") or child.name.contains("firefly") \
+		   or child is Area2D:
+			to_remove.append(child)
+	
+	for firefly in to_remove:
+		firefly.queue_free()
+	
+	if to_remove.size() > 0:
+		print("Removidos ", to_remove.size(), " fireflies duplicados")
 
 
 func _process(delta: float) -> void:

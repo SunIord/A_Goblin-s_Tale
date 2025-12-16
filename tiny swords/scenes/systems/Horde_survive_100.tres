@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://q4xxk16oiu6u" path="res://scenes/systems/horde_config.gd" id="1_77rw5"]
 [ext_resource type="Script" uid="uid://bh7p6ujlsvud4" path="res://scenes/systems/CreatureSpawnConfig.gd" id="1_xxqt8"]
-[ext_resource type="PackedScene" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_g0uu5"]
-[ext_resource type="PackedScene" path="res://scenes/Characters/enemys/purple_lancer.tscn" id="3_ygee3"]
+[ext_resource type="PackedScene" uid="uid://bddy673t04fae" path="res://scenes/Characters/enemys/purple_pawn.tscn" id="2_g0uu5"]
+[ext_resource type="PackedScene" uid="uid://cxqqcpkncrxd4" path="res://scenes/Characters/enemys/purple_lancer.tscn" id="3_ygee3"]
 [ext_resource type="PackedScene" uid="uid://cjqy4lp4bp27a" path="res://scenes/Characters/enemys/archer.tscn" id="4_yhibl"]
 
 [sub_resource type="Resource" id="Resource_8nhfy"]

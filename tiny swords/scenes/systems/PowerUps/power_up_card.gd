@@ -77,23 +77,31 @@ func _apply_powerup_effect():
 		"speed_upgrade", "3":
 			GameManager.move_speed *= 1.25  # +25%
 			print("Velocidade aumentada para:", GameManager.move_speed)
-			
-
-			
+		
 		"atk_speed_upgrade", "4":
-			get_tree().get_first_node_in_group("player").attack_cooldown *= 0.1
-			print("Velocidade de ataque aumentada em 25%")
+			GameManager.attack_speed_multiplier *= 0.75  # -25% tempo = +33% velocidade
 			
-
+			var players = get_tree().get_nodes_in_group("player")
+			if not players.is_empty():
+				var player = players[0]
+				if player.get("base_attack_cooldown") != null:
+					player.attack_cooldown = player.base_attack_cooldown * GameManager.attack_speed_multiplier
+				else:
+					player.attack_cooldown *= 0.75
 			
+			print("Velocidade de ataque aumentada! Multiplicador: ", GameManager.attack_speed_multiplier)
+		
 		"firefly_upgrade", "5":
-			var firefly = firefly_scene.instantiate()
-			get_tree().get_first_node_in_group("player").add_child(firefly)
-			print("Vagalume adquirido")
-			print(firefly)
+			# APENAS salva no GameManager
+			GameManager.has_firefly = true
+			print("Firefly adquirido (salvo no GameManager)")
 			
-			
-			
+			# OPÇÃO: Notifica o player atual para spawnar
+			var players = get_tree().get_nodes_in_group("player")
+			if not players.is_empty():
+				var player = players[0]
+				if player.has_method("_spawn_firefly_if_needed"):
+					player._spawn_firefly_if_needed()
 		
 		_:
 			print("Power-up desconhecido:", powerup_id)

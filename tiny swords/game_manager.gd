@@ -13,6 +13,12 @@ var move_speed: float = 3.0
 var base_damage: int = 2  # DANO BASE DO PLAYER
 
 # -------------------------------------------------
+# POWER-UP STATS PERSISTENTES
+# -------------------------------------------------
+var attack_speed_multiplier: float = 1.0  # Para ID 4
+var has_firefly: bool = false  # Para ID 5
+
+# -------------------------------------------------
 # GAME STATE
 # -------------------------------------------------
 var player_position: Vector2

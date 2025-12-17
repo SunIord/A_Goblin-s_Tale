@@ -1294,7 +1294,6 @@ mob_spawner = NodePath("../MobSpawner")
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_nossa")
 volume_db = -10.0
-parameters/looping = true
 
 [node name="CutsceneEndPoint" type="Marker2D" parent="."]
 position = Vector2(-1642, -26)

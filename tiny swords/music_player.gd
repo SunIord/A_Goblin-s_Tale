@@ -1,13 +1,15 @@
 extends AudioStreamPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Conecta o sinal: quando esta música ACABAR, chame a função _on_finished
+	connect("finished", Callable(self, "_on_finished"))
+	# Inicia a música pela primeira vez (se for para tocar automaticamente)
+	# play_music()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 func play_music():
 	if not playing:
 		play()
+
+func _on_finished():
+	# Esta função é chamada automaticamente quando a música termina
+	play_music()  # Toca novamente

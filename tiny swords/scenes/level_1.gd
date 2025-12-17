@@ -9,6 +9,9 @@ extends Node2D
 @onready var player = $player
 @onready var intro_end = $CutsceneEndPoint
 
+# Variável para controle do loop
+var is_music_looping: bool = true
+
 
 func _ready():
 	var targets: Array[Vector2] = [
@@ -20,12 +23,24 @@ func _ready():
 	horde_manager.arena_completed.connect(trigger_victory)
 
 	MusicPlayer.stop()
+	
+	# CONEXÃO DO SINAL PARA LOOP
+	sfx.connect("finished", Callable(self, "_on_music_finished"))
 	sfx.play()
 
 	if not GameManager.level1_cutscene_played:
 		start_intro_cutscene(targets)
 	else:
 		start_gameplay()
+
+
+# --------------------------------------------------
+# MÚSICA - LOOP COM VERIFICAÇÃO
+# --------------------------------------------------
+func _on_music_finished():
+	# Reinicia a música apenas se ainda estiver em loop
+	if is_music_looping and is_inside_tree():
+		sfx.play()
 
 
 # --------------------------------------------------
@@ -99,6 +114,9 @@ func trigger_game_over():
 		gameui.queue_free()
 		gameui = null
 
+	# Para o loop da música no game over
+	is_music_looping = false
+	
 	var game_over: GameOver = game_over_ui.instantiate()
 	game_over.monsters_defeated = 999
 	game_over.time_survived = "01:58"
@@ -114,5 +132,8 @@ func trigger_victory():
 		gameui.queue_free()
 		gameui = null
 
+	# Para o loop da música na vitória
+	is_music_looping = false
+	
 	var victory: VictoryScreen = victory_ui.instantiate()
 	add_child(victory)

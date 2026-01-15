@@ -100,7 +100,6 @@ func start_gameplay():
 	player.in_cutscene = false
 
 	if horde_manager:
-		print("Level pronto — iniciando hordas.")
 		horde_manager.show_horde_message_and_start()
 	else:
 		print("ERRO: HordeManager NÃO encontrado!")

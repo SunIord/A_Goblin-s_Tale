@@ -19,7 +19,6 @@ func show_powerups():
 	if chosen.is_empty():
 		# SEM ITENS DISPONÍVEIS - Cria Label dinamicamente
 		_create_message_label()
-		print("Loja vazia - Todos os power-ups já comprados!")
 	else:
 		for power_data in chosen:
 			var card = power_up_card_scene.instantiate() as PowerUpCard
@@ -57,7 +56,6 @@ func pick_random_powerups(amount: int) -> Array[PowerUpData]:
 		if not GameManager.is_powerup_purchased(powerup.id):
 			available.append(powerup)
 	
-	print("Power-ups disponíveis: ", available.size(), "/", available_powerups.size())
 	
 	# Se não tem enough, retorna menos (pode ficar slot vazio)
 	var copy = available.duplicate()

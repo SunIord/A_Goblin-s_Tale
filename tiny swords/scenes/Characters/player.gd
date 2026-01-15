@@ -50,9 +50,6 @@ func _ready() -> void:
 func _apply_persistent_upgrades():
 	# Aplica multiplicador de velocidade de ataque
 	attack_cooldown = base_attack_cooldown * GameManager.attack_speed_multiplier
-	print("Player - Attack cooldown: ", attack_cooldown, 
-		  " (base: ", base_attack_cooldown, 
-		  " * multiplier: ", GameManager.attack_speed_multiplier, ")")
 	
 	# Spawna firefly se tiver o upgrade
 	if GameManager.has_firefly and firefly_scene:
@@ -68,7 +65,6 @@ func _spawn_firefly_if_needed():
 		var firefly = firefly_scene.instantiate()
 		firefly.name = "PlayerFirefly_Unique"
 		add_child(firefly)
-		print("Firefly ÚNICO instanciado")
 
 func _remove_all_fireflies():
 	var to_remove = []

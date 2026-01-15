@@ -19,7 +19,7 @@ var should_stop_shooting: bool = false  # Flag simples para parar o tiro
 var is_in_shooting_cycle: bool = false  # Para evitar múltiplos ciclos
 
 func _ready():
-	print("🏹 Archer Behavior iniciado")
+	pass
 	
 	if not arrow_spawn:
 		push_error("❌ ArrowSpawn não encontrado!")

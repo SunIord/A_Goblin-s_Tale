@@ -60,11 +60,13 @@ func show_cutscene_ui():
 	title_level1.visible = false
 	title_level2.visible = false
 
-	match GameManager.current_level:
-		1:
-			title_level1.visible = true
-		2:
-			title_level2.visible = true
+	# VERIFICA PELA CENA ATUAL, NÃO PELO current_level
+	var scene_name = get_tree().current_scene.name.to_lower()
+	
+	if "level_1" in scene_name:
+		title_level1.visible = true
+	elif "level_2" in scene_name:
+		title_level2.visible = true
 
 func hide_cutscene_ui():
 	container_title_level.visible = false

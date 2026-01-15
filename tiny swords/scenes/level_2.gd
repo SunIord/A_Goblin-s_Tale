@@ -5,21 +5,26 @@ extends Node2D
 @export var victory_ui: PackedScene 
 @onready var sfx = $music as AudioStreamPlayer
 @onready var horde_manager = $HordeManager
-@onready var camera = $player/Camera2D
-@onready var player = $player
+@onready var camera = $YSort/player/Camera2D  
+@onready var player = $YSort/player           
 @onready var intro_end = $CutsceneEndPoint
+@onready var intro_end2 = $CutsceneEndPoint2
 
 # Variável para controle do loop
 var is_music_looping: bool = true
+var has_reset_horde_for_level: bool = false
 
 func _ready():
-	var targets: Array[Vector2] = [
-		intro_end.global_position
-	]
 	GameManager.complete_level()
 	GameManager.game_over.connect(trigger_game_over)
 	
+	# CONECTA SINAL DO HORDE MANAGER
 	horde_manager.arena_completed.connect(trigger_victory)
+	
+	# RESETA HORDA APENAS NA PRIMEIRA VEZ QUE ENTRAR NO LEVEL 2
+	if not has_reset_horde_for_level:
+		GameManager.reset_horde()
+		has_reset_horde_for_level = true
 
 	MusicPlayer.stop()
 	
@@ -27,8 +32,8 @@ func _ready():
 	sfx.connect("finished", Callable(self, "_on_music_finished"))
 	sfx.play()
 
-	if not GameManager.level1_cutscene_played:
-		start_intro_cutscene(targets)
+	if not GameManager.level2_cutscene_played:
+		start_intro_cutscene()
 	else:
 		start_gameplay()
 
@@ -41,34 +46,38 @@ func _on_music_finished():
 	if is_music_looping and is_inside_tree():
 		sfx.play()
 
-
 # --------------------------------------------------
-# CAMERA
+# CAMERA ZOOM 
 # --------------------------------------------------
 func zoom_camera(target_zoom: Vector2, duration: float):
 	var tween = create_tween()
 	tween.tween_property(camera, "zoom", target_zoom, duration)
 
-
 # --------------------------------------------------
 # CUTSCENE
 # --------------------------------------------------
-func start_intro_cutscene(targets: Array[Vector2]) -> void:
-	GameManager.level1_cutscene_played = true
+func start_intro_cutscene():
+	GameManager.level2_cutscene_played = true
 
 	# Travar sistemas
 	GameManager.allow_timer = false
-	player.start_cutscene(targets)
 
 	if horde_manager:
 		horde_manager.active = false
 		
 	if gameui:
 		gameui.hide_all()
+	
+	var targets : Array[Vector2] = [
+		intro_end.global_position,
+		intro_end2.global_position
+	]
+	player.start_cutscene(targets)
 
+	# Espera o player chegar aos dois pontos
+	player.cutscene_path_finished.connect(_on_cutscene_path_finished, CONNECT_ONE_SHOT)
 
-	# MOSTRA APENAS A UI DA CUTSCENE
-
+	# Tempo inicial da cena
 	await get_tree().create_timer(4.0).timeout
 
 	# Zoom OUT cinematográfico
@@ -86,10 +95,14 @@ func start_intro_cutscene(targets: Array[Vector2]) -> void:
 	# Voltar zoom normal
 	zoom_camera(Vector2(0.8, 0.8), 1.5)
 
-	start_gameplay()
-	if gameui:
-		gameui.show_hud() 
 
+func _on_cutscene_path_finished():
+	# Player terminou o trajeto da cutscene
+	await get_tree().create_timer(3.0).timeout
+	start_gameplay()
+
+	if gameui:
+		gameui.show_hud()
 
 # --------------------------------------------------
 # GAMEPLAY
@@ -99,7 +112,6 @@ func start_gameplay():
 	player.in_cutscene = false
 
 	if horde_manager:
-		print("Level pronto — iniciando hordas.")
 		horde_manager.show_horde_message_and_start()
 	else:
 		print("ERRO: HordeManager NÃO encontrado!")
@@ -113,6 +125,9 @@ func trigger_game_over():
 		gameui.queue_free()
 		gameui = null
 
+	# Para o loop da música no game over
+	is_music_looping = false
+	
 	var game_over: GameOver = game_over_ui.instantiate()
 	game_over.monsters_defeated = 999
 	game_over.time_survived = "01:58"
@@ -128,5 +143,12 @@ func trigger_victory():
 		gameui.queue_free()
 		gameui = null
 
+	# Para o loop da música na vitória
+	is_music_looping = false
+
+	# RESETA HORDA APÓS VENCER LEVEL 2
+	GameManager.reset_horde()
+	has_reset_horde_for_level = false  # Permite resetar na próxima entrada
+	
 	var victory: VictoryScreen = victory_ui.instantiate()
 	add_child(victory)

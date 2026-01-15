@@ -39,7 +39,6 @@ func _on_buy_pressed():
 	# Aplica o efeito específico
 	_apply_powerup_effect()
 	
-	print("Comprou:", data.id)
 	
 	# Atualiza UI
 	buy_button.text = "COMPRADO"
@@ -48,13 +47,11 @@ func _on_buy_pressed():
 func _apply_powerup_effect():
 	var powerup_id = str(data.id)  # Converte para string para segurança
 	
-	print("Aplicando power-up ID:", powerup_id)
 	
 	match powerup_id:
 		"health_upgrade", "1":
 			# Calcula a porcentagem atual de vida ANTES do upgrade
 			var health_percentage_before = float(GameManager.current_health) / float(GameManager.max_health)
-			print("Porcentagem de vida antes:", health_percentage_before * 100, "%")
 			
 			# Aumenta a vida máxima
 			var extra_health = GameManager.max_health * 0.10  # 10%
@@ -63,20 +60,16 @@ func _apply_powerup_effect():
 			# Aumenta a vida atual PROPORCIONALMENTE
 			GameManager.current_health = int(GameManager.max_health * health_percentage_before)
 			
-			print("Vida aumentada para:", GameManager.max_health)
-			print("Vida atual ajustada para:", GameManager.current_health)
 			
 		
 		
 		"damage_upgrade", "2":
 			GameManager.base_damage += 2
-			print("Dano aumentado para:", GameManager.base_damage)
 			
 
 		
 		"speed_upgrade", "3":
 			GameManager.move_speed *= 1.25  # +25%
-			print("Velocidade aumentada para:", GameManager.move_speed)
 		
 		"atk_speed_upgrade", "4":
 			GameManager.attack_speed_multiplier *= 0.75  # -25% tempo = +33% velocidade
@@ -89,12 +82,9 @@ func _apply_powerup_effect():
 				else:
 					player.attack_cooldown *= 0.75
 			
-			print("Velocidade de ataque aumentada! Multiplicador: ", GameManager.attack_speed_multiplier)
-		
 		"firefly_upgrade", "5":
 			# APENAS salva no GameManager
 			GameManager.has_firefly = true
-			print("Firefly adquirido (salvo no GameManager)")
 			
 			# OPÇÃO: Notifica o player atual para spawnar
 			var players = get_tree().get_nodes_in_group("player")

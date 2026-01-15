@@ -40,8 +40,6 @@ func damage(amount:int) -> void:
 	tween.set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
 	
-	print("Inimigo recebeu dano de ", amount, ". A vida total é de ", health)
-	
 	if health <= 0:
 		die()
 

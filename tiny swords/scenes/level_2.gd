@@ -74,13 +74,13 @@ func start_intro_cutscene():
 	]
 	player.start_cutscene(targets)
 
-	# Espera o player chegar aos dois pontos
+	# NÃO ESPERA player terminar! Apenas conecta o sinal para o final
 	player.cutscene_path_finished.connect(_on_cutscene_path_finished, CONNECT_ONE_SHOT)
 
-	# Tempo inicial da cena
+	# TEMPO INICIAL (igual Level 1) - começa enquanto player anda
 	await get_tree().create_timer(4.0).timeout
 
-	# Zoom OUT cinematográfico
+	# Zoom OUT cinematográfico (enquanto player ainda anda)
 	zoom_camera(Vector2(0.15, 0.15), 1.5)
 
 	await get_tree().create_timer(5.0).timeout
@@ -95,14 +95,21 @@ func start_intro_cutscene():
 	# Voltar zoom normal
 	zoom_camera(Vector2(0.8, 0.8), 1.5)
 
-
-func _on_cutscene_path_finished():
-	# Player terminou o trajeto da cutscene
-	await get_tree().create_timer(3.0).timeout
+	# AGORA ESPERA player terminar (se ainda não terminou)
+	if player.in_cutscene:  # Se ainda está andando
+		await player.cutscene_path_finished
+	
+	# Pequena pausa
+	await get_tree().create_timer(1.0).timeout
+	
 	start_gameplay()
-
 	if gameui:
 		gameui.show_hud()
+
+
+func _on_cutscene_path_finished():
+	# Apenas marca que terminou - a lógica principal está acima
+	pass
 
 # --------------------------------------------------
 # GAMEPLAY
